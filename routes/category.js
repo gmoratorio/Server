@@ -3,10 +3,10 @@ const router = express.Router();
 const knex = require('../db/connection');
 /* GET home page. */
 router.get('/', (req, res, next) => {
-    return knex('user')
+    return knex('category')
     .select()
     .then(data => {
-        res.render('index', {data: data});
+        res.render('category', {data: data});
     });
 });
 module.exports = router;

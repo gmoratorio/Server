@@ -1,2 +1,13 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>Current Members</h1>
+{{#each data}}
+<ul class="list-group">
+
+  <li><h3><a href="/{{this.id}}">{{this.name}}</a></h3></li>
+</ul>
+{{/each}}
+<a href="/events" type="button" class="btn btn-primary btn-lg">
+  View All Current Events
+</a><br><br>
+<a href="/new_user" type="button" class="btn btn-primary btn-lg">
+  Become A Member
+</a>
