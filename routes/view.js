@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/connection');
 
-router.get('/', (req, res, next) => {
-    return knex('event')
-        .select()
+router.get('/:id', (req, res) => {
+    return knex('user')
+        .where('id', req.params.id)
         .then(data => {
-            res.render('event', {
+            res.render('view', {
                 data: data
             });
         });
 });
+
 module.exports = router;
