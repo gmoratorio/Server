@@ -4,9 +4,8 @@ exports.up = function(knex, Promise) {
     table.string('link');
     table.string('description');
     table.string('date');
-    table.float('price');
     table.string('time');
-    table.string('Eventname').notNullable();
+    table.string('eventName').notNullable();
 
 });
 };

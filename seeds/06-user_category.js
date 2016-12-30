@@ -1,6 +1,6 @@
 exports.seed = function(knex, Promise) {
     // Deletes ALL existing entries
-    return knex.raw('DELETE FROM "user"; ALTER SEQUENCE user_id_seq RESTART WITH 9')
+    return knex.raw('DELETE FROM "user_category"; ALTER SEQUENCE user_category_id_seq RESTART WITH 1')
         .then(function() {
             const userAndCategory = [{
                 user_id: 1,
@@ -20,7 +20,7 @@ exports.seed = function(knex, Promise) {
             },
             {
                 user_id: 3,
-                category_id: 8
+                category_id: 7
             },
             {
                 user_id: 3,
@@ -32,7 +32,7 @@ exports.seed = function(knex, Promise) {
             },
             {
                 user_id: 4,
-                category_id: 9
+                category_id: 8
             },
             ];
           return knex('user_category').insert(userAndCategory);
