@@ -2,7 +2,8 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('user', function(table){
     table.increments();
-    table.string('name').notNullable();
+    table.string('firstName').notNullable();
+    table.string('lastName').notNullable();
     table.datetime('DOB');
 });
 };

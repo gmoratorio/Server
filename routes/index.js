@@ -6,7 +6,11 @@ router.get('/', (req, res, next) => {
     return knex('user')
     .select()
     .then(data => {
+        console.log(data);
         res.render('index', {data: data});
     });
 });
+
+
+
 module.exports = router;

@@ -4,15 +4,19 @@ exports.seed = function(knex, Promise) {
         .then(function() {
             const users = [
             {
-                name: 'Jeremy'
+                firstName: 'Jeremy',
+                lastName: 'Claytpn'
             }, {
-                name: 'Guillermo'
+                firstName: 'Guillermo',
+                lastName: 'Mortatorio'
             },
             {
-                name: 'Mark'
+                firstName: 'Mark',
+                lastName: 'Grant'
             },
             {
-                name: 'Matt'
+                firstName: 'Matt',
+                lastName: 'Seaton'
             }];
           return knex('user').insert(users);
         });
