@@ -1,13 +1,32 @@
-
 exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      return Promise.all([
-        // Inserts seed entries
-        knex('table_name').insert({id: 1, colName: 'rowValue1'}),
-        knex('table_name').insert({id: 2, colName: 'rowValue2'}),
-        knex('table_name').insert({id: 3, colName: 'rowValue3'})
-      ]);
-    });
+    // Deletes ALL existing entries
+    return knex.raw('DELETE FROM "user"; ALTER SEQUENCE user_id_seq RESTART WITH 6')
+        .then(function() {
+            const eventAndCategory = [{
+                category_id: 3,
+                event_id: 1
+            },
+            {
+                category_id: 1,
+                event_id: 5
+            },
+            {
+                category_id: 3,
+                event_id: 6
+            },
+            {
+                category_id: 4,
+                event_id: 8
+            },
+            {
+                category_id: 2,
+                event_id: 9
+            },
+            {
+                category_id: 1,
+                event_id: 3
+            }];
+          return knex('event_category').insert(eventAndCategory);
+        });
+
 };

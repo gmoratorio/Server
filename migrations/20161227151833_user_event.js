@@ -2,10 +2,8 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('user_event', function(table){
     table.increments();
-    table.integer('event_id').unsigned();
-    table.foreign('event_id').references('event.id');
-    table.integer('user_id').unsigned();
-    table.foreign('user_id').references('user.id');
+    table.integer('event_id').references('event.id').unsigned().onDelete('cascade');
+    table.integer('user_id').references('user.id').unsigned().onDelete('cascade');
 });
 };
 

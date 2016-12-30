@@ -3,9 +3,9 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('link');
     table.string('description');
-    table.datetime('date').notNullable();
+    table.string('date');
     table.float('price');
-    table.float('time');
+    table.string('time');
     table.string('Eventname').notNullable();
 
 });

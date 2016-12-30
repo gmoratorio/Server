@@ -1,13 +1,28 @@
-
 exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      return Promise.all([
-        // Inserts seed entries
-        knex('table_name').insert({id: 1, colName: 'rowValue1'}),
-        knex('table_name').insert({id: 2, colName: 'rowValue2'}),
-        knex('table_name').insert({id: 3, colName: 'rowValue3'})
-      ]);
-    });
+    // Deletes ALL existing entries
+    return knex.raw('DELETE FROM "user"; ALTER SEQUENCE user_id_seq RESTART WITH 5')
+        .then(function() {
+            const userAndEvent = [{
+                event_id: 3,
+                user_id: 1
+            },
+            {
+                event_id: 1,
+                user_id: 5
+            },
+            {
+                event_id: 3,
+                event_id: 6
+            },
+            
+                user_id: 2,
+                event_id: 9
+            },
+            {
+                user_id: 1,
+                event_id: 3
+            }];
+          return knex('user_event').insert(userAndEvent);
+        });
+
 };
