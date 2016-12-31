@@ -12,8 +12,8 @@ var events = require('./routes/events');
 var categories = require('./routes/category');
 var newMember = require('./routes/new_member');
 var view = require('./routes/view');
-
-// var anything = require('./routes/new_user');
+var viewEvent = require('./routes/view_event');
+var categoriesEvents = require('./routes/view_categoriesEvents');
 
 
 
@@ -39,6 +39,9 @@ app.use('/events', events);
 app.use('/category', categories);
 app.use('/new_member', newMember);
 app.use('/view', view);
+app.use('/view_event', viewEvent);
+app.use('/view_categoriesEvents', categoriesEvents);
+
 
 
 

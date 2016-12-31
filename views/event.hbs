@@ -3,10 +3,13 @@
     <ul class="list-group">
 
         <li>
-            <h2><a href="/{{this.id}}">{{this.eventName}}</a></h2></li>
+            <h3><a href="/view_event/{{this.id}}">{{this.eventName}}</a></h3></li>
         <h3>{{this.description}}</h3>
     </ul>
 {{/each}}
 <a href="/new_event" type="button" class="btn btn-primary btn-lg">
   Add An Event
+</a>
+<a href="/" type="button" class="btn btn-primary btn-lg">
+  Back To Home
 </a>
