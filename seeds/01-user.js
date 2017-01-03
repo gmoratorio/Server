@@ -5,7 +5,7 @@ exports.seed = function(knex, Promise) {
             const users = [
             {
                 firstName: 'Jeremy',
-                lastName: 'Claytpn'
+                lastName: 'Clayton'
             }, {
                 firstName: 'Guillermo',
                 lastName: 'Mortatorio'

@@ -22,4 +22,6 @@ router.get('/:id', (req, res) => {
 // on category.id = event_category.category_id
 // and category.id = 1;
 
+
+
 module.exports = router;
