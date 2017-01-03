@@ -216,6 +216,7 @@ module.exports = {
 
         });
     },
+
     getWWInitialEventInfo: function getWWInitialEventInfo(html, sourceName, baseURL) {
         $ = cheerio.load(html);
         return new Promise((resolve, reject) => {
@@ -276,6 +277,7 @@ module.exports = {
             }
 
         });
+
     },
     getWWInnerDescription: function getWWInnerDescription(html){
       $ = cheerio.load(html);

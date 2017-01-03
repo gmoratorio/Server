@@ -30,12 +30,13 @@ router.get('/deardenver', (req, res) => {
                     return Promise.all(eventPromises);
                 })
                 .then((eventPromises) => {
-                    let returnObject = {};
-                    const finalArray = eventPromises.reduce((acc, innerArray) => {
-                        const concatArray = acc.concat(innerArray);
-                        return concatArray;
-                    }, []);
-                    returnObject.eventArray = finalArray;
+                  let returnObject = {};
+                  const finalArray = eventPromises.reduce((acc, innerArray)=>{
+                    const concatArray = acc.concat(innerArray);
+                    return concatArray;
+                  }, []);
+                  returnObject.eventArray = finalArray;
+
                     res.json(returnObject);
                 })
                 .catch((err) => {
@@ -47,6 +48,7 @@ router.get('/deardenver', (req, res) => {
 router.get('/westword/:startDate/:endDate', (req, res) => {
     const startDate = req.params.startDate;
     const endDate = req.params.endDate;
+
     const baseURL = 'http://www.westword.com';
     const requestURL = `${baseURL}/calendar?dateRange[]=${startDate}&dateRange[]=${endDate}`;
     let eventArray = [];
@@ -82,6 +84,7 @@ router.get('/westword/:startDate/:endDate', (req, res) => {
             .catch((err) => {
                 console.log(err);
             });
+
         })
 });
 
