@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+// var users = require('./routes/users');
 var events = require('./routes/events');
 var categories = require('./routes/category');
 var newMember = require('./routes/new_member');
