@@ -67,7 +67,6 @@ module.exports = {
                     const descriptionPText = descriptionP.text();
                     eventObject.description = descriptionPText;
 
-                    console.log(descriptionPText);
                     let extractedDate = parentP.children().first();
                     let extractedDateText = extractedDate.text();
                     if (extractedDateText === "") {
@@ -217,21 +216,77 @@ module.exports = {
 
         });
     },
-    getWWInitialEventInfo: function getWWInitialEventInfo(html) {
+    getWWInitialEventInfo: function getWWInitialEventInfo(html, sourceName, baseURL) {
         $ = cheerio.load(html);
         return new Promise((resolve, reject) => {
-            let dateArray = [];
+            let initialEventArray = [];
             const dateClass = ".result-day"
             $(dateClass).each((i, element) => {
-              const date = element.attribs['data-date'];
-                dateArray.push(date);
+                const date = element.attribs['data-date'];
+                const ulParent = $(element).children("ul").first();
+                const liArray = ulParent.children();
+                liArray.each((i, li)=>{
+                  let eventObject = {};
+                  eventObject.sourceName = sourceName;
+                  eventObject.date = date;
+                  let imgBox = $(li).find(".img-box");
+                  const eventLink = baseURL + imgBox.find("a").attr("href");
+                  eventObject.eventLink = eventLink;
+
+                  const imageLink = baseURL + imgBox.find("img").attr("src");
+                  eventObject.imageLink = imageLink;
+
+                  const otherDetails = $(li).find(".deets.grid");
+
+                  const eventName = otherDetails.find(".title").text().trim();
+                  eventObject.eventName = eventName;
+
+                  const location = otherDetails.find(".location a").text().trim();
+                  eventObject.location = location;
+
+                  let time = otherDetails.find(".location").text().trim();
+                  time = time.replace(location, "");
+                  eventObject.time = time;
+
+                  const address = otherDetails.find(".address").text().trim();
+                  eventObject.address = address;
+
+                  const categories = otherDetails.find(".categories").children("a");
+                  let categoryArray = [];
+                  categories.each((i, category)=>{
+                    const categoryText = $(category).text();
+                    categoryArray.push(categoryText);
+                  });
+                  eventObject.categories = categoryArray;
+
+                  const price = $(li).find(".tix .price").text();
+                  eventObject.price = price;
+
+                  if(imgBox.find("a").attr("href")){
+                    initialEventArray.push(eventObject);
+                  }
+
+                });
+
             });
-            if (dateArray) {
-                resolve(dateArray);
+            if (initialEventArray) {
+                resolve(initialEventArray);
             } else {
                 reject();
             }
 
         });
+    },
+    getWWInnerDescription: function getWWInnerDescription(html){
+      $ = cheerio.load(html);
+      return new Promise((resolve, reject) => {
+          const description = $("div.description").text();
+          if (description) {
+              resolve(description);
+          } else {
+              reject();
+          }
+
+      });
     }
 }
