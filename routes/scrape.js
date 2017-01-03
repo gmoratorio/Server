@@ -30,8 +30,51 @@ router.get('/deardenver', (req, res) => {
                     return Promise.all(eventPromises);
                 })
                 .then((eventPromises) => {
-                    res.json(eventPromises);
+                  let returnObject = {};
+                  const finalArray = eventPromises.reduce((acc, innerArray)=>{
+                    const concatArray = acc.concat(innerArray);
+                    return concatArray;
+                  }, []);
+                  returnObject.eventArray = finalArray;
+                    res.json(returnObject);
                 })
+                .catch((err) => {
+                    console.log(err);
+                });
+        })
+});
+
+router.get('/westword/:startDate/:endDate', (req, res) => {
+    const startDate = req.params.startDate;
+    const endDate = req.params.endDate;
+    const baseURL = 'http://www.westword.com/calendar?';
+    const requestURL = `${baseURL}dateRange[]=${startDate}&dateRange[]=${endDate}`;
+    Scrape.getHTML(requestURL)
+        .then((html) => {
+            Scrape.getWWInitialEventInfo(html)
+                .then((eventInfo) => {
+                    // posts = postNumbers.posts;
+                    // let postLinkPromises = posts.map(post => {
+                    //     return Scrape.getPostLink(html, post);
+                    // });
+                    // return Promise.all(postLinkPromises);
+                    res.json(eventInfo);
+                })
+                // .then((postLinkPromises) => {
+                //     let innerHtmlPromises = postLinkPromises.map((link) => {
+                //         return Scrape.getHTML(link)
+                //     });
+                //     return Promise.all(innerHtmlPromises);
+                // })
+                // .then((innerHtmlPromises) => {
+                //     let eventPromises = innerHtmlPromises.map((pageHtml) => {
+                //         return Scrape.getEventInfo(pageHtml, "Dear Denver");
+                //     })
+                //     return Promise.all(eventPromises);
+                // })
+                // .then((eventPromises) => {
+                //     res.json(eventPromises);
+                // })
                 .catch((err) => {
                     console.log(err);
                 });
