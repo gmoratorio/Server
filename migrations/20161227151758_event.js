@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('event', function(table){
     table.increments();
     table.string('link');
-    table.string('description');
+    table.text('description');
     table.string('date');
     table.string('time');
     table.string('eventName').notNullable();

@@ -5,18 +5,26 @@ exports.seed = function(knex, Promise) {
             const users = [
             {
                 firstName: 'Jeremy',
-                lastName: 'Clayton'
+                lastName: 'Clayton',
+                email: 'doodoo1@gmail.com',
+                password: 'thizz'
             }, {
                 firstName: 'Guillermo',
-                lastName: 'Mortatorio'
+                lastName: 'Mortatorio',
+                email: 'doodoo2@gmail.com',
+                password: 'thizz'
             },
             {
                 firstName: 'Mark',
-                lastName: 'Grant'
+                lastName: 'Grant',
+                email: 'doodoo3@gmail.com',
+                password: 'thizz'
             },
             {
                 firstName: 'Matt',
-                lastName: 'Seaton'
+                lastName: 'Seaton',
+                email: 'doodoo4@gmail.com',
+                password: 'thizz'
             }];
           return knex('user').insert(users);
         });
