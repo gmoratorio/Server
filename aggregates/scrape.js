@@ -216,19 +216,7 @@ module.exports = {
 
         });
     },
-<<<<<<< HEAD
-    getWWInitialEventInfo: function getWWInitialEventInfo(html) {
-        $ = cheerio.load(html);
-        return new Promise((resolve, reject) => {
-            let dateArray = [];
-            const dateClass = ".result-day"
-            $(dateClass).each((i, element) => {
-              const date = element.attribs['data-date'];
-                dateArray.push(date);
-            });
-            if (dateArray) {
-                resolve(dateArray);
-=======
+
     getWWInitialEventInfo: function getWWInitialEventInfo(html, sourceName, baseURL) {
         $ = cheerio.load(html);
         return new Promise((resolve, reject) => {
@@ -284,14 +272,12 @@ module.exports = {
             });
             if (initialEventArray) {
                 resolve(initialEventArray);
->>>>>>> bc2d445449f912c3196a502135c165b3d048d575
             } else {
                 reject();
             }
 
         });
-<<<<<<< HEAD
-=======
+
     },
     getWWInnerDescription: function getWWInnerDescription(html){
       $ = cheerio.load(html);
@@ -304,6 +290,5 @@ module.exports = {
           }
 
       });
->>>>>>> bc2d445449f912c3196a502135c165b3d048d575
     }
 }

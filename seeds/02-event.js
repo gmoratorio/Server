@@ -1,8 +1,9 @@
 exports.seed = function(knex, Promise) {
     // Deletes ALL existing entries
-    return knex.raw('DELETE FROM "event"; ALTER SEQUENCE event_id_seq RESTART WITH 1')
+    return knex.raw('DELETE FROM "event"; ALTER SEQUENCE event_id_seq RESTART WITH 9')
         .then(function() {
             const events = [{
+                id: 1,
                 sourceName: 'Dear Denver',
                 eventLink: 'https://www.facebook.com/events/1864904230404701/',
                 description: 'Ratio is kicking off a new comedy series called Live at Ratio',
@@ -11,6 +12,7 @@ exports.seed = function(knex, Promise) {
                 eventName: 'Live Comedy Taping: Ian Douglas Terry'
             },
             {
+                id: 2,
                 sourceName: 'Dear Denver',
                 eventLink: 'https://www.facebook.com/events/153266558485057/',
                 description: 'Still looking to pad out your holiday decorations?',
@@ -19,6 +21,7 @@ exports.seed = function(knex, Promise) {
                 eventName: 'Gingerbread House Decorating at Grandma’s House'
             },
             {
+                id: 3,
                 sourceName: 'Dear Denver',
                 eventLink: 'https://www.facebook.com/events/189657274838392/',
                 description: 'Stave off your hangover by tying on another at Epic where they’ll be screening football and breakfast',
@@ -27,6 +30,7 @@ exports.seed = function(knex, Promise) {
                 eventName: ' – 9pm: Holiday Hangover Party'
             },
             {
+                id: 4,
                 sourceName: 'Dear Denver',
                 eventLink: 'https://www.facebook.com/events/1827525967523347/',
                 description: 'Beryl’s flips Monday the bird with specialty keg tappings each week.',
@@ -35,6 +39,7 @@ exports.seed = function(knex, Promise) {
                 eventName: 'FU Mondays at Beryl’s Beer Co.'
             },
             {
+                id: 5,
                 sourceName: 'Dear Denver',
                 eventLink: 'https://www.facebook.com/events/106643546502749/',
                 description: 'Call to Arms will be tapping specialty one-off Lagers all week. ',
@@ -43,6 +48,7 @@ exports.seed = function(knex, Promise) {
                 eventName: 'Lager Tuesday'
             },
             {
+                id: 6,
                 eventLink: 'https://www.facebook.com/events/106643546502749/',
                 description: 'Nuggets take on the Golden State',
                 date: 'Tuesday, December 27 – Friday, December 30, 2016',
@@ -50,6 +56,7 @@ exports.seed = function(knex, Promise) {
                 eventName: 'Nugget Vs. Golden State'
             },
             {
+                id: 7,
                 eventLink: 'https://www.facebook.com/events/106643546502749/',
                 description: 'Local Artist Den Harold displays work',
                 date: 'December 28, 2016',
@@ -57,6 +64,7 @@ exports.seed = function(knex, Promise) {
                 eventName: 'Harold Gallery'
             },
             {
+                id: 8, 
                 eventLink: 'https://www.facebook.com/events/106643546502749/',
                 description: 'Flume plays at the Ogden',
                 date: 'December 27, 2016',
