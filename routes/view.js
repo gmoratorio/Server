@@ -16,8 +16,7 @@ router.get('/:id', (req, res) => {
         .join('user', 'user.id', 'user_category.user_id')
         .where('user.id', req.params.id)
         .then(data => {
-            res.render('view', {
-                data: data
+            res.json(data);
             });
         });
 });
