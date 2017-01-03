@@ -6,9 +6,7 @@ router.get('/', (req, res, next) => {
     return knex('category')
         .select()
         .then(data => {
-            res.render('category', {
-                data: data
-            });
+            res.json(data);
         });
 });
 module.exports = router;

@@ -7,9 +7,7 @@ router.get('/', (req, res) => {
         .select()
         .then(data => {
             console.log(data);
-            res.render('index', {
-                data: data
-            });
+            res.json(data);
         });
 });
 
