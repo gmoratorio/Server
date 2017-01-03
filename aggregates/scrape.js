@@ -71,7 +71,7 @@ module.exports = {
                     let extractedDate = parentP.children().first();
                     let extractedDateText = extractedDate.text();
                     if (extractedDateText === "") {
-                        //some posts have blank <b></b> tags before the date entry
+                        //some posts have blank <b></b> tags before the ate entry
                         extractedDate = extractedDate.siblings().first();
                         extractedDateText = extractedDate.text();
                     }
@@ -202,19 +202,36 @@ module.exports = {
         })
     },
     getDateTimePrice: function getDateTimePrice(html) {
-      $ = cheerio.load(html);
-      return new Promise((resolve, reject) => {
-          const timeRaw = $(`.when`).text().replace("Time:","").trim();
-          const priceRaw = $(`.price`).text().trim();
-          console.log(timeRaw);
-          console.log(priceRaw);
-          // const dateTimeText = timeLabel.siblings().first().text();
-          if (timeRaw) {
-              resolve(timeRaw);
-          } else {
-              reject();
-          }
+        $ = cheerio.load(html);
+        return new Promise((resolve, reject) => {
+            const timeRaw = $(`.when`).text().replace("Time:", "").trim();
+            const priceRaw = $(`.price`).text().trim();
+            console.log(timeRaw);
+            console.log(priceRaw);
+            // const dateTimeText = timeLabel.siblings().first().text();
+            if (timeRaw) {
+                resolve(timeRaw);
+            } else {
+                reject();
+            }
 
-      });
+        });
+    },
+    getWWInitialEventInfo: function getWWInitialEventInfo(html) {
+        $ = cheerio.load(html);
+        return new Promise((resolve, reject) => {
+            let dateArray = [];
+            const dateClass = ".result-day"
+            $(dateClass).each((i, element) => {
+              const date = element.attribs['data-date'];
+                dateArray.push(date);
+            });
+            if (dateArray) {
+                resolve(dateArray);
+            } else {
+                reject();
+            }
+
+        });
     }
 }
