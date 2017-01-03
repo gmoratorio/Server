@@ -234,7 +234,7 @@ module.exports = {
                   const eventLink = baseURL + imgBox.find("a").attr("href");
                   eventObject.eventLink = eventLink;
 
-                  const imageLink = baseURL + imgBox.find("img").attr("src");
+                  const imageLink = imgBox.find("img").attr("src");
                   eventObject.imageLink = imageLink;
 
                   const otherDetails = $(li).find(".deets.grid");
