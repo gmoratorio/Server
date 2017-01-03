@@ -14,6 +14,8 @@ var newMember = require('./routes/new_member');
 var view = require('./routes/view');
 var viewEvent = require('./routes/view_event');
 var categoriesEvents = require('./routes/view_categoriesEvents');
+const scrape = require('./routes/scrape');
+const rss = require('./routes/rss');
 
 
 
@@ -34,13 +36,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', index);
-app.use('/users', users);
+// app.use('/users', users);
 app.use('/events', events);
 app.use('/category', categories);
 app.use('/new_member', newMember);
 app.use('/view', view);
 app.use('/view_event', viewEvent);
 app.use('/view_categoriesEvents', categoriesEvents);
+app.use('/scrape', scrape);
+app.use('/rss', rss);
 
 
 
