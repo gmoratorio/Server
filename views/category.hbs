@@ -1,0 +1,12 @@
+<h1>Current Categories</h1>
+{{#each data}}
+
+    <ul class="list-group">
+
+        <li>
+            <h2><a href="/view_categoriesEvents/{{this.id}}">{{this.name}}</a></h2></li>
+    </ul>
+{{/each}}
+<a href="/new_event" type="button" class="btn btn-primary btn-lg">
+  Add An Event
+</a>
