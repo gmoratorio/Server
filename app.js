@@ -58,15 +58,19 @@ app.use('/rss', rss);
 
 
 // posting.postWWStuff("2017-01-02","2017-01-08", currentEnvironmentURL);
-validation.returnLatestDate("Dear Denver")
-    .then((maxDate) => {
-      // console.log(maxDate);
-    return dates.prepareNextQuery(maxDate)
-    })
-    .then((dateQueryArray)=>{
-      // console.log(dateQueryArray);
+// validation.returnLatestDate("Dear Denver")
+//     .then((maxDate) => {
+//       // console.log(maxDate);
+//     return dates.prepareNextQuery(maxDate)
+//     })
+//     .then((dateQueryArray)=>{
+//       // console.log(dateQueryArray);
+//
+//     });
+const dbDate = "2017-01-02T07:00:00.000Z";
+const scrapeDate = "2017-01-03T07:00:00.000Z";
 
-    });
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
