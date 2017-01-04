@@ -39,8 +39,6 @@ router.get('/deardenver', (req, res) => {
                     return Promise.all(filteredPostLinkPromises);
                 })
                 .then((filteredPostLinkPromises) => {
-                    console.log(filteredPostLinkPromises);
-                    // console.log(validationArray);
                     let innerHtmlPromises = filteredPostLinkPromises.map((link) => {
                         return Scrape.getHTML(link)
                     });
