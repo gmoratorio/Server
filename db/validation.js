@@ -1,4 +1,5 @@
 const knex = require("./connection");
+const dates = require("../functions/dates");
 
 module.exports = {
 
@@ -29,8 +30,14 @@ module.exports = {
             .whereNot('date', 'like', '%at%')
             .first()
             .then((result) => {
-                // console.log(result.max);
-                return result.max;
+                if (result.max !== null) {
+                    console.log("Max is " + result.max);
+                    return result.max;
+                } else {
+                    return null;
+                }
+
+
             })
     }
 

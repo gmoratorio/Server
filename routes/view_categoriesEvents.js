@@ -8,9 +8,10 @@ router.get('/:id', (req, res) => {
     .join('category', 'category.id', 'event_category.category_id')
     .where('category.id', req.params.id)
         .then(data => {
-            res.render('view_categoriesEvents', {
-                data: data
-            });
+            res.json(data);
+            // res.render('view_categoriesEvents', {
+            //     data: data
+            // });
         });
 });
 // SQL function for above knex function

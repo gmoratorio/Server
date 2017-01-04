@@ -10,6 +10,7 @@ const validation = require("../db/validation");
 router.get('/deardenver', (req, res) => {
     const requestURL = `https://deardenver.net/`;
     const source = "Dear Denver";
+    let postLinkPromiseArray = [];
     Scrape.getHTML(requestURL)
         .then((html) => {
             Scrape.getPostNumbers(html)
@@ -21,26 +22,25 @@ router.get('/deardenver', (req, res) => {
                     return Promise.all(postLinkPromises);
                 })
                 .then((postLinkPromises) => {
-                    let filteredPostLinkPromises = postLinkPromises.filter((link) => {
+                    postLinkPromiseArray = postLinkPromises;
+                    let latestDateArray = postLinkPromises.map((link) => {
                         return validation.returnLatestDate(source)
-                            .then((latestDate) => {
-                                console.log(latestDate);
-                                let thisStartDate = dates.getStartDateFromURL(link);
-                                thisStartDate = dates.normalizeDate(thisStartDate);
-                                console.log(thisStartDate);
-                                const check = (thisStartDate - latestDate);
-                                console.log(check);
-                                return (check);
-                            })
-                            .then((check)=>{
-                              return check
-                            });
-
+                    });
+                    return Promise.all(latestDateArray);
+                })
+                .then((latestDateArray) => {
+                    let filteredPostLinkPromises = postLinkPromiseArray.filter((link, index) => {
+                        const latestDBDate = latestDateArray[index];
+                        let thisScrapeDate = dates.getStartDateFromURL(link);
+                        const diff = dates.getDifference(latestDBDate, thisScrapeDate, "hours");
+                        const check = (diff > 0);
+                        return check;
                     });
                     return Promise.all(filteredPostLinkPromises);
                 })
                 .then((filteredPostLinkPromises) => {
-                  console.log(filteredPostLinkPromises);
+                    console.log(filteredPostLinkPromises);
+                    // console.log(validationArray);
                     let innerHtmlPromises = filteredPostLinkPromises.map((link) => {
                         return Scrape.getHTML(link)
                     });
@@ -68,13 +68,29 @@ router.get('/deardenver', (req, res) => {
         })
 });
 
-router.get('/westword/:startDate/:endDate', (req, res) => {
-    const startDate = req.params.startDate;
-    const endDate = req.params.endDate;
+router.get('/westword', (req, res) => {
+    const source = "WestWord";
     const baseURL = 'http://www.westword.com';
-    const requestURL = `${baseURL}/calendar?dateRange[]=${startDate}&dateRange[]=${endDate}`;
+    const maxFutureDate = dates.createMaxQueryDate();
+    let queryEndDate = null;
     let eventArray = [];
-    Scrape.getHTML(requestURL)
+
+    validation.returnLatestDate(source)
+        .then((latestDBDate) => {
+            if (latestDBDate === null) {
+                latestDBDate = dates.createYesterday();
+            }
+            latestDatabaseDate = latestDBDate;
+            const dateQueryArray = dates.getNextWWQuery(latestDBDate, source);
+            const startDate = dateQueryArray[0];
+            // console.log(startDate);
+            const endDate = dateQueryArray[1];
+            queryEndDate = endDate;
+            // console.log(endDate);
+            const requestURL = `${baseURL}/calendar?dateRange[]=${startDate}&dateRange[]=${endDate}`;
+            // console.log(requestURL);
+            return Scrape.getHTML(requestURL)
+        })
         .then((html) => {
             Scrape.getWWInitialEventInfo(html, "WestWord", baseURL)
                 .then((initialEventArray) => {
@@ -99,7 +115,12 @@ router.get('/westword/:startDate/:endDate', (req, res) => {
                 })
                 .then((eventArray) => {
                     let returnObject = {};
-                    returnObject.eventArray = eventArray;
+                    const dateDifference = dates.getDifference(queryEndDate, maxFutureDate, "days");
+                    if (dateDifference > -1) {
+                        returnObject.eventArray = eventArray;
+                    } else {
+                        returnObject.eventArray = null;
+                    }
                     res.json(returnObject);
                 })
 
