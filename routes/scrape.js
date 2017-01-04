@@ -32,7 +32,7 @@ router.get('/deardenver', (req, res) => {
                     let filteredPostLinkPromises = postLinkPromiseArray.filter((link, index) => {
                         const latestDBDate = latestDateArray[index];
                         let thisScrapeDate = dates.getStartDateFromURL(link);
-                        const diff = dates.getDateDifference(latestDBDate, thisScrapeDate);
+                        const diff = dates.getDifference(latestDBDate, thisScrapeDate, "hours");
                         const check = (diff > 0);
                         return check;
                     });
@@ -71,6 +71,8 @@ router.get('/deardenver', (req, res) => {
 router.get('/westword', (req, res) => {
     const source = "WestWord";
     const baseURL = 'http://www.westword.com';
+    const maxFutureDate = dates.createMaxQueryDate();
+    let queryEndDate = null;
     let eventArray = [];
 
     validation.returnLatestDate(source)
@@ -78,10 +80,12 @@ router.get('/westword', (req, res) => {
             if (latestDBDate === null) {
                 latestDBDate = dates.createYesterday();
             }
+            latestDatabaseDate = latestDBDate;
             const dateQueryArray = dates.getNextWWQuery(latestDBDate, source);
             const startDate = dateQueryArray[0];
             // console.log(startDate);
             const endDate = dateQueryArray[1];
+            queryEndDate = endDate;
             // console.log(endDate);
             const requestURL = `${baseURL}/calendar?dateRange[]=${startDate}&dateRange[]=${endDate}`;
             // console.log(requestURL);
@@ -111,7 +115,12 @@ router.get('/westword', (req, res) => {
                 })
                 .then((eventArray) => {
                     let returnObject = {};
-                    returnObject.eventArray = eventArray;
+                    const dateDifference = dates.getDifference(queryEndDate, maxFutureDate, "days");
+                    if (dateDifference > -1) {
+                        returnObject.eventArray = eventArray;
+                    } else {
+                        returnObject.eventArray = null;
+                    }
                     res.json(returnObject);
                 })
 

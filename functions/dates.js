@@ -33,13 +33,24 @@ module.exports = {
         const startDate = `${year}-${month}-${day}`;
         return startDate;
     },
-    getDateDifference: function getDateDifference(lastDBDate, scrapeDate) {
-        const diff = sugar.Date(lastDBDate).hoursUntil(scrapeDate).raw;
+    getDifference: function getDifference(expectedOlderDate, expectedNewerDate, type) {
+        let diff = null;
+        if (type === "hours") {
+            diff = sugar.Date(expectedOlderDate).hoursUntil(expectedNewerDate).raw;
+        } else if (type === "days") {
+            diff = sugar.Date(expectedOlderDate).daysUntil(expectedNewerDate).raw;
+        }
+
         return diff;
     },
     createYesterday: function createYesterday() {
-      const yesterday = sugar.Date.create('yesterday');
-      return yesterday;
+        const yesterday = sugar.Date.create('yesterday');
+        return yesterday;
+    },
+    createMaxQueryDate: function createMaxQueryDate() {
+        let maxFutureDate = sugar.Date('today').addDays(30).raw;
+        console.log(maxFutureDate);
+        return maxFutureDate;
     }
 
 
