@@ -1,5 +1,6 @@
 const cheerio = require('cheerio');
 const request = require('request');
+const dates = require('../functions/dates');
 
 
 module.exports = {
@@ -41,6 +42,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             const postLink = $(`.${post} a`).first().attr('href');
             if (postLink) {
+              console.log(postLink);
                 resolve(postLink);
             } else {
                 reject();
@@ -193,6 +195,10 @@ module.exports = {
                             eventObject.eventName += currentSiblingText;
                         }
                     }
+                    const re = new RegExp(String.fromCharCode(160), "g");
+
+                    eventObject.date = eventObject.date.replace(re, " ").trim();
+                    eventObject.date = dates.normalizeDate(eventObject.date.trim());
 
                     eventArray.push(eventObject);
                 })
@@ -205,8 +211,8 @@ module.exports = {
         return new Promise((resolve, reject) => {
             const timeRaw = $(`.when`).text().replace("Time:", "").trim();
             const priceRaw = $(`.price`).text().trim();
-            console.log(timeRaw);
-            console.log(priceRaw);
+            // console.log(timeRaw);
+            // console.log(priceRaw);
             // const dateTimeText = timeLabel.siblings().first().text();
             if (timeRaw) {
                 resolve(timeRaw);
@@ -226,46 +232,46 @@ module.exports = {
                 const date = element.attribs['data-date'];
                 const ulParent = $(element).children("ul").first();
                 const liArray = ulParent.children();
-                liArray.each((i, li)=>{
-                  let eventObject = {};
-                  eventObject.sourceName = sourceName;
-                  eventObject.date = date;
-                  let imgBox = $(li).find(".img-box");
-                  const eventLink = baseURL + imgBox.find("a").attr("href");
-                  eventObject.eventLink = eventLink;
+                liArray.each((i, li) => {
+                    let eventObject = {};
+                    eventObject.sourceName = sourceName;
+                    eventObject.date = date;
+                    let imgBox = $(li).find(".img-box");
+                    const eventLink = baseURL + imgBox.find("a").attr("href");
+                    eventObject.eventLink = eventLink;
 
-                  const imageLink = imgBox.find("img").attr("src");
-                  eventObject.imageLink = imageLink;
+                    const imageLink = imgBox.find("img").attr("src");
+                    eventObject.imageLink = imageLink;
 
-                  const otherDetails = $(li).find(".deets.grid");
+                    const otherDetails = $(li).find(".deets.grid");
 
-                  const eventName = otherDetails.find(".title").text().trim();
-                  eventObject.eventName = eventName;
+                    const eventName = otherDetails.find(".title").text().trim();
+                    eventObject.eventName = eventName;
 
-                  const location = otherDetails.find(".location a").text().trim();
-                  eventObject.location = location;
+                    const location = otherDetails.find(".location a").text().trim();
+                    eventObject.location = location;
 
-                  let time = otherDetails.find(".location").text().trim();
-                  time = time.replace(location, "");
-                  eventObject.time = time;
+                    let time = otherDetails.find(".location").text().trim();
+                    time = time.replace(location, "");
+                    eventObject.time = time;
 
-                  const address = otherDetails.find(".address").text().trim();
-                  eventObject.address = address;
+                    const address = otherDetails.find(".address").text().trim();
+                    eventObject.address = address;
 
-                  const categories = otherDetails.find(".categories").children("a");
-                  let categoryArray = [];
-                  categories.each((i, category)=>{
-                    const categoryText = $(category).text();
-                    categoryArray.push(categoryText);
-                  });
-                  eventObject.categories = categoryArray;
+                    const categories = otherDetails.find(".categories").children("a");
+                    let categoryArray = [];
+                    categories.each((i, category) => {
+                        const categoryText = $(category).text();
+                        categoryArray.push(categoryText);
+                    });
+                    eventObject.categories = categoryArray;
 
-                  const price = $(li).find(".tix .price").text();
-                  eventObject.price = price;
+                    const price = $(li).find(".tix .price").text();
+                    eventObject.price = price;
 
-                  if(imgBox.find("a").attr("href")){
-                    initialEventArray.push(eventObject);
-                  }
+                    if (imgBox.find("a").attr("href")) {
+                        initialEventArray.push(eventObject);
+                    }
 
                 });
 
@@ -279,16 +285,16 @@ module.exports = {
         });
 
     },
-    getWWInnerDescription: function getWWInnerDescription(html){
-      $ = cheerio.load(html);
-      return new Promise((resolve, reject) => {
-          const description = $("div.description").text();
-          if (description) {
-              resolve(description);
-          } else {
-              reject();
-          }
+    getWWInnerDescription: function getWWInnerDescription(html) {
+        $ = cheerio.load(html);
+        return new Promise((resolve, reject) => {
+            const description = $("div.description").text();
+            if (description) {
+                resolve(description);
+            } else {
+                reject();
+            }
 
-      });
+        });
     }
 }
