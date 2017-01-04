@@ -30,11 +30,61 @@ router.get('/deardenver', (req, res) => {
                     return Promise.all(eventPromises);
                 })
                 .then((eventPromises) => {
-                    res.json(eventPromises);
+                  let returnObject = {};
+                  const finalArray = eventPromises.reduce((acc, innerArray)=>{
+                    const concatArray = acc.concat(innerArray);
+                    return concatArray;
+                  }, []);
+                  returnObject.eventArray = finalArray;
+
+                    res.json(returnObject);
                 })
                 .catch((err) => {
                     console.log(err);
                 });
+        })
+});
+
+router.get('/westword/:startDate/:endDate', (req, res) => {
+    const startDate = req.params.startDate;
+    const endDate = req.params.endDate;
+
+    const baseURL = 'http://www.westword.com';
+    const requestURL = `${baseURL}/calendar?dateRange[]=${startDate}&dateRange[]=${endDate}`;
+    let eventArray = [];
+    Scrape.getHTML(requestURL)
+        .then((html) => {
+            Scrape.getWWInitialEventInfo(html, "WestWord", baseURL)
+                .then((initialEventArray) => {
+                    eventArray = initialEventArray;
+                    const innerEventHTMLArray = eventArray.map((event) => {
+                        return Scrape.getHTML(event.eventLink);
+                    })
+                    return Promise.all(innerEventHTMLArray);
+                })
+                .then((htmlArray) => {
+                    const descriptionArray = htmlArray.map((innerHTML) => {
+                        return Scrape.getWWInnerDescription(innerHTML);
+                    })
+                    return Promise.all(descriptionArray);
+                })
+                .then((descriptionArray) => {
+                    descriptionArray.forEach((description, index) => {
+                        const thisEvent = eventArray[index];
+                        thisEvent.description = description.trim();
+                    });
+                    return eventArray;
+                })
+                .then((eventArray) => {
+                  let returnObject = {};
+                  returnObject.eventArray = eventArray;
+                    res.json(returnObject);
+                })
+
+            .catch((err) => {
+                console.log(err);
+            });
+
         })
 });
 
