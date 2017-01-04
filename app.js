@@ -17,6 +17,10 @@ var viewEvent = require('./routes/view_event');
 var categoriesEvents = require('./routes/view_categoriesEvents');
 const scrape = require('./routes/scrape');
 const rss = require('./routes/rss');
+const posting = require("./functions/posting");
+const environment = require("./functions/environment");
+const validation = require("./db/validation");
+const dates = require("./functions/dates");
 
 
 
@@ -31,7 +35,9 @@ app.set('view engine', 'hbs');
 app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
@@ -48,27 +54,36 @@ app.use('/view_categoriesEvents', categoriesEvents);
 app.use('/scrape', scrape);
 app.use('/rss', rss);
 
+// const currentEnvironmentURL = environment.returnEnvironmentURL();
 
 
+// posting.postWWStuff("2017-01-02","2017-01-08", currentEnvironmentURL);
+validation.returnLatestDate("Dear Denver")
+    .then((maxDate) => {
+      // console.log(maxDate);
+    return dates.prepareNextQuery(maxDate)
+    })
+    .then((dateQueryArray)=>{
+      // console.log(dateQueryArray);
 
-
+    });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;

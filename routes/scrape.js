@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Scrape = require('../aggregates/scrape');
+const dates = require('../functions/dates');
 
 
 
@@ -19,6 +20,7 @@ router.get('/deardenver', (req, res) => {
                 })
                 .then((postLinkPromises) => {
                     let innerHtmlPromises = postLinkPromises.map((link) => {
+                        dates.getStartDateFromURL(link);
                         return Scrape.getHTML(link)
                     });
                     return Promise.all(innerHtmlPromises);
@@ -48,7 +50,6 @@ router.get('/deardenver', (req, res) => {
 router.get('/westword/:startDate/:endDate', (req, res) => {
     const startDate = req.params.startDate;
     const endDate = req.params.endDate;
-
     const baseURL = 'http://www.westword.com';
     const requestURL = `${baseURL}/calendar?dateRange[]=${startDate}&dateRange[]=${endDate}`;
     let eventArray = [];
