@@ -42,7 +42,6 @@ module.exports = {
         return new Promise((resolve, reject) => {
             const postLink = $(`.${post} a`).first().attr('href');
             if (postLink) {
-              console.log(postLink);
                 resolve(postLink);
             } else {
                 reject();
@@ -235,7 +234,7 @@ module.exports = {
                 liArray.each((i, li) => {
                     let eventObject = {};
                     eventObject.sourceName = sourceName;
-                    eventObject.date = date;
+                    eventObject.date = dates.normalizeDate(date.trim());
                     let imgBox = $(li).find(".img-box");
                     const eventLink = baseURL + imgBox.find("a").attr("href");
                     eventObject.eventLink = eventLink;
