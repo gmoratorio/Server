@@ -40,7 +40,7 @@ exports.seed = function(knex, Promise) {
             {
                 id: 8,
                 user_id: 4,
-                category_id: 8
+                category_id: 7
             },
             ];
           return knex('user_category').insert(userAndCategory);
