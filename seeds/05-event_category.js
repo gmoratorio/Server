@@ -24,12 +24,12 @@ exports.seed = function(knex, Promise) {
             },
             {
                 id: 5,
-                category_id: 9,
+                category_id: 7,
                 event_id: 4
             },
             {
                 id: 6,
-                category_id: 9,
+                category_id: 7,
                 event_id: 5
             },
             {
@@ -43,7 +43,7 @@ exports.seed = function(knex, Promise) {
                 event_id: 7
             },
             {
-                id: 9, 
+                id: 9,
                 category_id: 5,
                 event_id: 8
             }];
