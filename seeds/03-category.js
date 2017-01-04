@@ -21,7 +21,8 @@ exports.seed = function(knex, Promise) {
             }, {
                 id: 6,
                 name: 'Family'
-            }, {
+            }, 
+            {
                 id: 7,
                 name: 'Misc'
             }];
