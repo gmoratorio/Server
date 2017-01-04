@@ -31,7 +31,6 @@ module.exports = {
             .first()
             .then((result) => {
                 if (result.max !== null) {
-                    console.log("Max is " + result.max);
                     return result.max;
                 } else {
                     return null;

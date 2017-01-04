@@ -49,7 +49,6 @@ module.exports = {
     },
     createMaxQueryDate: function createMaxQueryDate() {
         let maxFutureDate = sugar.Date('today').addDays(30).raw;
-        console.log(maxFutureDate);
         return maxFutureDate;
     }
 

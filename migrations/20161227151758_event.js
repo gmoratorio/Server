@@ -1,7 +1,6 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('event', function(table){
     table.increments()
-    table.string('link');
     table.string('sourceName');
     table.string('eventLink');
     table.text('description');
