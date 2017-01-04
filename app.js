@@ -65,6 +65,7 @@ validation.returnLatestDate("Dear Denver")
     })
     .then((dateQueryArray)=>{
       // console.log(dateQueryArray);
+
     });
 
 // catch 404 and forward to error handler

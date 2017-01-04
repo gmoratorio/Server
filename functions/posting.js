@@ -26,8 +26,8 @@ module.exports = {
             }
 
             const options = {
-                    // url: `${destinationURL}/events`,
-                    url: `https://stack-of-all-trade.herokuapp.com/events`,
+                    url: `${destinationURL}/events`,
+                    // url: `https://stack-of-all-trade.herokuapp.com/events`,
                     method: 'POST',
                     json: true,
                     headers: headers,

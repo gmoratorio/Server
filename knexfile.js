@@ -3,7 +3,7 @@ require('dotenv').config();
       development: {
         client: 'pg',
         connection: 'postgres://localhost:5432/denver-events',
-        debug: true
+        debug: false
       },
 
       production: {
