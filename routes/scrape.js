@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const Scrape = require('../aggregates/scrape');
 const dates = require('../functions/dates');
+const validation = require("../db/validation");
 
 
 
 
 router.get('/deardenver', (req, res) => {
     const requestURL = `https://deardenver.net/`;
+    const source = "Dear Denver";
     Scrape.getHTML(requestURL)
         .then((html) => {
             Scrape.getPostNumbers(html)
@@ -19,25 +21,44 @@ router.get('/deardenver', (req, res) => {
                     return Promise.all(postLinkPromises);
                 })
                 .then((postLinkPromises) => {
-                    let innerHtmlPromises = postLinkPromises.map((link) => {
-                        dates.getStartDateFromURL(link);
+                    let filteredPostLinkPromises = postLinkPromises.filter((link) => {
+                        return validation.returnLatestDate(source)
+                            .then((latestDate) => {
+                                console.log(latestDate);
+                                let thisStartDate = dates.getStartDateFromURL(link);
+                                thisStartDate = dates.normalizeDate(thisStartDate);
+                                console.log(thisStartDate);
+                                const check = (thisStartDate > latestDate);
+                                console.log(check);
+                                return (check);
+                            })
+                            .then((check)=>{
+                              return check
+                            });
+
+                    });
+                    return Promise.all(filteredPostLinkPromises);
+                })
+                .then((filteredPostLinkPromises) => {
+                  console.log(filteredPostLinkPromises);
+                    let innerHtmlPromises = filteredPostLinkPromises.map((link) => {
                         return Scrape.getHTML(link)
                     });
                     return Promise.all(innerHtmlPromises);
                 })
                 .then((innerHtmlPromises) => {
                     let eventPromises = innerHtmlPromises.map((pageHtml) => {
-                        return Scrape.getEventInfo(pageHtml, "Dear Denver");
+                        return Scrape.getEventInfo(pageHtml, source);
                     })
                     return Promise.all(eventPromises);
                 })
                 .then((eventPromises) => {
-                  let returnObject = {};
-                  const finalArray = eventPromises.reduce((acc, innerArray)=>{
-                    const concatArray = acc.concat(innerArray);
-                    return concatArray;
-                  }, []);
-                  returnObject.eventArray = finalArray;
+                    let returnObject = {};
+                    const finalArray = eventPromises.reduce((acc, innerArray) => {
+                        const concatArray = acc.concat(innerArray);
+                        return concatArray;
+                    }, []);
+                    returnObject.eventArray = finalArray;
 
                     res.json(returnObject);
                 })
@@ -77,8 +98,8 @@ router.get('/westword/:startDate/:endDate', (req, res) => {
                     return eventArray;
                 })
                 .then((eventArray) => {
-                  let returnObject = {};
-                  returnObject.eventArray = eventArray;
+                    let returnObject = {};
+                    returnObject.eventArray = eventArray;
                     res.json(returnObject);
                 })
 
