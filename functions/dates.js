@@ -18,7 +18,7 @@ module.exports = {
     prepareNextQuery: function prepareNextQuery(date, source){
       if(source === "Dear Denver"){
         const lastDate = validation.returnLatestDate(source);
-        
+
       }
       else if(source === "WestWord"){
         const startDate = sugar.Date(date).addDays(1);
@@ -37,7 +37,6 @@ module.exports = {
       const month = queryArray[1];
       const day = queryArray[2];
       const startDate = `${year}-${month}-${day}`;
-      console.log(startDate);
       return startDate;
     }
 
