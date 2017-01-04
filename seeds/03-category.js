@@ -1,58 +1,35 @@
 
 exports.seed = function(knex, Promise) {
     // Deletes ALL existing entries
-    return knex.raw('DELETE FROM "category"; ALTER SEQUENCE category_id_seq RESTART WITH 10')
+    return knex.raw('DELETE FROM "category"; ALTER SEQUENCE category_id_seq RESTART WITH 8')
         .then(function() {
             const categories = [{
+                id: 1,
                 name: 'Social'
-            }, {
+            },
+            {
+                id: 2,
                 name: 'Sports',
             },
             {
+                id: 3,
                 name: 'MusicArt'
             },
             {
+                id: 4,
                 name: 'BizTech'
             },
             {
-                name: 'Gaming'
-                id: 1,
-                name: 'Sports'
-            }, {
-                id: 2,
-                name: 'Art',
-            },
-            {
-                id: 3,
-                name: 'Social'
-            },
-            {
-                id: 4,
-                name: 'Comedy'
-            },
-            {
                 id: 5,
-                name: 'Music'
+                name: 'Gaming'
             },
             {
                 id: 6,
                 name: 'Family'
             },
             {
-
+                id: 6,
                 name: 'Misc'
-
-                id: 7,
-                name: 'Tech'
-            },
-            {
-                id: 8,
-                name: 'Food'
-            },
-            {
-                id: 9, 
-                name: 'Drink'
-
             }];
           return knex('category').insert(categories);
         });
