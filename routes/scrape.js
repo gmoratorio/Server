@@ -28,7 +28,7 @@ router.get('/deardenver', (req, res) => {
                                 let thisStartDate = dates.getStartDateFromURL(link);
                                 thisStartDate = dates.normalizeDate(thisStartDate);
                                 console.log(thisStartDate);
-                                const check = (thisStartDate > latestDate);
+                                const check = (thisStartDate - latestDate);
                                 console.log(check);
                                 return (check);
                             })
