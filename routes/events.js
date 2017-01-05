@@ -8,11 +8,15 @@ const scrape = require("../functions/scrape");
 router.get('/', (req, res, next) => {
     let ddWasScrapedToday = true;
     let wwWasScrapedToday = true;
+    let ddNeedsUpdate = false;
+    let wwNeedsUpdate = false;
     scrape.scrapeTodayCheck()
         .then((resultsArray) => {
             ddWasScrapedToday = resultsArray[0];
             wwWasScrapedToday = resultsArray[1];
             if (ddWasScrapedToday === false) {
+                ddWasScrapedToday = true;
+                ddNeedsUpdate = true;
                 return scrape.dearDenver();
             } else {
                 return {
@@ -39,6 +43,8 @@ router.get('/', (req, res, next) => {
         })
         .then(() => {
             if (wwWasScrapedToday === false) {
+                wwWasScrapedToday = true;
+                wwNeedsUpdate = true;
                 return scrape.westWord();
             } else {
                 return {
@@ -51,21 +57,14 @@ router.get('/', (req, res, next) => {
                 return wwReturnObject;
             } else {
                 if (wwReturnObject.eventArray !== null) {
-                    if (wwWasScrapedToday === false) {
-                        const wwPostObject = wwReturnObject.eventArray;
-                        return posting.postToDB(wwPostObject);
-                    } else {
-                        return {
-                            message: 'was already scrapped today'
-                        }
-                    }
+                    const wwPostObject = wwReturnObject.eventArray;
+                    return posting.postToDB(wwPostObject);
                 } else {
                     return {
                         message: "returned null"
                     };
                 }
             }
-
         })
         .then((result) => {
             console.log("WestWord: " + result.message);
@@ -76,6 +75,29 @@ router.get('/', (req, res, next) => {
         })
         .then(data => {
             res.json(data);
+        })
+        .then(() => {
+            if (ddNeedsUpdate === true) {
+                return scrape.markTodayChecked("Dear Denver");
+            }
+        })
+        .then((updatedDate) => {
+            if (updatedDate) {
+                console.log(updatedDate[0]);
+            } else {
+                console.log("Nothing came back from DD");
+            }
+
+            if (wwNeedsUpdate === true) {
+                return scrape.markTodayChecked("WestWord");
+            }
+        })
+        .then((updatedDate) => {
+            if (updatedDate) {
+                console.log(updatedDate[0]);
+            } else {
+                console.log("Nothing came back from WW");
+            }
         })
         .catch(function(err) {
             next(err);
