@@ -2,7 +2,8 @@ const Scrape = require('../aggregates/scrape');
 const dates = require('../functions/dates');
 const validation = require("../db/validation");
 const knex = require('../db/connection');
-
+const request = require("request");
+const http = require("http");
 
 
 module.exports = {
@@ -79,7 +80,6 @@ module.exports = {
                 if (latestDBDate === null) {
                     latestDBDate = dates.createYesterday();
                 }
-                latestDatabaseDate = latestDBDate;
                 const dateQueryArray = dates.getNextWWQuery(latestDBDate, source);
                 const startDate = dateQueryArray[0];
                 const endDate = dateQueryArray[1];
@@ -140,16 +140,130 @@ module.exports = {
                 })
         })
     },
-    markTodayChecked: function markTodayChecked(source){
-      return new Promise((resolve, reject) => {
-        const today = dates.createToday();
-        const updateBody = {latest_date: today};
-          return knex('date_scrape')
-              .update(updateBody, 'latest_date')
-              .where('name', source)
-              .then((updatedDate) => {
-                  resolve(updatedDate);
-              })
-      })
+    markTodayChecked: function markTodayChecked(source) {
+        return new Promise((resolve, reject) => {
+            const today = dates.createToday();
+            const updateBody = {
+                latest_date: today
+            };
+            return knex('date_scrape')
+                .update(updateBody, 'latest_date')
+                .where('name', source)
+                .then((updatedDate) => {
+                    resolve(updatedDate);
+                })
+        })
+    },
+    meetup: function meetup() {
+        const source = "meetup";
+        const baseURL = "https://api.meetup.com";
+        const APIKey = "5f4f457cf467f13496447404e22b";
+        const fullURL = `${baseURL}/find/events?zip=11211&radius=1&category=25&order=members&key=${APIKey}`;
+        // return validation.returnLatestDate(source)
+        //     .then((latestDBDate) => {
+        //         if (latestDBDate === null) {
+        //             latestDBDate = dates.createYesterday();
+        //         }
+        //     })
+        //     .then(() => {
+        //         return request(fullURL, function(error, response, body) {
+        //             if (!error && response.statusCode == 200) {
+        //               return (body);
+        //             }
+        //         })
+        //
+        //     })
+
+        return new Promise((resolve, reject) => {
+            const options = {
+                url: fullURL,
+                method: 'GET',
+                json: true
+            }
+            return request(options, (error, response, body) => {
+                if (!error && response.statusCode == 200) {
+                    resolve(body);
+                }
+            })
+        })
     }
+
+    // postWWStuff: function postWWStuff(startDate, endDate, destinationURL) {
+    //     // const postURL = `${destinationURL}/scrape/westword/${startDate}/${endDate}`;
+    //     const postURL = `${destinationURL}/scrape/deardenver`;
+    //
+    //
+    //     request(postURL, function(error, response, body) {
+    //         // console.log(body);
+    //         const testBody = {
+    //             "sourceName": "TEST",
+    //             "eventLink": "https://www.facebook.com/events/1864904230404701/",
+    //             "description": "Ratio is kicking off a new comedy series called Live at Ratio",
+    //             "date": "Wednesday, December 28, 2016",
+    //             "time": "8 – 10pm",
+    //             "eventName": "Live Comedy Taping: Ian Douglas Terry"
+    //         };
+    //         const headers = {
+    //             'Content-Type': 'application/json'
+    //         }
+    //
+    //         const options = {
+    //                 url: `${destinationURL}/events`,
+    //                 // url: `https://stack-of-all-trade.herokuapp.com/events`,
+    //                 method: 'POST',
+    //                 json: true,
+    //                 headers: headers,
+    //                 body: testBody
+    //             }
+    //             // console.log(options);
+    //         if (!error && response.statusCode == 200) {
+    //             // const result = http.post(`${destinationURL}/events`, body, (res) => {
+    //             //     response.setEncoding('utf8');
+    //             //     res.on('data', function(chunk) {
+    //             //         // console.log(chunk);
+    //             //     });
+    //             // });
+    //             // console.log(result);
+    //             // request(options, (error, response, body) => {
+    //             //     if (!error && response.statusCode == 200) {
+    //             //         // Print out the response body
+    //             //         console.log(body);
+    //             //     } else {
+    //             //         console.log(`The error is: ${error}`);
+    //             //         console.log(response);
+    //             //         // console.log(response);
+    //             //     }
+    //             // })
+    //             // request.post(`https://stack-of-all-trade.herokuapp.com/events`, (err, response, body) => {
+    //             //   if (!error && response.statusCode == 200) {
+    //             //     console.log("it worked!");
+    //             //   }
+    //             //   else{
+    //             //     console.log("it didn't work");
+    //             //     console.log(response.statusCode);
+    //             //   }
+    //             // });
+    //             request.post(
+    //                 `https://stack-of-all-trade.herokuapp.com/events`, {
+    //                     json: {
+    //                         testBody
+    //                     }
+    //                 },
+    //                 function(error, response, body) {
+    //                     if (!error && response.statusCode == 200) {
+    //                         console.log(body)
+    //                     } else {
+    //                         console.log(error);
+    //                         console.log(response.statusCode);
+    //                         console.log(response);
+    //                     }
+    //                 }
+    //             );
+    //
+    //         } else {
+    //             console.log("It didn't work :()")
+    //         }
+    //     })
+    //
+    // }
 }
