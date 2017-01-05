@@ -3,102 +3,118 @@ const scrape = require("../routes/scrape");
 // const http = require("http");
 // http.post = require("http-post");
 const knex = require('../db/connection');
+const mapCategory = require("./mapCategory");
 
 module.exports = {
-
-    // postWWStuff: function postWWStuff(startDate, endDate, destinationURL) {
-    //     // const postURL = `${destinationURL}/scrape/westword/${startDate}/${endDate}`;
-    //     const postURL = `${destinationURL}/scrape/deardenver`;
-    //
-    //
-    //     request(postURL, function(error, response, body) {
-    //         // console.log(body);
-    //         const testBody = {
-    //             "sourceName": "TEST",
-    //             "eventLink": "https://www.facebook.com/events/1864904230404701/",
-    //             "description": "Ratio is kicking off a new comedy series called Live at Ratio",
-    //             "date": "Wednesday, December 28, 2016",
-    //             "time": "8 – 10pm",
-    //             "eventName": "Live Comedy Taping: Ian Douglas Terry"
-    //         };
-    //         const headers = {
-    //             'Content-Type': 'application/json'
-    //         }
-    //
-    //         const options = {
-    //                 url: `${destinationURL}/events`,
-    //                 // url: `https://stack-of-all-trade.herokuapp.com/events`,
-    //                 method: 'POST',
-    //                 json: true,
-    //                 headers: headers,
-    //                 body: testBody
-    //             }
-    //             // console.log(options);
-    //         if (!error && response.statusCode == 200) {
-    //             // const result = http.post(`${destinationURL}/events`, body, (res) => {
-    //             //     response.setEncoding('utf8');
-    //             //     res.on('data', function(chunk) {
-    //             //         // console.log(chunk);
-    //             //     });
-    //             // });
-    //             // console.log(result);
-    //             // request(options, (error, response, body) => {
-    //             //     if (!error && response.statusCode == 200) {
-    //             //         // Print out the response body
-    //             //         console.log(body);
-    //             //     } else {
-    //             //         console.log(`The error is: ${error}`);
-    //             //         console.log(response);
-    //             //         // console.log(response);
-    //             //     }
-    //             // })
-    //             // request.post(`https://stack-of-all-trade.herokuapp.com/events`, (err, response, body) => {
-    //             //   if (!error && response.statusCode == 200) {
-    //             //     console.log("it worked!");
-    //             //   }
-    //             //   else{
-    //             //     console.log("it didn't work");
-    //             //     console.log(response.statusCode);
-    //             //   }
-    //             // });
-    //             request.post(
-    //                 `https://stack-of-all-trade.herokuapp.com/events`, {
-    //                     json: {
-    //                         testBody
-    //                     }
-    //                 },
-    //                 function(error, response, body) {
-    //                     if (!error && response.statusCode == 200) {
-    //                         console.log(body)
-    //                     } else {
-    //                         console.log(error);
-    //                         console.log(response.statusCode);
-    //                         console.log(response);
-    //                     }
-    //                 }
-    //             );
-    //
-    //         } else {
-    //             console.log("It didn't work :()")
-    //         }
-    //     })
-    //
-    // }
 
     postToDB: function postToDB(eventArray) {
 
         const inserts = eventArray.map(function(event) {
+            const sourceName = event.sourceName;
+            const eventName = event.eventName;
+
+            let eventLink = null;
+            if (event.eventLink) {
+                eventLink = event.eventLink;
+            }
+
+            let description = null;
+            if (event.description) {
+                description = event.description;
+            }
+
+            let date = null;
+            if (event.date) {
+                date = event.date;
+            }
+
+            let time = null;
+            if (event.time) {
+                time = event.time;
+            }
+
+            let price = null;
+            if (event.price) {
+                price = event.price;
+            }
+
+            let imageLink = null;
+            if (event.imageLink) {
+                imageLink = event.imageLink;
+            }
+
+            let location = null;
+            if (event.location) {
+                location = event.location;
+            }
+
+            let address = null;
+            if (event.address) {
+                address = event.address;
+            }
+
+            let scrapeID = null;
+            if (event.scrapeID) {
+                scrapeID = event.scrapeID;
+            }
+
             return knex('event').insert({
-                source_name: event.sourceName,
-                event_link: event.eventLink,
-                description: event.description,
-                date: event.date,
-                time: event.time,
-                event_name: event.eventName
-            });
+                source_name: sourceName,
+                event_name: eventName,
+                scrape_id: scrapeID,
+                event_link: eventLink,
+                description: description,
+                date: date,
+                time: time,
+                price: price,
+                image_link: imageLink,
+                location: location,
+                address: address
+
+            }, 'id');
         });
         return Promise.all(inserts)
-            .then(() => {
+            .then((inserts) => {
+                const eventCategoryInserts = inserts.map((id, index) => {
+                    const thisEvent = eventArray[index];
+                    const categories = thisEvent.categories;
+                    if (thisEvent.sourceName === "Meetup") {
+                        const keys = Object.keys(thisEvent);
+                        // console.log(thisEvent.eventName);
+                        // console.log(keys);
+                        // console.log(categories);
+                    }
+                    const eventID = id[0];
+                    let cleanCategoryIDArray = [];
+                    categories.forEach((category) => {
+
+                        const numericID = mapCategory.translate(category);
+                        if (cleanCategoryIDArray.length === 0) {
+                            cleanCategoryIDArray.push(numericID);
+                        } else {
+                            const unique = cleanCategoryIDArray.every((id, index) => {
+                              return (id !== numericID);
+                            })
+                            if (unique) {
+                                cleanCategoryIDArray.push(numericID);
+                            }
+                        }
+                    });
+
+
+
+                    const categoryIDInserts = cleanCategoryIDArray.map((categoryID) => {
+                        return knex('event_category').insert({
+                            event_id: eventID,
+                            category_id: categoryID
+                        }, 'id');
+                    });
+                    return Promise.all(categoryIDInserts);
+                })
+                return Promise.all(eventCategoryInserts)
+            })
+            .then((eventCategoryInserts) => {
+                // console.log(eventCategoryInserts);
                 return {
                     message: 'success'
                 };
