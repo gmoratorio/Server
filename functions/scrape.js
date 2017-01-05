@@ -131,12 +131,15 @@ module.exports = {
                 .then((scrapeDates) => {
                     const ddScrapeDate = scrapeDates[0].latest_date;
                     const wwScrapeDate = scrapeDates[1].latest_date;
+                    const meetupScrapeDate = scrapeDates[2].latest_date;
                     const today = dates.createToday();
                     const ddDiff = dates.getDifference(ddScrapeDate, today, "hours");
                     const wwDiff = dates.getDifference(wwScrapeDate, today, "hours");
+                    const meetupDiff = dates.getDifference(meetupScrapeDate, today, "hours");
                     const ddCheck = (ddDiff < 23);
                     const wwCheck = (wwDiff < 23);
-                    resolve([ddCheck, wwCheck]);
+                    const meetupCheck = (meetupDiff < 23);
+                    resolve([ddCheck, wwCheck, meetupCheck]);
                 })
         })
     },
@@ -155,10 +158,87 @@ module.exports = {
         })
     },
     meetup: function meetup() {
-        const source = "meetup";
+        const source = "Meetup";
         const baseURL = "https://api.meetup.com";
         const APIKey = "5f4f457cf467f13496447404e22b";
         const fullURL = `${baseURL}/find/events?zip=11211&radius=1&category=25&order=members&key=${APIKey}`;
+        let globalCleanedEventArray = [];
+
+        return Scrape.getRequest(fullURL)
+            .then((meetupRawEventArray) => {
+                const cleanedEventArray = meetupRawEventArray.filter((event) => {
+                    return (event.visibility === "public");
+                })
+                return Promise.all(cleanedEventArray);
+            })
+            .then((cleanedEventArray) => {
+                globalCleanedEventArray = cleanedEventArray;
+                const eventLinkArray = cleanedEventArray.map((event) => {
+                    return event.link;
+                })
+                return Promise.all(eventLinkArray);
+            })
+            .then((eventLinkArray) => {
+                const htmlArray = eventLinkArray.map((link) => {
+                    return Scrape.getHTML(link);
+                })
+                return Promise.all(htmlArray);
+            })
+            .then((htmlArray) => {
+                const dateTimeArray = htmlArray.map((html) => {
+                    return Scrape.getMeetupDateTimeImage(html);
+                })
+                return Promise.all(dateTimeArray);
+            })
+            .then((dateTimeArray) => {
+                const finalEventArray = globalCleanedEventArray.map((event, index) => {
+                    const cleanReturnEvent = {};
+                    cleanReturnEvent.eventName = event.name;
+                    cleanReturnEvent.scrapeID = event.id;
+                    cleanReturnEvent.sourceName = source;
+                    cleanReturnEvent.eventLink = event.link;
+                    cleanReturnEvent.description = event.description;
+                    if(event.venue){
+                      cleanReturnEvent.location = event.venue.name;
+                      cleanReturnEvent.address = event.venue.address_1;
+                    }
+
+                    const date = dateTimeArray[index].date;
+                    const time = dateTimeArray[index].time;
+                    const imageLink = dateTimeArray[index].imageLink;
+                    cleanReturnEvent.date = date;
+                    cleanReturnEvent.time = time;
+                    cleanReturnEvent.imageLink = imageLink;
+                    return cleanReturnEvent;
+                })
+                return Promise.all(finalEventArray);
+            })
+            .then((finalEventArray) => {
+              let returnArrayObject = {};
+              returnArrayObject.eventArray = finalEventArray;
+                return returnArrayObject;
+            })
+
+    //         source_name: event.sourceName,
+    //         event_link: event.eventLink,
+    //         description: event.description,
+    //         date: event.date,
+    //         time: event.time,
+    //         event_name: event.eventName
+    //
+    //         "id": 1,
+    // "source_name": "Dear Denver",
+    // "event_link": "https://www.facebook.com/events/1864904230404701/",
+    // "description": "Ratio is kicking off a new comedy series called Live at Ratio",
+    // "date": "2016-12-28T07:00:00.000Z",
+    // "time": "8 – 10pm",
+    // "event_name": "Live Comedy Taping: Ian Douglas Terry",
+    // "price": null,
+    // "image_link": null,
+    // "location": null,
+    // "address": null
+
+
         // return validation.returnLatestDate(source)
         //     .then((latestDBDate) => {
         //         if (latestDBDate === null) {
@@ -174,96 +254,7 @@ module.exports = {
         //
         //     })
 
-        return new Promise((resolve, reject) => {
-            const options = {
-                url: fullURL,
-                method: 'GET',
-                json: true
-            }
-            return request(options, (error, response, body) => {
-                if (!error && response.statusCode == 200) {
-                    resolve(body);
-                }
-            })
-        })
     }
 
-    // postWWStuff: function postWWStuff(startDate, endDate, destinationURL) {
-    //     // const postURL = `${destinationURL}/scrape/westword/${startDate}/${endDate}`;
-    //     const postURL = `${destinationURL}/scrape/deardenver`;
-    //
-    //
-    //     request(postURL, function(error, response, body) {
-    //         // console.log(body);
-    //         const testBody = {
-    //             "sourceName": "TEST",
-    //             "eventLink": "https://www.facebook.com/events/1864904230404701/",
-    //             "description": "Ratio is kicking off a new comedy series called Live at Ratio",
-    //             "date": "Wednesday, December 28, 2016",
-    //             "time": "8 – 10pm",
-    //             "eventName": "Live Comedy Taping: Ian Douglas Terry"
-    //         };
-    //         const headers = {
-    //             'Content-Type': 'application/json'
-    //         }
-    //
-    //         const options = {
-    //                 url: `${destinationURL}/events`,
-    //                 // url: `https://stack-of-all-trade.herokuapp.com/events`,
-    //                 method: 'POST',
-    //                 json: true,
-    //                 headers: headers,
-    //                 body: testBody
-    //             }
-    //             // console.log(options);
-    //         if (!error && response.statusCode == 200) {
-    //             // const result = http.post(`${destinationURL}/events`, body, (res) => {
-    //             //     response.setEncoding('utf8');
-    //             //     res.on('data', function(chunk) {
-    //             //         // console.log(chunk);
-    //             //     });
-    //             // });
-    //             // console.log(result);
-    //             // request(options, (error, response, body) => {
-    //             //     if (!error && response.statusCode == 200) {
-    //             //         // Print out the response body
-    //             //         console.log(body);
-    //             //     } else {
-    //             //         console.log(`The error is: ${error}`);
-    //             //         console.log(response);
-    //             //         // console.log(response);
-    //             //     }
-    //             // })
-    //             // request.post(`https://stack-of-all-trade.herokuapp.com/events`, (err, response, body) => {
-    //             //   if (!error && response.statusCode == 200) {
-    //             //     console.log("it worked!");
-    //             //   }
-    //             //   else{
-    //             //     console.log("it didn't work");
-    //             //     console.log(response.statusCode);
-    //             //   }
-    //             // });
-    //             request.post(
-    //                 `https://stack-of-all-trade.herokuapp.com/events`, {
-    //                     json: {
-    //                         testBody
-    //                     }
-    //                 },
-    //                 function(error, response, body) {
-    //                     if (!error && response.statusCode == 200) {
-    //                         console.log(body)
-    //                     } else {
-    //                         console.log(error);
-    //                         console.log(response.statusCode);
-    //                         console.log(response);
-    //                     }
-    //                 }
-    //             );
-    //
-    //         } else {
-    //             console.log("It didn't work :()")
-    //         }
-    //     })
-    //
-    // }
+
 }

@@ -8,12 +8,15 @@ const scrape = require("../functions/scrape");
 router.get('/', (req, res, next) => {
     let ddWasScrapedToday = true;
     let wwWasScrapedToday = true;
+    let meetupWasScrapedToday = true;
     let ddNeedsUpdate = false;
     let wwNeedsUpdate = false;
+    let meetupNeedsUpdate = false;
     scrape.scrapeTodayCheck()
         .then((resultsArray) => {
             ddWasScrapedToday = resultsArray[0];
             wwWasScrapedToday = resultsArray[1];
+            meetupWasScrapedToday = resultsArray[2];
             if (ddWasScrapedToday === false) {
                 ddWasScrapedToday = true;
                 ddNeedsUpdate = true;
@@ -70,6 +73,34 @@ router.get('/', (req, res, next) => {
             console.log("WestWord: " + result.message);
         })
         .then(() => {
+            if (meetupWasScrapedToday === false) {
+                meetupWasScrapedToday = true;
+                meetupNeedsUpdate = true;
+                return scrape.meetup();
+            } else {
+                return {
+                    message: "was already scraped today"
+                }
+            }
+        })
+        .then((meetupReturnObject) => {
+            if (meetupReturnObject.message) {
+                return meetupReturnObject;
+            } else {
+                if (meetupReturnObject.eventArray !== null) {
+                    const meetupPostObject = meetupReturnObject.eventArray;
+                    return posting.postToDB(meetupPostObject);
+                } else {
+                    return {
+                        message: "returned null"
+                    };
+                }
+            }
+        })
+        .then((result) => {
+            console.log("Meetup: " + result.message);
+        })
+        .then(() => {
             return knex('event')
                 .select()
         })
@@ -83,7 +114,7 @@ router.get('/', (req, res, next) => {
         })
         .then((updatedDate) => {
             if (updatedDate) {
-                console.log(updatedDate[0]);
+                console.log("Dear Denver was scraped today, on: " + updatedDate[0]);
             } else {
                 console.log("Nothing came back from DD");
             }
@@ -94,10 +125,23 @@ router.get('/', (req, res, next) => {
         })
         .then((updatedDate) => {
             if (updatedDate) {
-                console.log(updatedDate[0]);
+                console.log("WestWord was scraped today, on: " + updatedDate[0]);
             } else {
                 console.log("Nothing came back from WW");
             }
+        })
+        .then(()=>{
+          if(meetupNeedsUpdate === true){
+            return scrape.markTodayChecked("Meetup");
+          }
+        })
+        .then((updatedDate)=>{
+          if(updatedDate){
+            console.log("Meetup was scraped today, on: " + updatedDate[0])
+          }
+          else{
+            console.log("Nothing came back from Meetup")
+          }
         })
         .catch(function(err) {
             next(err);

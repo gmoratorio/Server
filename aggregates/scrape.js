@@ -295,5 +295,39 @@ module.exports = {
             }
 
         });
+    },
+    getRequest: function getRequest(requestURL) {
+        return new Promise((resolve, reject) => {
+            const options = {
+                url: requestURL,
+                method: 'GET',
+                json: true
+            }
+            return request(options, (error, response, body) => {
+                if (!error && response.statusCode == 200) {
+                    resolve(body);
+                }
+            })
+        })
+    },
+    getMeetupDateTimeImage: function getMeetupDateTimeImage(html){
+      $ = cheerio.load(html);
+      return new Promise((resolve, reject) => {
+          const dateTimeObject = {};
+          const title = $("#chapter-banner a").attr("title");
+          const parentAnchor = $("#event-when-display");
+          const date = parentAnchor.find("time").attr('datetime');
+          const time = parentAnchor.find(".subtext").first().text();
+          const imageLink = $(".photo").first().attr("src");
+          dateTimeObject.date = date;
+          dateTimeObject.time = time;
+          dateTimeObject.imageLink = imageLink;
+          if (dateTimeObject) {
+              resolve(dateTimeObject);
+          } else {
+              reject();
+          }
+
+      });
     }
 }

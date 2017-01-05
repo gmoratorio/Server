@@ -88,13 +88,67 @@ module.exports = {
     postToDB: function postToDB(eventArray) {
 
         const inserts = eventArray.map(function(event) {
+          const sourceName = event.sourceName;
+          const eventName = event.eventName;
+
+          let eventLink = null;
+          if(event.eventLink){
+            eventLink = event.eventLink;
+          }
+
+          let description = null;
+          if(event.description){
+            description = event.description;
+          }
+
+          let date = null;
+          if(event.date){
+            date = event.date;
+          }
+
+          let time = null;
+          if(event.time){
+            time = event.time;
+          }
+
+          let price = null;
+          if(event.price){
+            price = event.price;
+          }
+
+          let imageLink = null;
+          if(event.imageLink){
+            imageLink = event.imageLink;
+          }
+
+          let location = null;
+          if(event.location){
+            location = event.location;
+          }
+
+          let address = null;
+          if(event.address){
+            address = event.address;
+          }
+
+          let scrapeID = null;
+          if(event.scrapeID){
+            scrapeID = event.scrapeID;
+          }
+
             return knex('event').insert({
-                source_name: event.sourceName,
-                event_link: event.eventLink,
-                description: event.description,
-                date: event.date,
-                time: event.time,
-                event_name: event.eventName
+                source_name: sourceName,
+                event_name: eventName,
+                scrape_id: scrapeID,
+                event_link: eventLink,
+                description: description,
+                date: date,
+                time: time,
+                price: price,
+                image_link: imageLink,
+                location: location,
+                address: address
+
             });
         });
         return Promise.all(inserts)
