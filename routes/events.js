@@ -118,6 +118,13 @@ router.get('/existing', (req, res, next) => {
         });
 });
 
+router.get('/meetup', (req, res, next) => {
+    scrape.meetup()
+        .then((result) => {
+            res.json(result);
+        })
+});
+
 router.post('/', function(req, res, next) {
     const eventArray = req.body.eventArray;
     // console.log(eventArray);
