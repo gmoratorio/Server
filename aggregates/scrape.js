@@ -198,6 +198,7 @@ module.exports = {
 
                     eventObject.date = eventObject.date.replace(re, " ").trim();
                     eventObject.date = dates.normalizeDate(eventObject.date.trim());
+                    eventObject.categories = ["Social", "Dear Denver"];
 
                     eventArray.push(eventObject);
                 })
@@ -264,6 +265,7 @@ module.exports = {
                         categoryArray.push(categoryText);
                     });
                     eventObject.categories = categoryArray;
+                    eventObject.categories.push("WestWord");
 
                     const price = $(li).find(".tix .price").text();
                     eventObject.price = price;
@@ -271,9 +273,7 @@ module.exports = {
                     if (imgBox.find("a").attr("href")) {
                         initialEventArray.push(eventObject);
                     }
-
                 });
-
             });
             if (initialEventArray) {
                 resolve(initialEventArray);
@@ -310,24 +310,35 @@ module.exports = {
             })
         })
     },
-    getMeetupDateTimeImage: function getMeetupDateTimeImage(html){
-      $ = cheerio.load(html);
-      return new Promise((resolve, reject) => {
-          const dateTimeObject = {};
-          const title = $("#chapter-banner a").attr("title");
-          const parentAnchor = $("#event-when-display");
-          const date = parentAnchor.find("time").attr('datetime');
-          const time = parentAnchor.find(".subtext").first().text();
-          const imageLink = $(".photo").first().attr("src");
-          dateTimeObject.date = date;
-          dateTimeObject.time = time;
-          dateTimeObject.imageLink = imageLink;
-          if (dateTimeObject) {
-              resolve(dateTimeObject);
-          } else {
-              reject();
-          }
+    getMeetupDateTimeImageCategory: function getMeetupDateTimeImageCategory(html) {
+        $ = cheerio.load(html);
+        return new Promise((resolve, reject) => {
+            const dateTimeImageCategoryObject = {};
+            const title = $("#chapter-banner a").attr("title");
+            const parentAnchor = $("#event-when-display");
+            const date = parentAnchor.find("time").attr('datetime');
+            const time = parentAnchor.find(".subtext").first().text();
+            const imageLink = $(".photo").first().attr("src");
+            const categoryParent = $("[id^='topicList']");
+            let categoryArray = [];
+            categoryParent.children("a").each((i, aTag) => {
+                const category = $(aTag).text();
+                categoryArray.push(category);
+            });
 
-      });
+
+            dateTimeImageCategoryObject.date = date;
+            dateTimeImageCategoryObject.time = time;
+            dateTimeImageCategoryObject.imageLink = imageLink;
+            dateTimeImageCategoryObject.categories = categoryArray;
+            dateTimeImageCategoryObject.categories.push("Meetup");
+            // console.log(dateTimeImageCategoryObject.categories);
+            if (dateTimeImageCategoryObject) {
+                resolve(dateTimeImageCategoryObject);
+            } else {
+                reject();
+            }
+
+        });
     }
 }

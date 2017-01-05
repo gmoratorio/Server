@@ -186,7 +186,7 @@ module.exports = {
             })
             .then((htmlArray) => {
                 const dateTimeArray = htmlArray.map((html) => {
-                    return Scrape.getMeetupDateTimeImage(html);
+                    return Scrape.getMeetupDateTimeImageCategory(html);
                 })
                 return Promise.all(dateTimeArray);
             })
@@ -206,9 +206,11 @@ module.exports = {
                     const date = dateTimeArray[index].date;
                     const time = dateTimeArray[index].time;
                     const imageLink = dateTimeArray[index].imageLink;
+                    const categories = dateTimeArray[index].categories;
                     cleanReturnEvent.date = date;
                     cleanReturnEvent.time = time;
                     cleanReturnEvent.imageLink = imageLink;
+                    cleanReturnEvent.categories = categories;
                     return cleanReturnEvent;
                 })
                 return Promise.all(finalEventArray);
