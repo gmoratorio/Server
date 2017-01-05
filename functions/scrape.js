@@ -1,6 +1,8 @@
 const Scrape = require('../aggregates/scrape');
 const dates = require('../functions/dates');
 const validation = require("../db/validation");
+const knex = require('../db/connection');
+
 
 
 module.exports = {
@@ -130,6 +132,15 @@ module.exports = {
             .then((finalResult) => {
                 return finalResult;
             })
+    },
+    scrapeTodayCheck: function scrapeTodayCheck(source) {
+        return new Promise((resolve, reject) => {
+            return knex('date_scrape')
+                .select()
+                .then((scrapeDates) => {
+                  console.log(scrapeDates);
+                })
+        })
     }
 
 
