@@ -1,12 +1,12 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('event', function(table){
     table.increments()
-    table.string('sourceName');
-    table.string('eventLink');
+    table.string('source_name');
+    table.string('event_link');
     table.text('description');
     table.string('date');
     table.string('time');
-    table.string('eventName').notNullable();
+    table.string('event_name').notNullable();
 
 });
 };

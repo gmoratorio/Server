@@ -47,10 +47,12 @@ module.exports = {
         const yesterday = sugar.Date.create('yesterday');
         return yesterday;
     },
+    createToday: function createToday() {
+        const today = sugar.Date.create('today');
+        return today;
+    },
     createMaxQueryDate: function createMaxQueryDate() {
         let maxFutureDate = sugar.Date('today').addDays(30).raw;
-
-
         return maxFutureDate;
     }
 
