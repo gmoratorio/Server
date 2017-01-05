@@ -10,6 +10,6 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return knex.schema.alterTable('event', function(table) {
-    table.dropColumns('price', 'imageLink', 'location', 'address');
+    table.dropColumns('price', 'image_link', 'location', 'address');
   });
 };
