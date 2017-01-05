@@ -1,4 +1,84 @@
 switch (category) {
+
+    case "Club Events":
+    case "Barhopping":
+    case "Adult":
+    case "Clubs (Community)":
+    case "Celebrity Appearences":
+    case "Cheap Thrills":
+    case "Civic Events":
+    case "Competitions":
+    case "Contests":
+    case "Day Tripper":
+    case "Dia de los Muertos":
+    case "Drink Specials":
+    case "Festivals":
+    case "Forums":
+    case "Fourth of July":
+    case "Green Events":
+    case "Groups - Social":
+    case "Halloween":
+    case "Happy Hours":
+    case "Holiday - Parties":
+    case "Labor Day":
+    case "LGBT Events":
+    case "Libations":
+    case "Luncheons":
+    case "Mardi Gras":
+    case "Meet and Greets":
+    case "New Year's Eve":
+    case "Nightlife":
+    case "Parties and Receptions":
+    case "Poker Nights":
+    case "Politics":
+    case "Public Interest":
+    case "Public Service":
+    case "See and Be Seen":
+    case "Sex and Fetish Events":
+    case "Singles Events":
+    case "St. Patrick's Day":
+    case "Support Groups and Hotlines":
+    case "Theme Nights":
+    case "Tours":
+    case "Valentine's Day":
+    case "Wineries":
+    case "Women's Events":
+    case "Activism":
+    case "Breweries":
+    case "Community Events":
+    case "Farmers' Markets":
+    case "Groups - Social":
+    case "Lectures":
+    case "Marijuana Events":
+        category.id = 1;
+        break;
+
+    case "Auto":
+    case "Basketball":
+    case "Baseball":
+    case "Cycling":
+    case "Float Trips":
+    case "Football":
+    case "Golf Courses":
+    case "Hockey":
+    case "Long Runs":
+    case "Motorcycles":
+    case "Nature":
+    case "Parks and Preserves":
+    case "Recreation":
+    case "Skate Parks":
+    case "Soccer":
+    case "Sports - Participatory":
+    case "Sports - Spectator":
+    case "Summer Camps":
+    case "High Country":
+    case "Hiking":
+    case "Ice Skating Rinks":
+    case "Nature":
+    case "Outdoors":
+        category.id = 2;
+        break;
+
     case "A Capella":
     case "Acousitc":
     case "African":
@@ -177,33 +257,45 @@ switch (category) {
     case "Dance":
     case "Fall Arts Guide":
     case "Literary Events":
-
+    case "Museum Exhibits and Events":
+    case "Music":
+    case "Pop Culture":
         category.id = 3;
         break;
 
-    case "Auto":
-    case "Basketball":
-    case "Baseball":
-    case "Cycling":
-    case "Float Trips":
-    case "Football":
-    case "Golf Courses":
-    case "Hockey":
-    case "Long Runs":
-    case "Motorcycles":
-    case "Nature":
-    case "Parks and Preserves":
-    case "Recreation":
-    case "Skate Parks":
-    case "Soccer":
-    case "Sports - Participatory":
-    case "Sports - Spectator":
-    case "Summer Camps":
-    case "High Country":
-    case "Hiking":
-    case "Ice Skating Rinks":
+    case "Conferences":
+    case "Conventions":
+    case "Groups - Professional":
+    case "Networking":
+    case "Technology Events":
+    case "Environmental":
+    case "Expos":
+        category.id = 4;
+        break;
 
-        category.id = 2;
+    case "Games":
+        category.id = 5;
+        break;
+
+    case "Children's Events":
+    case "Circus":
+    case "Father's Day":
+    case "Hannukah":
+    case "Holiday":
+    case "Holiday-Lights":
+    case "Mazes and Pumpking Patches":
+    case "Mother's Day":
+    case "Parades":
+    case "Planetariums":
+    case "Santa Sightings":
+    case "Seasonal Events":
+    case "Teen Events":
+    case "Thanksgiving":
+    case "Zoo and Animals":
+    case "Children's Theater":
+    case "Christmas":
+    case "Family Events":
+        category.id = 6;
         break;
 
     case "Announcements":
@@ -246,293 +338,9 @@ switch (category) {
     case "Landmarks":
     case "Martin Luther King, Jr. Day":
     case "Mind and Body":
-
         category.id = 7;
         break;
 
-    case "Games":
-        category.id = 5;
-        break;
-
-    case "Children's Events":
-    case "Circus":
-    case "Father's Day":
-    case "Hannukah":
-    case "Holiday":
-    case "Holiday-Lights":
-    case "Mazes and Pumpking Patches":
-    case "Mother's Day":
-    case "Parades":
-    case "Planetariums":
-    case "Santa Sightings":
-    case "Seasonal Events":
-    case "Teen Events":
-    case "Thanksgiving":
-    case "Zoo and Animals":
-    case "Children's Theater":
-    case "Christmas":
-    case "Family Events":
-
-        category.id = 6;
-        break;
-
-    case "Club Events":
-    case "Barhopping":
-    case "Adult":
-    case "Clubs (Community)":
-    case "Celebrity Appearences":
-    case "Cheap Thrills":
-    case "Civic Events":
-    case "Competitions":
-    case "Contests":
-    case "Day Tripper":
-    case "Dia de los Muertos":
-    case "Drink Specials":
-    case "Festivals":
-    case "Forums":
-    case "Fourth of July":
-    case "Green Events":
-    case "Groups - Social":
-    case "Halloween":
-    case "Happy Hours":
-    case "Holiday - Parties":
-    case "Labor Day":
-    case "LGBT Events":
-    case "Libations":
-    case "Luncheons":
-    case "Mardi Gras":
-    case "Meet and Greets":
-    case "New Year's Eve":
-    case "Nightlife":
-    case "Parties and Receptions":
-    case "Poker Nights":
-    case "Politics":
-    case "Public Interest":
-    case "Public Service":
-    case "See and Be Seen":
-    case "Sex and Fetish Events":
-    case "Singles Events":
-    case "St. Patrick's Day":
-    case "Support Groups and Hotlines":
-    case "Theme Nights":
-    case "Tours":
-    case "Valentine's Day":
-    case "Wineries":
-    case "Women's Events":
-    case "Activism":
-    case "Breweries":
-    case "Community Events":
-    case "Farmers' Markets":
-    case "Groups - Social":
-    case "Lectures":
-    case "Marijuana Events":
-
-        category.id = 1;
-        break;
-
-    case "Conferences":
-    case "Conventions":
-    case "Groups - Professional":
-    case "Networking":
-    case "Technology Events":
-    case "Environmental":
-    case "Expos":
-
-        category.id = 4;
-        break;
-        category.id = 7;
-        break;
-        category.id = 3;
-        break;
-        category.id = 7;
-        break;
-        category.id = 1;
-        break;
-        category.id = 4;
-        break;
-        category.id = 3;
-        break;
-        category.id = 6;
-        break;
-        category.id = 7;
-        break;
-        category.id = 3;
-        break;
-        category.id = 3;
-        break;
-        category.id = 7;
-        break;
-        category.id = 7;
-        break;
-
-        category.id = 1;
-        break;
-        category.id = 7;
-        break;
-        category.id = 2;
-        break;
-        category.id = 2;
-        break;
-        category.id = 7;
-        break;
-        category.id = 6;
-        break;
-        category.id = 7;
-        break;
-        category.id = 2;
-        break;
-
-        category.id = 7;
-        break;
-        category.id = 7;
-        break;
-        category.id = 1;
-        break;
-        category.id = 1;
-        break;
-        category.id = 7;
-        break;
-        category.id = 1;
-        break;
-        category.id = 7;
-        break;
-        category.id = 3;
-        break;
-    case "Music":
-        category.id = 3;
-        break;
-    case "Nature":
-        category.id = 2;
-        break;
-    case "Networking":
-        category.id = 4;
-        break;
-    case "New Age":
-        category.id = 7;
-        break;
-    case "New Year's Day":
-        category.id = 1;
-        break;
-    case "Nightlife":
-        category.id = 1;
-        break;
-    case "Out of Town":
-        category.id = 7;
-        break;
-    case "Outdoors":
-        category.id = 2;
-        break;
-    case "Parties and Receptions":
-        category.id = 1;
-        break;
-    case "Performance Art":
-        category.id = 3;
-        break;
-    case "Performing Arts":
-        category.id = 3;
-        break;
-    case "Pets":
-        category.id = 6;
-        break;
-    case "Photography":
-        category.id = 3;
-        break;
-    case "Planetariums":
-        category.id = 6;
-        break;
-    case "Poetry":
-        category.id = 3;
-        break;
-    case "Politics":
-        category.id = 7;
-        break;
-    case "Pop Culture":
-        category.id = 3;
-        break;
-    case "Promotional Events":
-        category.id = 1;
-        break;
-    case "Public Interest":
-        category.id = 1;
-        break;
-    case "Recreation":
-        category.id = 2;
-        break;
-    case "Religion and Spirituality":
-        category.id = 7;
-        break;
-    case "Santa Sightings":
-        category.id = 7;
-        break;
-    case "See and Be Seen":
-        category.id = 1;
-        break;
-    case "Shopping":
-        category.id = 7;
-        break;
-    case "Singles Events":
-        category.id = 1;
-        break;
-    case "Skate Parks":
-        category.id = 2;
-        break;
-    case "Spoken Word":
-        category.id = 3;
-        break;
-    case "Sports - Participatory":
-        category.id = 2;
-        break;
-    case "Sports - Spectator":
-        category.id = 2;
-        break;
-    case "Summer Guide":
-        category.id = 7;
-        break;
-    case "Talks":
-        category.id = 1;
-        break;
-    case "Technology Events":
-        category.id = 4;
-        break;
-    case "Theater":
-        category.id = 3;
-        break;
-    case "Theater - Dinner":
-        category.id = 3;
-        break;
-    case "Theater - Large":
-        category.id = 3;
-        break;
-    case "Theater - Ongoing":
-        category.id = 3;
-        break;
-    case "Theater - Openings":
-        category.id = 3;
-        break;
-    case "Theater - Small":
-        category.id = 3;
-        break;
-    case "Tours":
-        category.id = 1;
-        break;
-    case "Valentine's Day":
-        category.id = 7;
-        break;
-    case "Visual Art":
-        category.id = 3;
-        break;
-    case "Volunteer Opportunities":
-        category.id = 7;
-        break;
-    case "Wineries":
-        category.id = 1;
-        break;
-    case "Women's Events":
-        category.id = 7;
-        break;
-    case "Zoo and Animals":
-        category.id = 7;
-        break;
     default:
-      category.id = null;
-    }
+        category.id = null;
+}
