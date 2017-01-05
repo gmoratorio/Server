@@ -54,19 +54,9 @@ app.use('/view_categoriesEvents', categoriesEvents);
 app.use('/scrape', scrape);
 app.use('/rss', rss);
 
-// const currentEnvironmentURL = environment.returnEnvironmentURL();
 
 
-// posting.postWWStuff("2017-01-02","2017-01-08", currentEnvironmentURL);
-validation.returnLatestDate("Dear Denver")
-    .then((maxDate) => {
-      // console.log(maxDate);
-    return dates.prepareNextQuery(maxDate)
-    })
-    .then((dateQueryArray)=>{
-      // console.log(dateQueryArray);
 
-    });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

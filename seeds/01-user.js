@@ -5,28 +5,28 @@ exports.seed = function(knex, Promise) {
             const users = [
             {
                 id: 1,
-                firstName: 'Jeremy',
-                lastName: 'Clayton',
+                first_name: 'Jeremy',
+                last_name: 'Clayton',
                 email: 'doodoo1@gmail.com',
                 password: 'thizz'
             }, {
                 id: 2,
-                firstName: 'Guillermo',
-                lastName: 'Mortatorio',
+                first_name: 'Guillermo',
+                last_name: 'Mortatorio',
                 email: 'doodoo2@gmail.com',
                 password: 'thizz'
             },
             {
                 id: 3,
-                firstName: 'Mark',
-                lastName: 'Grant',
+                first_name: 'Mark',
+                last_name: 'Grant',
                 email: 'doodoo3@gmail.com',
                 password: 'thizz'
             },
             {
-                id: 4, 
-                firstName: 'Matt',
-                lastName: 'Seaton',
+                id: 4,
+                first_name: 'Matt',
+                last_name: 'Seaton',
                 email: 'doodoo4@gmail.com',
                 password: 'thizz'
             }];

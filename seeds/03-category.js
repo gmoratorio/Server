@@ -5,7 +5,8 @@ exports.seed = function(knex, Promise) {
             const categories = [{
                 id: 1,
                 name: 'Social'
-            }, {
+            },
+            {
                 id: 2,
                 name: 'Sports',
             }, {
@@ -20,7 +21,8 @@ exports.seed = function(knex, Promise) {
             }, {
                 id: 6,
                 name: 'Family'
-            }, {
+            }, 
+            {
                 id: 7,
                 name: 'Misc'
             }];

@@ -1,11 +1,12 @@
 const knex = require("./connection");
+const dates = require("../functions/dates");
 
 module.exports = {
 
     returnLatestDate: function returnLatestDate(source) {
         return knex('event').max('date')
             .select()
-            .where('sourceName', source)
+            .where('source_name', source)
             .whereNot('date', 'like', '%Monday%')
             .whereNot('date', 'like', '%Tuesday%')
             .whereNot('date', 'like', '%Wednesday%')
@@ -29,8 +30,13 @@ module.exports = {
             .whereNot('date', 'like', '%at%')
             .first()
             .then((result) => {
-                // console.log(result.max);
-                return result.max;
+                if (result.max !== null) {
+                    return result.max;
+                } else {
+                    return null;
+                }
+
+
             })
     }
 
