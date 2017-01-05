@@ -57,7 +57,6 @@ module.exports = {
                             return concatArray;
                         }, []);
                         returnObject.eventArray = finalArray;
-                        // console.log(returnObject);
                         return (returnObject);
                     })
                     .catch((err) => {
@@ -67,8 +66,6 @@ module.exports = {
             .then((finalResult) => {
                 return finalResult
             })
-
-
     },
     westWord: function westWord() {
         const source = "WestWord";
@@ -85,12 +82,9 @@ module.exports = {
                 latestDatabaseDate = latestDBDate;
                 const dateQueryArray = dates.getNextWWQuery(latestDBDate, source);
                 const startDate = dateQueryArray[0];
-                // console.log(startDate);
                 const endDate = dateQueryArray[1];
                 queryEndDate = endDate;
-                // console.log(endDate);
                 const requestURL = `${baseURL}/calendar?dateRange[]=${startDate}&dateRange[]=${endDate}`;
-                // console.log(requestURL);
                 return Scrape.getHTML(requestURL)
             })
             .then((html) => {
@@ -125,9 +119,6 @@ module.exports = {
                         }
                         return (returnObject);
                     })
-
-
-
             })
             .then((finalResult) => {
                 return finalResult;
@@ -138,11 +129,27 @@ module.exports = {
             return knex('date_scrape')
                 .select()
                 .then((scrapeDates) => {
-                  console.log(scrapeDates);
+                    const ddScrapeDate = scrapeDates[0].latest_date;
+                    const wwScrapeDate = scrapeDates[1].latest_date;
+                    const today = dates.createToday();
+                    const ddDiff = dates.getDifference(ddScrapeDate, today, "hours");
+                    const wwDiff = dates.getDifference(wwScrapeDate, today, "hours");
+                    const ddCheck = (ddDiff < 23);
+                    const wwCheck = (wwDiff < 23);
+                    resolve([ddCheck, wwCheck]);
                 })
         })
+    },
+    markTodayChecked: function markTodayChecked(source){
+      return new Promise((resolve, reject) => {
+        const today = dates.createToday();
+        const updateBody = {latest_date: today};
+          return knex('date_scrape')
+              .update(updateBody, 'latest_date')
+              .where('name', source)
+              .then((updatedDate) => {
+                  resolve(updatedDate);
+              })
+      })
     }
-
-
-
 }

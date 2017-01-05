@@ -4,72 +4,72 @@ exports.seed = function(knex, Promise) {
         .then(function() {
             const events = [{
                 id: 1,
-                sourceName: 'Dear Denver',
-                eventLink: 'https://www.facebook.com/events/1864904230404701/',
+                source_name: 'Dear Denver',
+                event_link: 'https://www.facebook.com/events/1864904230404701/',
                 description: 'Ratio is kicking off a new comedy series called Live at Ratio',
                 date: "2016-12-28T07:00:00.000Z",
                 time: '8 – 10pm',
-                eventName: 'Live Comedy Taping: Ian Douglas Terry'
+                event_name: 'Live Comedy Taping: Ian Douglas Terry'
             },
             {
                 id: 2,
-                sourceName: 'Dear Denver',
-                eventLink: 'https://www.facebook.com/events/153266558485057/',
+                source_name: 'Dear Denver',
+                event_link: 'https://www.facebook.com/events/153266558485057/',
                 description: 'Still looking to pad out your holiday decorations?',
                 date: "2017-01-01T07:00:00.000Z",
                 time: '4 – 10pm',
-                eventName: 'Gingerbread House Decorating at Grandma’s House'
+                event_name: 'Gingerbread House Decorating at Grandma’s House'
             },
             {
                 id: 3,
-                sourceName: 'Dear Denver',
-                eventLink: 'https://www.facebook.com/events/189657274838392/',
+                source_name: 'Dear Denver',
+                event_link: 'https://www.facebook.com/events/189657274838392/',
                 description: 'Stave off your hangover by tying on another at Epic where they’ll be screening football and breakfast',
                 date: "2017-01-01T07:00:00.000Z",
                 time: '11am',
-                eventName: ' – 9pm: Holiday Hangover Party'
+                event_name: ' – 9pm: Holiday Hangover Party'
             },
             {
                 id: 4,
-                sourceName: 'Dear Denver',
-                eventLink: 'https://www.facebook.com/events/1827525967523347/',
+                source_name: 'Dear Denver',
+                event_link: 'https://www.facebook.com/events/1827525967523347/',
                 description: 'Beryl’s flips Monday the bird with specialty keg tappings each week.',
                 date: "2017-01-02T07:00:00.000Z",
                 time: '3 – 10pm',
-                eventName: 'FU Mondays at Beryl’s Beer Co.'
+                event_name: 'FU Mondays at Beryl’s Beer Co.'
             },
             {
                 id: 5,
-                sourceName: 'Dear Denver',
-                eventLink: 'https://www.facebook.com/events/106643546502749/',
+                source_name: 'Dear Denver',
+                event_link: 'https://www.facebook.com/events/106643546502749/',
                 description: 'Call to Arms will be tapping specialty one-off Lagers all week. ',
                 date: 'Tuesday, December 27 – Friday, December 30, 2016',
                 time: '11am',
-                eventName: 'Lager Tuesday'
+                event_name: 'Lager Tuesday'
             },
             {
                 id: 6,
-                eventLink: 'https://www.facebook.com/events/106643546502749/',
+                event_link: 'https://www.facebook.com/events/106643546502749/',
                 description: 'Nuggets take on the Golden State',
                 date: 'Tuesday, December 27 – Friday, December 30, 2016',
                 time: '9pm',
-                eventName: 'Nugget Vs. Golden State'
+                event_name: 'Nugget Vs. Golden State'
             },
             {
                 id: 7,
-                eventLink: 'https://www.facebook.com/events/106643546502749/',
+                event_link: 'https://www.facebook.com/events/106643546502749/',
                 description: 'Local Artist Den Harold displays work',
                 date: "2016-11-17T07:00:00.000Z",
                 time: '8pm',
-                eventName: 'Harold Gallery'
+                event_name: 'Harold Gallery'
             },
             {
                 id: 8,
-                eventLink: 'https://www.facebook.com/events/106643546502749/',
+                event_link: 'https://www.facebook.com/events/106643546502749/',
                 description: 'Flume plays at the Ogden',
                 date: "2016-11-17T07:00:00.000Z",
                 time: '8pm',
-                eventName: 'Flume Live at The Ogden'
+                event_name: 'Flume Live at The Ogden'
             }];
           return knex('event').insert(events);
         });

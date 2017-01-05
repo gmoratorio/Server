@@ -6,12 +6,12 @@ module.exports = {
     postToDB: function postToDB(eventArray) {
         const inserts = eventArray.map((event) => {
             return knex('event').insert({
-                sourceName: event.sourceName,
-                eventLink: event.eventLink,
+                source_name: event.sourceName,
+                event_link: event.eventLink,
                 description: event.description,
                 date: event.date,
                 time: event.time,
-                eventName: event.eventName
+                event_name: event.eventName
                 // categories: event.categories
             });
         });

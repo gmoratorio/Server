@@ -2,7 +2,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.alterTable('event', function(table) {
     table.decimal('price');
-    table.string('imageLink');
+    table.string('image_link');
     table.string('location');
     table.string('address');
   });
@@ -10,6 +10,6 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return knex.schema.alterTable('event', function(table) {
-    table.dropColumns('price', 'imageLink', 'location', 'address');
+    table.dropColumns('price', 'image-link', 'location', 'address');
   });
 };
