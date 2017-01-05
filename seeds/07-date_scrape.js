@@ -11,6 +11,10 @@ exports.seed = function(knex, Promise) {
                 id: 2,
                 name: 'WestWord',
                 latest_date: '2017-01-02T07:00:00.000Z'
+            }, {
+                id: 3,
+                name: 'Meetup',
+                latest_date: '2017-01-03T07:00:00.000Z'
             }];
           return knex('date_scrape').insert(dates);
         });
