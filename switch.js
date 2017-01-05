@@ -1,6 +1,35 @@
 
 switch (category) {
 
+//From Meetup.com
+"New In Town"
+"Social Networking"
+"Fun Times"
+"Entrepreneurship"
+"Outdoors"
+"Singles"
+"Self-Improvement"
+"Dining Out"
+"Nightlife"
+"Adventure"
+"Professional Networking"
+"Hiking"
+"Startup Businesses"
+"Fitness"
+"Exercise"
+"Wellness"
+"Software Development"
+"Business Strategy"
+"Travel"
+"New Technology"
+"Spirituality"
+"Meditation"
+"Healthy Living"
+"Dancing"
+"Web Development"
+"Computer programming"
+
+
     case "Club Events":
     case "Barhopping":
     case "Adult":
@@ -51,7 +80,7 @@ switch (category) {
     case "Groups - Social":
     case "Lectures":
     case "Marijuana Events":
-        category.id = 1;
+        id = 1;
         break;
 
     case "Auto":
@@ -77,7 +106,7 @@ switch (category) {
     case "Ice Skating Rinks":
     case "Nature":
     case "Outdoors":
-        category.id = 2;
+        id = 2;
         break;
 
     case "A Capella":
@@ -261,7 +290,7 @@ switch (category) {
     case "Museum Exhibits and Events":
     case "Music":
     case "Pop Culture":
-        category.id = 3;
+        id = 3;
         break;
 
     case "Conferences":
@@ -271,11 +300,11 @@ switch (category) {
     case "Technology Events":
     case "Environmental":
     case "Expos":
-        category.id = 4;
+        id = 4;
         break;
 
     case "Games":
-        category.id = 5;
+        id = 5;
         break;
 
     case "Children's Events":
@@ -296,7 +325,7 @@ switch (category) {
     case "Children's Theater":
     case "Christmas":
     case "Family Events":
-        category.id = 6;
+        id = 6;
         break;
 
     case "Announcements":
@@ -339,177 +368,23 @@ switch (category) {
     case "Landmarks":
     case "Martin Luther King, Jr. Day":
     case "Mind and Body":
-        category.id = 7;
+        id = 7;
         break;
 
-    default:
-        category.id = null;
+    case "Dear Denver":
+      id = 8;
+      break;
 
-switch(category) {
-        case "Activism":
-          category.id = 1;
-          break;
-        case "Adult":
-          category.id = 7;
-          break;
-        case "Announcements":
-          category.id = 7;
-          break;
-        case "Art", "Art - Announcements", "Art - Galleries", "Art - Museums", "Art - Ongoing", "Art - Openings and Events", "Arts":
-           category.id = 3;
-           break;
-       case "Literary Events":
-          category.id = 1;
-          break;
-       case "Marijuana Events":
-          category.id = 1;
-          break;
-       case "Martin Luther King, Jr. Day":
-          category.id = 7;
-          break;
-       case "Meet and Greets":
-          category.id = 1;
-          break;
-       case "Mind and Body":
-           category.id = 7;
-           break;
-       case "Museum Exhibits and Events":
-           category.id = 3;
-           break;
-       case "Music":
-           category.id = 3;
-           break;
-       case "Nature":
-           category.id = 2;
-           break;
-       case "Networking":
-           category.id = 4;
-           break;
-       case "New Age":
-           category.id = 7;
-           break;
-       case "New Year's Day":
-           category.id = 1;
-           break;
-       case "Nightlife":
-           category.id = 1;
-           break;
-       case "Out of Town":
-          category.id = 7;
-          break;
-        case "Outdoors":
-           category.id = 2;
-           break;
-       case "Parties and Receptions":
-          category.id = 1;
-          break;
-       case "Performance Art":
-          category.id = 3;
-          break;
-        case "Performing Arts":
-           category.id = 3;
-           break;
-        case "Pets":
-           category.id = 6;
-           break;
-        case "Photography":
-           category.id = 3;
-           break;
-        case "Planetariums":
-            category.id = 6;
-            break;
-        case "Poetry":
-            category.id = 3;
-            break;
-        case "Politics":
-            category.id = 7;
-            break;
-        case "Pop Culture":
-            category.id = 3;
-            break;
-        case "Promotional Events":
-            category.id = 1;
-            break;
-        case "Public Interest":
-            category.id = 1;
-            break;
-        case "Recreation":
-            category.id = 2;
-            break;
-        case "Religion and Spirituality":
-            category.id = 7;
-            break;
-        case "Santa Sightings":
-           category.id = 7;
-           break;
-        case "See and Be Seen":
-           category.id = 1;
-           break;
-        case "Shopping":
-           category.id = 7;
-           break;
-        case "Singles Events":
-           category.id = 1;
-           break;
-        case "Skate Parks":
-            category.id = 2;
-            break;
-        case "Spoken Word":
-            category.id = 3;
-            break;
-        case "Sports - Participatory":
-            category.id = 2;
-            break;
-        case "Sports - Spectator":
-            category.id = 2;
-            break;
-        case "Summer Guide":
-            category.id = 7;
-            break;
-        case "Talks":
-            category.id = 1;
-            break;
-        case "Technology Events":
-            category.id = 4;
-            break;
-        case "Theater":
-            category.id = 3;
-            break;
-        case "Theater - Dinner":
-            category.id = 3;
-            break;
-        case "Theater - Large":
-            category.id = 3;
-            break;
-        case "Theater - Ongoing":
-            category.id = 3;
-            break;
-        case "Theater - Openings":
-            category.id = 3;
-            break;
-        case "Theater - Small":
-            category.id = 3;
-            break;
-        case "Tours":
-            category.id = 1;
-            break;
-        case "Valentine's Day":
-            category.id = 7;
-            break;
-        case "Visual Art":
-            category.id = 3;
-            break;
-        case "Volunteer Opportunities":
-            category.id = 7;
-            break;
-        case "Wineries":
-            category.id = 1;
-            break;
-        case "Women's Events":
-            category.id = 7;
-            break;
-        case "Zoo and Animals":
-            category.id = 7;
-            break;
+    case "WestWord":
+      id = 9;
+      break;
+
+    case "Meetup":
+      id = 10;
+      break;
+
+    default:
+        id = 7;
+
 
 }
