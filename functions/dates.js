@@ -54,6 +54,10 @@ module.exports = {
     createMaxQueryDate: function createMaxQueryDate() {
         let maxFutureDate = sugar.Date('today').addDays(30).raw;
         return maxFutureDate;
+    },
+    createLastWeek: function createLastWeek(){
+      const lastWeek =  sugar.Date('today').rewind('6 days', true).raw;
+      return lastWeek;
     }
 
 

@@ -1,19 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const knex = require('../db/connection');
 const posting = require("../functions/posting");
 const scrape = require("../functions/scrape");
+const accessDB = require("../db/accessDB");
 
 
 router.get('/', (req, res, next) => {
     let ddWasScrapedToday = true;
     let wwWasScrapedToday = true;
+    let meetupWasScrapedToday = true;
     let ddNeedsUpdate = false;
     let wwNeedsUpdate = false;
+    let meetupNeedsUpdate = false;
     scrape.scrapeTodayCheck()
         .then((resultsArray) => {
             ddWasScrapedToday = resultsArray[0];
             wwWasScrapedToday = resultsArray[1];
+            meetupWasScrapedToday = resultsArray[2];
             if (ddWasScrapedToday === false) {
                 ddWasScrapedToday = true;
                 ddNeedsUpdate = true;
@@ -70,11 +73,62 @@ router.get('/', (req, res, next) => {
             console.log("WestWord: " + result.message);
         })
         .then(() => {
-            return knex('event')
-                .select()
+            if (meetupWasScrapedToday === false) {
+                meetupWasScrapedToday = true;
+                meetupNeedsUpdate = true;
+                return scrape.meetup();
+            } else {
+                return {
+                    message: "was already scraped today"
+                }
+            }
         })
-        .then(data => {
-            res.json(data);
+        .then((meetupReturnObject) => {
+            if (meetupReturnObject.message) {
+                return meetupReturnObject;
+            } else {
+                if (meetupReturnObject.eventArray !== null) {
+                    const meetupPostObject = meetupReturnObject.eventArray;
+                    return posting.postToDB(meetupPostObject);
+                } else {
+                    return {
+                        message: "returned null"
+                    };
+                }
+            }
+        })
+        .then((result) => {
+            console.log("Meetup: " + result.message);
+        })
+        .then(() => {
+            return accessDB.getRawCompleteEventInfo();
+        })
+        .then(rawReturnData => {
+            let finalReturnArray = [];
+            let lastEvent = {
+                id: null
+            };
+
+            rawReturnData.forEach((eventInstance) => {
+                const currentID = eventInstance.id;
+                let lastID = lastEvent.id;
+
+                if (currentID !== lastID) {
+                    let tempCatHold = eventInstance.category;
+                    eventInstance.categories = [tempCatHold];
+                    delete eventInstance.category;
+                    finalReturnArray.push(eventInstance);
+                } else {
+                    const index = finalReturnArray.length - 1;
+                    finalReturnArray[index].categories.push(eventInstance.category);
+                }
+                lastEvent.id = eventInstance.id;
+            })
+
+            return finalReturnArray;
+        })
+        .then((finalReturn) => {
+            res.json(finalReturn);
         })
         .then(() => {
             if (ddNeedsUpdate === true) {
@@ -83,7 +137,7 @@ router.get('/', (req, res, next) => {
         })
         .then((updatedDate) => {
             if (updatedDate) {
-                console.log(updatedDate[0]);
+                console.log("Dear Denver was scraped today, on: " + updatedDate[0]);
             } else {
                 console.log("Nothing came back from DD");
             }
@@ -94,22 +148,30 @@ router.get('/', (req, res, next) => {
         })
         .then((updatedDate) => {
             if (updatedDate) {
-                console.log(updatedDate[0]);
+                console.log("WestWord was scraped today, on: " + updatedDate[0]);
             } else {
                 console.log("Nothing came back from WW");
+            }
+        })
+        .then(() => {
+            if (meetupNeedsUpdate === true) {
+                return scrape.markTodayChecked("Meetup");
+            }
+        })
+        .then((updatedDate) => {
+            if (updatedDate) {
+                console.log("Meetup was scraped today, on: " + updatedDate[0])
+            } else {
+                console.log("Nothing came back from Meetup")
             }
         })
         .catch(function(err) {
             next(err);
         });
-
-
-
 });
 
 router.get('/existing', (req, res, next) => {
-    return knex('event')
-        .select()
+    return accessDB.getAllEvents()
         .then(data => {
             res.json(data);
         })
@@ -118,16 +180,9 @@ router.get('/existing', (req, res, next) => {
         });
 });
 
-router.get('/meetup', (req, res, next) => {
-    scrape.meetup()
-        .then((result) => {
-            res.json(result);
-        })
-});
 
 router.post('/', function(req, res, next) {
     const eventArray = req.body.eventArray;
-    // console.log(eventArray);
     posting.postToDB(eventArray)
         .then((result) => {
             res.json(result);
@@ -138,15 +193,5 @@ router.post('/', function(req, res, next) {
 
 });
 
-// knex('/scrape/deardenver').insert({
-//     sourceName: req.body.sourceName,
-//     eventLink: req.body.eventLink,
-//     description: req.body.description,
-//     date: req.body.date,
-//     time: req.body.time,
-//     eventName: req.body.eventName,
-// }).then(data => {
-//     res.json(data);
-// });
 
 module.exports = router;
