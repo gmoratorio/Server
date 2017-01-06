@@ -1,388 +1,540 @@
 
 switch (category) {
 
+//Mark - There should probably be a category for religion/Spirituality.
+//Mark - There should probably be a category for Health & Fitness.
+//Mark - There should probably be a category for Cultural Events.
+//Mark - There should probably be a category for Food Related Events
+
+//*Meetup Categories Start
+//Category - Social
+case "New In Town":
+case "Social Networking":
+case "Fun Times":
+case "Singles":
+case "Dining Out":
+case "Nightlife":
+case "Dancing":
+case "Women's Social":
+case "Dating and Relationships":
+case "Self-Improvement":
+case "Travel":
+case "Spirituality":
+case "Meditation":
+case "Healthy Living":
+case "Self-Empowerment":
+case "Language & Culture":
+case "Self Exploration":
+case "Consciousness":
+case "Wine":
+case "Happy Hour":
+case "Culture Exchange":
+case "Foodie":
+case "Life Transformation":
+case "Spiritual Growth":
+case "20's & 30's Social":
+case "English Language":
+case "Language Exchange":
+case "Pubs and Bars":
+case "Personal Development":
+case "English as a Second Language":
+case "Expat":
+case "Young Professional Singles":
+case "Single Professionals":
+case "Eating, Drinking, Talking, Laughing, Etc":
+case "International Friends":
+case "Holistic Health":
+case "International Travel":
+case "Intellectual Discussion":
+case "Singles 30's-50's":
+case "International and Exchange Students":
+case "Social Dancing":
+case "Beer":
+case "Drinking":
+case "Volunteering":
+case "Coffee":
+case "Spanish Language":
+case "Movie Nights":
+case "Cooking":
+case "Couples":
+case "French Language":
+case "Girls' Night Out":
+case "Dinner and a Movie":
+case "Food and Drink":
+case "Wine Tasting":
+case "Conversation":
+case "Local Activities":
+case "Recipes":
+case "Japanese Language":
+case "Wine and Food Pairing":
+case "Public Speaking":
+case "Vegan":
+case "Spiritual Awakening":
+case "Japanese Culture":
+case "Vegetarian":
+case "Mindfulness":
+case "Reading":
+case "Group Photo Shoots":
+case "Cultural Activities":
+case "Partying":
+case "LGBT Social Group":
+case "Learning":
+case "ESL practice":
+case "Exploring New Restaurants":
+case "Community Building":
+case "Geeks & Nerds":
+case "Comedy":
+case "Fun and Laughter":
+case "Mindfulness Meditation":
+case "Critical Thinking":
+case "Chinese language":
+case "Collaboration between Creative Minds":
+
+case "Gay and Lesbian Friends":
+case "Gay":
+case "Wine Lovers":
+case "Cocktails":
+case "Girls having fun":
+case "Geek Culture":
+case "Chinese Culture":
+case "Humanism":
+case "Toastmasters":
+case "Locals & New in Town":
+case "Green Living":
+case "Skeptics":
+case "Singles 20's  & 30's":
+case "Freethinker":
+case "Cooking Dinner Parties":
+case "French Culture":
+case "Group Fitness Training":
+case "Book Club":
+case "Girlfriends":
+case "Lesbian":
+case "Creative Circle":
+case "Coffee and Tea Socials":
+case "Psychics":
+case "Dinner and Drinks":
+case "Black Women":
+case "Lesbian Social Networking":
+case "Lesbian Friends":
+case "History":
+case "Dogs":
+case "Women's Support":
+case "Spanish & English Language Exchange":
+case "Korean Language":
+case "Clubbing":
+case "Italian Language":
+case "Karaoke":
+case "Authors":
+case "Stand-Up Comedy":
+case "Expat French":
+case "Latino Culture":
+case "Christian Social":
+case "Craft Beer":
+case "Dinner":
+case "Social Anxiety":
+case "Active Dogs":
+case "Beer Lovers":
+case "Bilingual Spanish/English":
+case "Cooking Classes":
+case "Activities":
+case "People Helping People":
+case "20's Social":
+case "Novel Reading":
+case "Motorcycle Riding":
+case "Vegan Potlucks and Dineouts":
+case "Young Adults":
+case "African American Women":
+case "Make New Friends":
+case "20's and 30's":
+
+
+
+//Category - Sports
+case "Recreational Sports":
+case "Game Night":
+case "Bicycling":
+case "Sports and Socials":
+case "Running":
+case "Cycling":
+case "Women's Fitness":
+case "Skiing":
+case "Soccer":
+case "Water Sports":
+case "Volleyball":
+case "Pick-Up Soccer":
+case "Fitness Boot Camp":
+case "Tennis":
+case "Coed Soccer":
+case "Euro Games":
+case "Sports Fan":
+case "Fitness":
+case "Exercise":
+case "Wellness":
+case "Sports and Recreation":
+case "Yoga":
+case "Badminton":
+
+
+
+//Category - Family
+case "Family":
+case "Moms":
+case "Single Parents":
+case "Parents":
+case "Stay-at-Home Moms":
+case "Playdates":
+case "Kids":
+case "Babies":
+case "Toddlers":
+case "New Moms":
+
+
+
+//Category - Gaming
+case "Board Games":
+case "Games":
+case "Card Games":
+case "Gaming":
+case "Strategy Games":
+case "Video Games":
+case "Tabletop Role Playing and Board Games":
+case "Roleplaying Games (RPGs)":
+
+//Category - Music/Arts
+case "Live Music":
+case "Artists":
+case "Music":
+case "Art":
+case "Performing Arts":
+case "Watching Movies":
+case "Theater":
+case "Musicians":
+case "Film":
+case "Digital Photography":
+case "Photography Classes":
+case "Dance Lessons":
+case "Salsa":
+case "Singing":
+case "Concerts":
+case "Painting":
+case "Portrait Photography":
+case "Crafts":
+case "Arts & Entertainment":
+case "Fine Arts":
+case "Art Galleries":
+case "Film Industry":
+case "Studio Photography":
+case "Drawing":
+case "Screenwriting":
+case "Independent Filmmaking":
+case "Latin Dance":
+case "Indie Films":
+case "Acting":
+case "Museum":
+case "Literature":
+case "Latin Music":
+case "Ballroom Dancing":
+case "Travel Photography":
+case "Model Photography":
+case "Fashion Photography":
+case "Film and Video Production":
+case "Salsa Dance Lessons":
+case "Fashion and Style":
+case "Sci-Fi/Fantasy":
+case "Fiction":
+case "Poetry":
+case "Songwriting":
+case "Movies in Movie Theaters":
+case "Dance and Movement":
+case "Bachata":
+case "Art Museums":
+case "Sketching":
+case "Writing Workshops":
+case "Modeling":
+case "Swing Dancing":
+case "Handmade Crafts":
+case "Figure Drawing":
+case "Novel Writing":
+case "Improv":
+case "Life Drawing":
+case "Street Photography":
+case "Photography":
+case "Writing":
+case "Creative Writing":
+case "Documentary Films":
+
+
+Outdoors
+case "Outdoors":
+case "Adventure":
+case "Hiking":
+case "Walking":
+case "Outdoor  Fitness":
+case "Outdoor Adventures":
+case "Camping":
+case "Backpacking":
+case "Kayaking":
+case "Mountain Biking":
+case "Nature Photography":
+case "Rock Climbing":
+case "Adventure Travel":
+case "WILDERNESS HIKING":
+case "Nature Walks":
+case "Landscape Photography":
+case "Road Cycling":
+case "Nature":
+case "Paddling":
+case "Snowshoeing":
+case "Snowboarding":
+case "Canoeing":
+case "Mountaineering":
+case "Trail Running":
+case "Beginner's Running":
+case "Outdoor Soccer":
+case "Trekking":
+case "Marathon":
+case "Bouldering":
+
+//Mark - Biz & Tech should probably be separated
+//Mark - We should consider adding a category for Education
+Tech/Businesses
+case "Professional Networking":
+case "Startup Businesses":
+case "Software Development":
+case "Business Strategy":
+case "New Technology":
+case "Web Development":
+case "Computer programming":
+case "Web Technology":
+case "Small Business":
+case "Technology Startups":
+case "Entrepreneur Networking":
+case "Women Entrepreneurs":
+case "Technology":
+case "Mobile Development":
+case "Web Design":
+case "Business Referral Networking":
+case "Mobile Technology":
+case "Big Data":
+case "Professional Development":
+case "Marketing":
+case "Internet Startups":
+case "JavaScript":
+case "Entrepreneurship":
+case "Small Business Marketing Strategy":
+case "Cloud Computing":
+case "Lean Startup":
+case "Data Analytics":
+case "Online Marketing":
+case "Internet Professionals":
+case "Young Professionals":
+case "Data Science":
+case "Leadership":
+case "Education & Technology":
+case "Data Visualization":
+case "Data Mining":
+case "Predictive Analytics":
+case "Big Data Analytics":
+case "Venture Capital":
+case "Agile Project Management":
+case "Social Media Marketing":
+case "Small Business Owners":
+case "Real Estate Investors":
+case "Investing":
+case "Android Development":
+case "iOS Development":
+case "Executive Coaching":
+case "User Experience":
+case "Python":
+case "Real Estate Investing":
+case "Women's Business Networking":
+case "Communication Skills":
+case "Hacking":
+case "Business":
+case "Programming Languages":
+case "Real Estate":
+case "Java":
+case "DevOps":
+case "E-Business Owners":
+case "NoSQL":
+case "JavaScript Frameworks":
+case "Network Marketing":
+case "Business Intelligence":
+case "Real Estate Investment Education":
+case "Real Estate Networking":
+case "Graphic Design":
+case "PHP":
+case "Interaction Design":
+case "UX Design":
+case "SEO (Search Engine Optimization)":
+case "Social Media":
+case "Small Business Networking":
+case "Linux":
+case "Angel Investors":
+case "Internet of Things":
+case "nodeJS":
+case "Social Entrepreneurship":
+case "Artificial Intelligence":
+case "Startup Incubation":
+case "Photoshop":
+case "Black Professionals":
+case "Women Small Business Owners":
+case "Arduino":
+case "Ruby":
+case "Nonprofit":
+case "Cashflow":
+case "Technology Professionals":
+case "Ruby On Rails":
+case "Beginner Real Estate Investing":
+case "Front-end Development":
+case "SaaS (Software as a Service)":
+case "MapReduce":
+case "CSS":
+case "3D Printing":
+case "Virtualization":
+case "High Scalability Computing":
+case "CMS (Content Management Systems)":
+case "Women's Networking":
+case "Real Estate Foreclosures":
+case "B2B Networking":
+case "Career":
+case "PaaS (Platform as a Service)":
+case "Scrum":
+case "System Administration":
+case "Functional Programming":
+case "UI Design":
+case "JavaScript Libraries":
+case "IaaS (Infrastructure as a Service)":
+case "Financial Freedom":
+case ".NET":
+case "E-Commerce":
+case "Fashion Industry":
+case "New Product Development: Software & Tech":
+case "Web Standards":
+case "Test Driven Development":
+case "WordPress":
+case "Data Management":
+case "Information Technology":
+case "JQuery":
+case "Mobile User Experience":
+case "Android":
+case "Continuous Delivery":
+case "iOS":
+case "Work At Home":
+case "Infrastructure as Code":
+case "Startup Pitching":
+case "Business Analytics":
+case "Asian Professionals":
+case "Freelance":
+case "Digital Marketing":
+case "Referral Marketing":
+case "Female Entrepreneurs":
+case "Software Engineering":
+case "AngularJS":
+case "Configuration Management":
+case "Finance":
+case "Coworking":
+case "Agile Coaching":
+case "Information Architecture":
+case "Microcontrollers":
+case "Open Source":
+case "Professional Women":
+case "HTML5":
+case "Robotics":
+case "Makers":
+case "Life Coaching":
+case "DIY (Do It Yourself)":
+case "Machine Learning":
+case "Women's Empowerment":
+case "Gay Professionals":
+case "Working Moms":
+case "Fear of Public Speaking":
+case "Landlords":
+case "Young Entrepreneur":
+case "Game Development":
+
+
+//Mark - There are a lot of language and culture categories
+//Category - Misc.
 //From Meetup.com
-"New In Town"
-"Social Networking"
-"Fun Times"
-"Entrepreneurship"
-"Outdoors"
-"Singles"
-"Self-Improvement"
-"Dining Out"
-"Nightlife"
-"Adventure"
-"Professional Networking"
-"Hiking"
-"Startup Businesses"
-"Fitness"
-"Exercise"
-"Wellness"
-"Software Development"
-"Business Strategy"
-"Travel"
-"New Technology"
-"Spirituality"
-"Meditation"
-"Healthy Living"
-"Dancing"
-"Web Development"
-"Computer programming"
-"Self-Empowerment"
-"Web Technology"
-"Women's Social"
-"Live Music"
-"Small Business"
-"Language & Culture"
-"Self Exploration"
-"Dating and Relationships"
-"Walking"
-"Open Source"
-"Technology Startups"
-"Consciousness"
-"Entrepreneur Networking"
-"Outdoor  Fitness"
-"Wine"
-"Women Entrepreneurs"
-"Sports and Recreation"
-"Happy Hour"
-"Technology"
-"Outdoor Adventures"
-"Camping"
-"Mobile Development"
-"Web Design"
-"Culture Exchange"
-"Artists"
-"Business Referral Networking"
-"Mobile Technology"
-"Foodie"
-"Life Transformation"
-"Spiritual Growth"
-"Big Data"
-"Yoga"
-"Weekend Adventures"
-"Professional Development"
-"Alternative Medicine"
-"Music"
-"Marketing"
-"Photography"
-"20's & 30's Social"
-"Internet Startups"
-"English Language"
-"Art"
-"Language Exchange"
-"Pubs and Bars"
-"Energy Healing"
-"Personal Development"
-"JavaScript"
-"English as a Second Language"
-"Expat"
-"Young Professional Singles"
-"Performing Arts"
-"Small Business Marketing Strategy"
-"Transformation"
-"Cloud Computing"
-"Watching Movies"
-"Lean Startup"
-"Theater"
-"Musicians"
-"Single Professionals"
-"Eating, Drinking, Talking, Laughing, Etc"
-"Writing"
-"Backpacking"
-"Data Analytics"
-"Stress Relief"
-"Online Marketing"
-"International Friends"
-"Internet Professionals"
-"Holistic Health"
-"International Travel"
-"Kayaking"
-"Creativity"
-"Innovation"
-"Nutrition"
-"Young Professionals"
-"Metaphysics"
-"Intellectual Discussion"
-"Film"
-"Recreational Sports"
-"Digital Photography"
-"Machine Learning"
-"Weight Loss"
-"Game Night"
-"Group Fitness Training"
-"Singles 30's-50's"
-"Law of Attraction"
-"Board Games"
-"Bicycling"
-"Data Science"
-"Leadership"
-"International and Exchange Students"
-"Education & Technology"
-"Social Dancing"
-"Professional Women"
-"Beer"
-"Data Visualization"
-"Book Club"
-"Drinking"
-"Photography Classes"
-"Volunteering"
-"HTML5"
-"Sports and Socials"
-"Data Mining"
-"Predictive Analytics"
-"Women's Empowerment"
-"Big Data Analytics"
-"Dance Lessons"
-"Coffee"
-"Venture Capital"
-"Spanish Language"
-"Movie Nights"
-"Cooking"
-"Agile Project Management"
-"Games"
-"Salsa"
-"Social Media Marketing"
-"Couples"
-"Small Business Owners"
-"Real Estate Investors"
-"Investing"
-"Android Development"
-"Running"
-"iOS Development"
-"Culture"
-"Mountain Biking"
-"Executive Coaching"
-"Hadoop"
-"French Language"
-"Girls' Night Out"
-"Dinner and a Movie"
-"Cycling"
-"User Experience"
-"Food and Drink"
-"Wine Tasting"
-"Python"
-"Real Estate Investing"
-"Women's Business Networking"
-"Card Games"
-"Latin Dance"
-"Weekend Getaways"
-"Communication Skills"
-"Indie Films"
-"Nature Photography"
-"LGBT"
-"Rock Climbing"
-"Gaming"
-"Hacking"
-"Business"
-"Conversation"
-"Programming Languages"
-"Real Estate"
-"Local Activities"
-"Moms"
-"Java"
-"Recipes"
-"DevOps"
-"Japanese Language"
-"Singing"
-"Concerts"
-"Wine and Food Pairing"
-"Painting"
-"Public Speaking"
-"Women's Fitness"
-"Portrait Photography"
-"E-Business Owners"
-"NoSQL"
-"Vegan"
-"Crafts"
-"JavaScript Frameworks"
-"Spiritual Awakening"
-"Community Service"
-"Single Parents"
-"Arts & Entertainment"
-"Network Marketing"
-"Creative Writing"
-"Robotics"
-"Makers"
-"Skiing"
-"Acting"
-"Japanese Culture"
-"Business Intelligence"
-"Real Estate Investment Education"
-"Vegetarian"
-"Adventure Travel"
-"Mindfulness"
-"Reading"
-"WILDERNESS HIKING"
-"Group Photo Shoots"
-"Cultural Activities"
-"Real Estate Networking"
-"Environment"
-"Philosophy"
-"Nature Walks"
-"Life Coaching"
-"Landscape Photography"
-"DIY (Do It Yourself)"
-"Graphic Design"
-"PHP"
-"Interaction Design"
-"UX Design"
-"Partying"
-"Girlfriends"
-"Fine Arts"
-"Soccer"
-"Museum"
-"SEO (Search Engine Optimization)"
-"Lesbian"
-"LGBT Social Group"
-"Road Cycling"
-"Reiki"
-"Social Media"
-"Small Business Networking"
-"Linux"
-"Sustainability"
-"Learning"
-"Angel Investors"
-"Internet of Things"
-"ESL practice"
-"nodeJS"
-"Guided Meditation"
-"Art Galleries"
-"Film Industry"
-"Exploring New Restaurants"
-"Social Entrepreneurship"
-"Artificial Intelligence"
-"Community Building"
-"Startup Incubation"
-"Parents"
-"Photoshop"
-"Nature"
-"Geeks & Nerds"
-"Vacations"
-"Literature"
-"Black Professionals"
-"Studio Photography"
-"Drawing"
-"Makerspaces"
-"Creative Circle"
-"Women Small Business Owners"
-"Comedy"
-"Paddling"
-"Fun and Laughter"
-"Strategy Games"
-"Screenwriting"
-"Arduino"
-"Mindfulness Meditation"
-"Independent Filmmaking"
-"Critical Thinking"
-"Latin Music"
-"Chinese language"
-"Science"
-"Product Design"
-"Electronics"
-"Ballroom Dancing"
-"Ruby"
-"Collaboration between Creative Minds"
-"Nonprofit"
-"Stay-at-Home Moms"
-"Travel Photography"
-"Model Photography"
-"London"
-"Water Sports"
-"Gay and Lesbian Friends"
-"Fashion Photography"
-"Film and Video Production"
-"Cashflow"
-"Gay"
-"Salsa Dance Lessons"
-"Sci-Fi/Fantasy"
-"Wine Lovers"
-"Cocktails"
-"Fashion and Style"
-"Technology Professionals"
-"Girls having fun"
-"Ruby On Rails"
-"Investing for Retirement"
-"Playdates"
-"Geek Culture"
-"Beginner Real Estate Investing"
-"Snowshoeing"
-"Family"
-"Video Games"
-"Charity Events"
-"Fiction"
-"Front-end Development"
-"SaaS (Software as a Service)"
-"Poetry"
-"MapReduce"
-"Volleyball"
-"Chinese Culture"
-"Cruises"
-"Tabletop Role Playing and Board Games"
-"Day Trips"
-"Whole Food Nutrition"
-"Coffee and Tea Socials"
-"Pick-Up Soccer"
-"Songwriting"
-"CSS"
-"3D Printing"
-"Movies in Movie Theaters"
-"Virtualization"
-"Dance and Movement"
-"High Scalability Computing"
-"Humanism"
-"Toastmasters"
-"Locals & New in Town"
-"CMS (Content Management Systems)"
-"Snowboarding"
-"Women's Networking"
-"Green Living"
-"Skeptics"
-"Singles 20's  & 30's"
-"Bachata"
-"Documentary Films"
-"Kids"
-"Gay Professionals"
-"Fitness Boot Camp"
-"Freethinker"
-"Raw Food"
-"Real Estate Foreclosures"
-"Cooking Dinner Parties"
-"French Culture"
-"B2B Networking"
-"Babies"
-"Roleplaying Games (RPGs)"
-"Career"
-"Psychics"
-"Usability"
-"Art Museums"
-"Sketching"
-"PaaS (Platform as a Service)"
-"Positive Thinking"
-"Education"
-"Scrum"
-"German Language"
-"Confidence and Self-Esteem"
- "Tennis"
- "System Administration"
- "Toddlers"
- "Dinner and Drinks"
- "Functional Programming"
- "Organic Foods"
- "Gay Men"
- "Healthy Eating"
- "Coed Soccer"
- "Black Women"
- "Lesbian Social Networking"
- "Walking for Fitness"
- "Lesbian Friends"
- "Working Moms"
- "UI Design"
+
+case "Weekend Adventures":
+case "Alternative Medicine":
+case "Transformation":
+case "Stress Relief":
+case "Creativity":
+case "Innovation":
+case "Nutrition":
+case "Metaphysics":
+case "Weight Loss":
+case "Law of Attraction":
+case "Culture":
+case "Hadoop":
+case "Weekend Getaways":
+case "LGBT":
+case "Community Service":
+case "Environment":
+case "Philosophy":
+case "Reiki":
+case "Sustainability":
+case "Guided Meditation":
+case "Vacations":
+case "Makerspaces":
+case "Science":
+case "Product Design":
+case "Electronics":
+case "London":
+case "Investing for Retirement":
+case "Charity Events":
+case "Cruises":
+case "Day Trips":
+case "Whole Food Nutrition":
+case "Raw Food":
+case "Usability":
+case "Positive Thinking":
+case "Education":
+case "German Language":
+case "Confidence and Self-Esteem":
+case "Organic Foods":
+case "Gay Men":
+case "Healthy Eating":
+case "Walking for Fitness":
+case "Solo Travelers":
+case "Brunch":
+case "Presentations":
+case "Atheist":
+case "Outdoor Yoga":
+case "Readers":
+case "Español":
+case "New York City":
+case "Psychology":
+case "Exploring":
+case "Spiritualism":
+case "Buddhist":
+case "Happiness":
+case "Knowledge Sharing":
+case "Support":
+case "IT Professionals":
+case "Courses and Workshops":
+case "Dog Playgroups":
+case "Financial Education":
+case "Buddhist Meditation":
+case "Hatha Yoga":
+case "Activism":
+case "Stress Management":
+case "Intimacy":
+case "Wine Education":
+case "Community Organizations":
+case "Walking Tours":
+case "Docker":
+case "Healing":
+case "Shyness":
+case "Animal Rights":
+case "NLP (Neuro-Linguistic Programming)":
 
 
-
-
-
+//*Meetup Categories End
 
 
     case "Club Events":
