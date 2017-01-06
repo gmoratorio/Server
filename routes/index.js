@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/connection');
+const OAuth = require("../db/OAuth");
 
 router.get('/', (req, res) => {
     return knex('user')
