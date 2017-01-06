@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const knex = require('../db/connection');
 const posting = require("../functions/posting");
 const scrape = require("../functions/scrape");
+const accessDB = require("../db/accessDB");
 
 
 router.get('/', (req, res, next) => {
@@ -101,37 +101,31 @@ router.get('/', (req, res, next) => {
             console.log("Meetup: " + result.message);
         })
         .then(() => {
-            return knex('event')
-                .innerJoin('event_category', 'event.id', 'event_category.event_id')
-                .innerJoin('category', 'event_category.category_id', 'category.id')
-                .select('event.id', 'source_name', 'event_name', 'event_link', 'image_link', 'date', 'time', 'price', 'location', 'address', 'description')
-                .select('category.name as category')
-                .orderBy('event.id', 'asc')
+            return accessDB.getRawCompleteEventInfo();
         })
         .then(rawReturnData => {
-          let finalReturnArray = [];
-          let lastEvent = {
-            id: null
-          };
+            let finalReturnArray = [];
+            let lastEvent = {
+                id: null
+            };
 
-          rawReturnData.forEach((eventInstance)=>{
-            const currentID = eventInstance.id;
-            let lastID = lastEvent.id;
+            rawReturnData.forEach((eventInstance) => {
+                const currentID = eventInstance.id;
+                let lastID = lastEvent.id;
 
-            if(currentID !== lastID){
-              let tempCatHold = eventInstance.category;
-              eventInstance.categories = [tempCatHold];
-              delete eventInstance.category;
-              finalReturnArray.push(eventInstance);
-            }
-            else{
-              const index = finalReturnArray.length - 1;
-              finalReturnArray[index].categories.push(eventInstance.category);
-            }
-            lastEvent.id = eventInstance.id;
-          })
+                if (currentID !== lastID) {
+                    let tempCatHold = eventInstance.category;
+                    eventInstance.categories = [tempCatHold];
+                    delete eventInstance.category;
+                    finalReturnArray.push(eventInstance);
+                } else {
+                    const index = finalReturnArray.length - 1;
+                    finalReturnArray[index].categories.push(eventInstance.category);
+                }
+                lastEvent.id = eventInstance.id;
+            })
 
-          return finalReturnArray;
+            return finalReturnArray;
         })
         .then((finalReturn) => {
             res.json(finalReturn);
@@ -177,8 +171,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/existing', (req, res, next) => {
-    return knex('event')
-        .select()
+    return accessDB.getAllEvents()
         .then(data => {
             res.json(data);
         })
@@ -187,16 +180,9 @@ router.get('/existing', (req, res, next) => {
         });
 });
 
-// router.get('/meetup', (req, res, next) => {
-//     scrape.meetup()
-//         .then((result) => {
-//             res.json(result);
-//         })
-// });
 
 router.post('/', function(req, res, next) {
     const eventArray = req.body.eventArray;
-    // console.log(eventArray);
     posting.postToDB(eventArray)
         .then((result) => {
             res.json(result);
@@ -207,15 +193,5 @@ router.post('/', function(req, res, next) {
 
 });
 
-// knex('/scrape/deardenver').insert({
-//     sourceName: req.body.sourceName,
-//     eventLink: req.body.eventLink,
-//     description: req.body.description,
-//     date: req.body.date,
-//     time: req.body.time,
-//     eventName: req.body.eventName,
-// }).then(data => {
-//     res.json(data);
-// });
 
 module.exports = router;
