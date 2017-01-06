@@ -8,6 +8,6 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return knex.schema.alterTable('user', function(table) {
-      table.dropColumns('google_id', 'photo', 'email', 'token');
+      table.dropColumns('google_id', 'photo', 'token');
   });
 };

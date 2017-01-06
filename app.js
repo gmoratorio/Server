@@ -6,6 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var cors = require('cors');
+// const session = require('express-session');
+const passport = require('passport');
+const cookieSession = require('cookie-session');
+const dotenv = require('dotenv').config();
+
 
 var index = require('./routes/index');
 // var users = require('./routes/users');
@@ -38,10 +43,33 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
+// app.use(session({
+//     secret: "keyboardcat",
+//     saveUninitialized: true,
+//     resave: false
+// }));
+
+app.use(cookieSession({
+    secret: process.env.SESSION_SECRET
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+    if (req.session.passport && req.session.passport.user) {
+        req.user = req.session.passport.user;
+    } else if(req.signedCookies.user) {
+      req.user = JSON.parse(req.signedCookies.user);
+      console.log(req.user);
+    }
+
+    next();
+});
 
 app.use('/', index);
 // app.use('/users', users);
