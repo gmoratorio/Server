@@ -1,10 +1,9 @@
 const Scrape = require('../aggregates/scrape');
 const dates = require('../functions/dates');
 const validation = require("../db/validation");
-const knex = require('../db/connection');
 const request = require("request");
 const http = require("http");
-
+const accessDB = require("../db/accessDB");
 
 module.exports = {
 
@@ -126,8 +125,7 @@ module.exports = {
     },
     scrapeTodayCheck: function scrapeTodayCheck(source) {
         return new Promise((resolve, reject) => {
-            return knex('date_scrape')
-                .select()
+            return accessDB.getDateScrapeData()
                 .then((scrapeDates) => {
                     const ddScrapeDate = scrapeDates[0].latest_date;
                     const wwScrapeDate = scrapeDates[1].latest_date;
@@ -149,9 +147,7 @@ module.exports = {
             const updateBody = {
                 latest_date: today
             };
-            return knex('date_scrape')
-                .update(updateBody, 'latest_date')
-                .where('name', source)
+            return accessDB.updateDateScraped(updateBody, source)
                 .then((updatedDate) => {
                     resolve(updatedDate);
                 })
@@ -164,10 +160,28 @@ module.exports = {
         const fullURL = `${baseURL}/find/events?zip=11211&radius=1&category=25&order=members&key=${APIKey}`;
         let globalCleanedEventArray = [];
 
+
         return Scrape.getRequest(fullURL)
             .then((meetupRawEventArray) => {
-                const cleanedEventArray = meetupRawEventArray.filter((event) => {
+                const onlyPublicEventsArray = meetupRawEventArray.filter((event) => {
                     return (event.visibility === "public");
+                })
+                return Promise.all(onlyPublicEventsArray);
+            })
+            .then((onlyPublicEventsArray) => {
+                globalCleanedEventArray = onlyPublicEventsArray;
+                return accessDB.getDBMeetupEvents()
+            })
+            .then((dbMeetupEventsArray) => {
+                const cleanedEventArray = globalCleanedEventArray.filter((event, index) => {
+                    const thisScrapeID = event.id;
+
+                    const shouldInclude = dbMeetupEventsArray.every((dbEvent) => {
+                        const dbScrapeID = dbEvent.scrape_id;
+                        const check = (thisScrapeID !== dbScrapeID)
+                        return check;
+                    })
+                    return shouldInclude;
                 })
                 return Promise.all(cleanedEventArray);
             })
@@ -198,9 +212,9 @@ module.exports = {
                     cleanReturnEvent.sourceName = source;
                     cleanReturnEvent.eventLink = event.link;
                     cleanReturnEvent.description = event.description;
-                    if(event.venue){
-                      cleanReturnEvent.location = event.venue.name;
-                      cleanReturnEvent.address = event.venue.address_1;
+                    if (event.venue) {
+                        cleanReturnEvent.location = event.venue.name;
+                        cleanReturnEvent.address = event.venue.address_1;
                     }
 
                     const date = dateTimeArray[index].date;
@@ -216,45 +230,15 @@ module.exports = {
                 return Promise.all(finalEventArray);
             })
             .then((finalEventArray) => {
-              let returnArrayObject = {};
-              returnArrayObject.eventArray = finalEventArray;
+                let returnArrayObject = {};
+                if(finalEventArray.length === 0){
+                  finalEventArray = null;
+                }
+                returnArrayObject.eventArray = finalEventArray;
                 return returnArrayObject;
             })
 
-    //         source_name: event.sourceName,
-    //         event_link: event.eventLink,
-    //         description: event.description,
-    //         date: event.date,
-    //         time: event.time,
-    //         event_name: event.eventName
-    //
-    //         "id": 1,
-    // "source_name": "Dear Denver",
-    // "event_link": "https://www.facebook.com/events/1864904230404701/",
-    // "description": "Ratio is kicking off a new comedy series called Live at Ratio",
-    // "date": "2016-12-28T07:00:00.000Z",
-    // "time": "8 – 10pm",
-    // "event_name": "Live Comedy Taping: Ian Douglas Terry",
-    // "price": null,
-    // "image_link": null,
-    // "location": null,
-    // "address": null
 
-
-        // return validation.returnLatestDate(source)
-        //     .then((latestDBDate) => {
-        //         if (latestDBDate === null) {
-        //             latestDBDate = dates.createYesterday();
-        //         }
-        //     })
-        //     .then(() => {
-        //         return request(fullURL, function(error, response, body) {
-        //             if (!error && response.statusCode == 200) {
-        //               return (body);
-        //             }
-        //         })
-        //
-        //     })
 
     }
 

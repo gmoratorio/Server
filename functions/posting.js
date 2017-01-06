@@ -1,9 +1,6 @@
 const scrape = require("../routes/scrape");
-// const request = require("request");
-// const http = require("http");
-// http.post = require("http-post");
-const knex = require('../db/connection');
 const mapCategory = require("./mapCategory");
+const accessDB = require("../db/accessDB");
 
 module.exports = {
 
@@ -58,20 +55,7 @@ module.exports = {
                 scrapeID = event.scrapeID;
             }
 
-            return knex('event').insert({
-                source_name: sourceName,
-                event_name: eventName,
-                scrape_id: scrapeID,
-                event_link: eventLink,
-                description: description,
-                date: date,
-                time: time,
-                price: price,
-                image_link: imageLink,
-                location: location,
-                address: address
-
-            }, 'id');
+            return accessDB.insertNewEvent(sourceName, eventName, scrapeID, eventLink, description, date, time, price, imageLink, location, address);
         });
         return Promise.all(inserts)
             .then((inserts) => {
@@ -80,9 +64,7 @@ module.exports = {
                     const categories = thisEvent.categories;
                     if (thisEvent.sourceName === "Meetup") {
                         const keys = Object.keys(thisEvent);
-                        // console.log(thisEvent.eventName);
-                        // console.log(keys);
-                        // console.log(categories);
+
                     }
                     const eventID = id[0];
                     let cleanCategoryIDArray = [];
@@ -93,7 +75,7 @@ module.exports = {
                             cleanCategoryIDArray.push(numericID);
                         } else {
                             const unique = cleanCategoryIDArray.every((id, index) => {
-                              return (id !== numericID);
+                                return (id !== numericID);
                             })
                             if (unique) {
                                 cleanCategoryIDArray.push(numericID);
@@ -104,17 +86,13 @@ module.exports = {
 
 
                     const categoryIDInserts = cleanCategoryIDArray.map((categoryID) => {
-                        return knex('event_category').insert({
-                            event_id: eventID,
-                            category_id: categoryID
-                        }, 'id');
+                        return accessDB.insertNewEventCategory(eventID, categoryID);
                     });
                     return Promise.all(categoryIDInserts);
                 })
                 return Promise.all(eventCategoryInserts)
             })
             .then((eventCategoryInserts) => {
-                // console.log(eventCategoryInserts);
                 return {
                     message: 'success'
                 };
