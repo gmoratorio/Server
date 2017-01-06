@@ -23,14 +23,14 @@ module.exports = {
                     })
                     .then((postLinkPromises) => {
                         postLinkPromiseArray = postLinkPromises;
-                        let latestDateArray = postLinkPromises.map((link) => {
                             return validation.returnLatestDate(source)
-                        });
-                        return Promise.all(latestDateArray);
                     })
-                    .then((latestDateArray) => {
+                    .then((latestDate) => {
+                      if(latestDate === null){
+                        latestDate = dates.createLastWeek();
+                      }
                         let filteredPostLinkPromises = postLinkPromiseArray.filter((link, index) => {
-                            const latestDBDate = latestDateArray[index];
+                            const latestDBDate = latestDate;
                             let thisScrapeDate = dates.getStartDateFromURL(link);
                             const diff = dates.getDifference(latestDBDate, thisScrapeDate, "hours");
                             const check = (diff > 0);
@@ -127,9 +127,16 @@ module.exports = {
         return new Promise((resolve, reject) => {
             return accessDB.getDateScrapeData()
                 .then((scrapeDates) => {
-                    const ddScrapeDate = scrapeDates[0].latest_date;
-                    const wwScrapeDate = scrapeDates[1].latest_date;
-                    const meetupScrapeDate = scrapeDates[2].latest_date;
+                    let ddScrapeDate = dates.createYesterday();
+                    let wwScrapeDate = dates.createYesterday();
+                    let meetupScrapeDate = dates.createYesterday();
+
+                    if (scrapeDates.length > 0) {
+                        ddScrapeDate = scrapeDates[0].latest_date;
+                        wwScrapeDate = scrapeDates[1].latest_date;
+                        meetupScrapeDate = scrapeDates[2].latest_date;
+                    }
+
                     const today = dates.createToday();
                     const ddDiff = dates.getDifference(ddScrapeDate, today, "hours");
                     const wwDiff = dates.getDifference(wwScrapeDate, today, "hours");
@@ -231,8 +238,8 @@ module.exports = {
             })
             .then((finalEventArray) => {
                 let returnArrayObject = {};
-                if(finalEventArray.length === 0){
-                  finalEventArray = null;
+                if (finalEventArray.length === 0) {
+                    finalEventArray = null;
                 }
                 returnArrayObject.eventArray = finalEventArray;
                 return returnArrayObject;

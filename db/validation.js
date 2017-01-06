@@ -31,8 +31,11 @@ module.exports = {
             .first()
             .then((result) => {
                 if (result.max !== null) {
+                  console.log(result.max);
+                  console.log("it wasn't null");
                     return result.max;
                 } else {
+                  console.log("it was null");
                     return null;
                 }
 
