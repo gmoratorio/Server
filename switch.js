@@ -51,6 +51,7 @@ switch (category) {
     case "Groups - Social":
     case "Lectures":
     case "Marijuana Events":
+    case "social":
         category.id = 1;
         break;
 
@@ -343,7 +344,7 @@ switch (category) {
         break;
 
     default:
-        category.id = null;
+        category.id = 7;
 
 switch(category) {
         case "Activism":
