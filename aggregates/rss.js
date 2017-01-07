@@ -1,3 +1,6 @@
+'use strict'
+
+
 const cheerio = require('cheerio');
 const request = require('request');
 const FeedParser = require('feedparser');

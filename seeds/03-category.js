@@ -1,3 +1,6 @@
+'use strict'
+
+
 exports.seed = function(knex, Promise) {
     // Deletes ALL existing entries
     return knex.raw('DELETE FROM "category"; ALTER SEQUENCE category_id_seq RESTART WITH 14')

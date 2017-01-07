@@ -1,3 +1,6 @@
+'use strict'
+
+
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('date_scrape', function(table){
     table.increments();

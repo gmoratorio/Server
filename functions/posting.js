@@ -1,3 +1,6 @@
+'use strict'
+
+
 const scrape = require("../routes/scrape");
 const mapCategory = require("./mapCategory");
 const accessDB = require("../db/accessDB");

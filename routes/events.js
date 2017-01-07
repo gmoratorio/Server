@@ -1,3 +1,6 @@
+'use strict'
+
+
 const express = require('express');
 const router = express.Router();
 const posting = require("../functions/posting");
