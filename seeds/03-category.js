@@ -25,16 +25,13 @@ exports.seed = function(knex, Promise) {
             {
                 id: 7,
                 name: 'Misc'
-            },
-            {
+            }, {
                 id: 8,
                 name: 'Dear Denver'
-            },
-            {
+            }, {
                 id: 9,
                 name: 'WestWord'
-            },
-            {
+            }, {
                 id: 10,
                 name: 'Meetup'
             }];
