@@ -1,4 +1,3 @@
-'use strict'
 
 
 const Scrape = require('../aggregates/scrape');
