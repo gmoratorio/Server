@@ -1,3 +1,6 @@
+'use strict'
+
+
 const Scrape = require('../aggregates/scrape');
 const dates = require('../functions/dates');
 const validation = require("../db/validation");

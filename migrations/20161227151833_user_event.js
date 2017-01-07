@@ -1,3 +1,6 @@
+'use strict'
+
+
 
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('user_event', function(table){

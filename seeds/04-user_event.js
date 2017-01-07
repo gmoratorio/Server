@@ -1,3 +1,6 @@
+'use strict'
+
+
 exports.seed = function(knex, Promise) {
     // Deletes ALL existing entries
     return knex.raw('DELETE FROM "user_event"; ALTER SEQUENCE user_event_id_seq RESTART WITH 8')
@@ -33,7 +36,7 @@ exports.seed = function(knex, Promise) {
                 event_id: 6
             },
             {
-                id: 7, 
+                id: 7,
                 user_id: 4,
                 event_id: 2
             },

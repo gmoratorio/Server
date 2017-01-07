@@ -1,3 +1,6 @@
+'use strict'
+
+
 const knex = require("./connection");
 const dates = require("../functions/dates");
 

@@ -1,3 +1,6 @@
+'use strict'
+
+
 const posting = require("./posting");
 const scrape = require("./scrape");
 const accessDB = require("../db/accessDB");

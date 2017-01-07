@@ -1,3 +1,6 @@
+'use strict'
+
+
 const express = require('express');
 const router = express.Router();
 const Scrape = require('../aggregates/scrape');
