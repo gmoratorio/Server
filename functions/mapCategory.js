@@ -2,6 +2,8 @@ module.exports = {
     translate: function translate(category) {
         let id = null;
         switch (category) {
+
+//Category - Social
             case "Club Events":
             case "Barhopping":
             case "Adult":
@@ -52,8 +54,6 @@ module.exports = {
             case "Lectures":
             case "Marijuana Events":
             case "social":
-
-                //Category - Social
             case "New In Town":
             case "Social Networking":
             case "Fun Times":
@@ -189,9 +189,10 @@ module.exports = {
             case "Make New Friends":
             case "20's and 30's":
 
-                id = 1;
+                id = 11;
                 break;
 
+//Category - Sports
             case "Auto":
             case "Basketball":
             case "Baseball":
@@ -215,8 +216,6 @@ module.exports = {
             case "Ice Skating Rinks":
             case "Nature":
             case "Outdoors":
-
-                //Category - Sports
             case "Recreational Sports":
             case "Game Night":
             case "Bicycling":
@@ -240,9 +239,11 @@ module.exports = {
             case "Sports and Recreation":
             case "Yoga":
             case "Badminton":
-                id = 2;
+
+                id = 12;
                 break;
 
+//Category - Music/Arts
             case "A Capella":
             case "Acousitc":
             case "African":
@@ -388,8 +389,6 @@ module.exports = {
             case "Literary Events":
             case "Music":
             case "Pop Culture":
-
-                //Category - Music/Arts
             case "Live Music":
             case "Music":
             case "Musicians":
@@ -400,9 +399,13 @@ module.exports = {
             case "Latin Music":
             case "Salsa Dance Lessons":
             case "Songwriting":
-                id = 3;
+
+                id = 9;
                 break;
 
+//Mark - Biz & Tech should probably be separated
+//Mark - We should consider adding a category for Education
+//Category - Tech/Businesses
             case "Conferences":
             case "Conventions":
             case "Groups - Professional":
@@ -410,10 +413,6 @@ module.exports = {
             case "Technology Events":
             case "Environmental":
             case "Expos":
-
-                //Mark - Biz & Tech should probably be separated
-                //Mark - We should consider adding a category for Education
-                //Category - Tech/Businesses
             case "Professional Networking":
             case "Startup Businesses":
             case "Software Development":
@@ -572,11 +571,11 @@ module.exports = {
             case "IT Professionals":
             case "Financial Education":
 
-                id = 4;
+                id = 2;
                 break;
 
+//Category - Gaming
             case "Games":
-                //Category - Gaming
             case "Board Games":
             case "Games":
             case "Card Games":
@@ -585,9 +584,11 @@ module.exports = {
             case "Video Games":
             case "Tabletop Role Playing and Board Games":
             case "Roleplaying Games (RPGs)":
-                id = 5;
+
+                id = 6;
                 break;
 
+//Category - Family
             case "Children's Events":
             case "Circus":
             case "Father's Day":
@@ -606,8 +607,6 @@ module.exports = {
             case "Children's Theater":
             case "Christmas":
             case "Family Events":
-
-                //Category - Family
             case "Family":
             case "Moms":
             case "Single Parents":
@@ -622,9 +621,10 @@ module.exports = {
             case "Museum":
 
 
-                id = 6;
+                id = 5;
                 break;
 
+//Category - Misc.
             case "Announcements":
             case "Call for Entries":
             case "Defensive Driving":
@@ -665,8 +665,6 @@ module.exports = {
             case "Landmarks":
             case "Martin Luther King, Jr. Day":
             case "Mind and Body":
-
-                //Category - Misc.
             case "Weekend Adventures":
             case "Alternative Medicine":
             case "Transformation":
@@ -737,22 +735,22 @@ module.exports = {
             case "Animal Rights":
             case "NLP (Neuro-Linguistic Programming)":
             case "Other":
-                id = 7;
-                break;
-
-            case "Dear Denver":
                 id = 8;
                 break;
 
+            case "Dear Denver":
+                id = 4;
+                break;
+
             case "WestWord":
-                id = 9;
+                id = 13;
                 break;
 
             case "Meetup":
-                id = 10;
+                id = 7;
                 break;
 
-                //Category - Outdoors
+//Category - Outdoors
             case "Outdoors":
             case "Adventure":
             case "Hiking":
@@ -793,11 +791,10 @@ module.exports = {
             case "Outdoors":
             case "Outdoor Yoga":
 
-
-                id = 11;
+                id = 10;
                 break;
 
-                //Art
+//Art
             case "Opera":
             case "Multimedia":
             case "Broadway":
@@ -882,27 +879,21 @@ module.exports = {
             case "Dance Lessons":
             case "Movies in Movie Theaters":
 
-
-
-
-                id = 12;
+                id = 1;
                 break;
 
-                //Craft Beer
+//Craft Beer
             case "Breweries":
             case "Pubs and Bars":
             case "Beer":
             case "Craft Beer":
             case "Beer Lovers":
 
-
-
-
-                id = 13;
+                id = 3;
                 break;
 
             default:
-                id = 7;
+                id = 8;
 
         }
 
