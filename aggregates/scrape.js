@@ -199,8 +199,9 @@ module.exports = {
                     eventObject.date = eventObject.date.replace(re, " ").trim();
                     eventObject.date = dates.normalizeDate(eventObject.date.trim());
                     eventObject.categories = ["Social", "Dear Denver"];
-
-                    eventArray.push(eventObject);
+                    if (eventObject.date) {
+                        eventArray.push(eventObject);
+                    }
                 })
             })
             resolve(eventArray);

@@ -84,7 +84,6 @@ module.exports = {
                 const endDate = dateQueryArray[1];
                 queryEndDate = endDate;
                 const requestURL = `${baseURL}/calendar?dateRange[]=${startDate}&dateRange[]=${endDate}`;
-                console.log(requestURL);
                 return Scrape.getHTML(requestURL)
             })
             .then((html) => {
