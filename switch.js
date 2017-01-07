@@ -194,7 +194,7 @@ switch (category) {
     case "Make New Friends":
     case "20's and 30's":
 
-        id = 1;
+        id = 11;
         break;
 
     case "Auto":
@@ -245,7 +245,7 @@ switch (category) {
     case "Sports and Recreation":
     case "Yoga":
     case "Badminton":
-        id = 2;
+        id = 12;
         break;
 
     case "A Capella":
@@ -493,7 +493,7 @@ switch (category) {
     case "Creative Writing":
     case "Documentary Films":
 
-        id = 3;
+        id = 9;
         break;
 
     case "Conferences":
@@ -661,7 +661,7 @@ switch (category) {
     case "Landlords":
     case "Young Entrepreneur":
     case "Game Development":
-        id = 4;
+        id = 2;
         break;
 
     case "Games":
@@ -674,7 +674,7 @@ switch (category) {
     case "Video Games":
     case "Tabletop Role Playing and Board Games":
     case "Roleplaying Games (RPGs)":
-        id = 5;
+        id = 6;
         break;
 
     case "Children's Events":
@@ -707,7 +707,7 @@ switch (category) {
     case "Babies":
     case "Toddlers":
     case "New Moms":
-        id = 6;
+        id = 5;
         break;
 
     case "Announcements":
@@ -825,19 +825,19 @@ switch (category) {
     case "Shyness":
     case "Animal Rights":
     case "NLP (Neuro-Linguistic Programming)":
-        id = 7;
-        break;
-
-    case "Dear Denver":
         id = 8;
         break;
 
+    case "Dear Denver":
+        id = 4;
+        break;
+
     case "WestWord":
-        id = 9;
+        id = 13;
         break;
 
     case "Meetup":
-        id = 10;
+        id = 7;
         break;
 
         //Category - Outdoors
@@ -870,18 +870,18 @@ switch (category) {
     case "Trekking":
     case "Marathon":
     case "Bouldering":
-        id = 11;
+        id = 10;
         break;
 
         //Art
-        id = 12;
+        id = 1;
         break;
 
         //Craft Beer
-        id = 13;
+        id = 3;
         break;
 
     default:
-        id = 7;
+        id = 8;
 
 }
