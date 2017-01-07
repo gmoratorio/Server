@@ -1,3 +1,6 @@
+'use strict'
+
+
 exports.seed = function(knex, Promise) {
     // Deletes ALL existing entries
     return knex.raw('DELETE FROM "date_scrape"; ALTER SEQUENCE date_scrape_id_seq RESTART WITH 3')

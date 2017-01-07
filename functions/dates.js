@@ -1,3 +1,5 @@
+'use strict'
+
 const sugar = require("sugar-date");
 const moment = require("moment");
 const validation = require("../db/validation");

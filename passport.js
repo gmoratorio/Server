@@ -1,3 +1,6 @@
+'use strict'
+
+
 const OAuth = require("./db/OAuth");
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;

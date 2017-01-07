@@ -1,3 +1,6 @@
+'use strict'
+
+
 module.exports = {
     translate: function translate(category) {
         let id = null;
