@@ -1,4 +1,3 @@
-'use strict'
 
 const sugar = require("sugar-date");
 const moment = require("moment");

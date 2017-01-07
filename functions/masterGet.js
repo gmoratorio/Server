@@ -1,4 +1,3 @@
-'use strict'
 
 
 const posting = require("./posting");
