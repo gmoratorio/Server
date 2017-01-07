@@ -45,7 +45,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+
+app.use(cors({
+    origin: process.env.CLIENT_CORS_SOURCE,
+    credentials: true
+}));
 
 // app.use(session({
 //     secret: "keyboardcat",
@@ -63,17 +67,27 @@ app.use(passport.session());
 app.use((req, res, next) => {
     if (req.session.passport && req.session.passport.user) {
         req.user = req.session.passport.user;
-    } else if(req.signedCookies.user) {
-      req.user = JSON.parse(req.signedCookies.user);
-      console.log(req.user);
+    } else if (req.signedCookies.user) {
+        req.user = JSON.parse(req.signedCookies.user);
+        console.log(req.user);
     }
 
     next();
 });
 
+function ensureLoggedIn(req, res, next) {
+    if (!req.user) {
+        res.status = 401;
+        res.redirect(process.env.GUEST_REDIRECT);
+    } else {
+        next();
+    }
+}
+
 app.use('/', index);
 // app.use('/users', users);
 app.use('/events', events);
+// app.use('/myLandingPage', ensureLoggedIn, myLandingPage)
 app.use('/category', categories);
 app.use('/new_member', newMember);
 app.use('/view', view);
