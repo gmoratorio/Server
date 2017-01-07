@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
 
   return knex.schema.alterTable('event', function(table) {
     table.string('scrape_id');
+
   });
 };
 
