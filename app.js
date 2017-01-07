@@ -20,6 +20,7 @@ var newMember = require('./routes/new_member');
 var view = require('./routes/view');
 var viewEvent = require('./routes/view_event');
 var categoriesEvents = require('./routes/view_categoriesEvents');
+// const myInfo = require('./routes/myInfo');
 const scrape = require('./routes/scrape');
 const rss = require('./routes/rss');
 const posting = require("./functions/posting");
@@ -69,7 +70,7 @@ app.use((req, res, next) => {
         req.user = req.session.passport.user;
     } else if (req.signedCookies.user) {
         req.user = JSON.parse(req.signedCookies.user);
-        console.log(req.user);
+        // console.log(req.user);
     }
 
     next();
@@ -95,6 +96,7 @@ app.use('/view_event', viewEvent);
 app.use('/view_categoriesEvents', categoriesEvents);
 app.use('/scrape', scrape);
 app.use('/rss', rss);
+// app.use('/myInfo', myInfo);
 
 
 

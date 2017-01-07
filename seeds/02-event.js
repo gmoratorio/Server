@@ -43,7 +43,7 @@ exports.seed = function(knex, Promise) {
                 source_name: 'Dear Denver',
                 event_link: 'https://www.facebook.com/events/106643546502749/',
                 description: 'Call to Arms will be tapping specialty one-off Lagers all week. ',
-                date: 'Tuesday, December 27 – Friday, December 30, 2016',
+                date: "2017-01-01T07:00:00.000Z",
                 time: '11am',
                 event_name: 'Lager Tuesday'
             },
@@ -51,7 +51,7 @@ exports.seed = function(knex, Promise) {
                 id: 6,
                 event_link: 'https://www.facebook.com/events/106643546502749/',
                 description: 'Nuggets take on the Golden State',
-                date: 'Tuesday, December 27 – Friday, December 30, 2016',
+                date: "2017-01-01T07:00:00.000Z",
                 time: '9pm',
                 event_name: 'Nugget Vs. Golden State'
             },
