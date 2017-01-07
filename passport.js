@@ -1,4 +1,4 @@
-'use strict'
+
 
 
 const OAuth = require("./db/OAuth");

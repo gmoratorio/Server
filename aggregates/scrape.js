@@ -1,11 +1,11 @@
-'use strict'
+
 
 
 const cheerio = require('cheerio');
 const request = require('request');
 const dates = require('../functions/dates');
 
-
+//fixed strict
 module.exports = {
 
     getHTML: function getHTML(requestURL) {
