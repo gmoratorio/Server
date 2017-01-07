@@ -7,43 +7,43 @@ exports.seed = function(knex, Promise) {
         .then(function() {
             const categories = [{
                 id: 1,
-                name: 'Social'
-            }, {
-                id: 2,
-                name: 'Sports',
-            }, {
-                id: 3,
-                name: 'Music'
-            }, {
-                id: 4,
-                name: 'Business & Technology'
-            }, {
-                id: 5,
-                name: 'Gaming'
-            }, {
-                id: 6,
-                name: 'Family'
-            }, {
-                id: 7,
-                name: 'Miscellaneous'
-            }, {
-                id: 8,
-                name: 'Dear Denver'
-            }, {
-                id: 9,
-                name: 'WestWord'
-            }, {
-                id: 10,
-                name: 'Meetup'
-            }, {
-                id: 11,
-                name: 'Outdoors'
-            }, {
-                id: 12,
                 name: 'Art'
             }, {
-                id: 13,
+                id: 2,
+                name: 'Business & Technology',
+            }, {
+                id: 3,
                 name: 'Craft Beer'
+            }, {
+                id: 4,
+                name: 'Dear Denver'
+            }, {
+                id: 5,
+                name: 'Family'
+            }, {
+                id: 6,
+                name: 'Gaming'
+            }, {
+                id: 7,
+                name: 'Meetup'
+            }, {
+                id: 8,
+                name: 'Miscellaneous'
+            }, {
+                id: 9,
+                name: 'Music'
+            }, {
+                id: 10,
+                name: 'Outdoors'
+            }, {
+                id: 11,
+                name: 'Social'
+            }, {
+                id: 12,
+                name: 'Sports'
+            }, {
+                id: 13,
+                name: 'WestWord'
             }];
             return knex('category').insert(categories);
         });
