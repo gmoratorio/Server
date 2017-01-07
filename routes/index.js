@@ -47,7 +47,8 @@ router.get('/redirectToClient',  (req, res, next) => {
         httpOnly: true,
         secure: process.env.NODE_ENV == "production"
       });
-      res.redirect(process.env.CLIENT_REDIRECT);
+      console.log("User ID: " + req.user.id);
+      res.redirect(`${process.env.GUEST_REDIRECT}?id=${req.user.id}`);
       // res.json({user: userdata})
     })
 })

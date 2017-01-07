@@ -6,6 +6,7 @@ const accessDB = require("../db/accessDB");
 
 
 router.get('/', (req, res, next) => {
+    
     let ddWasScrapedToday = true;
     let wwWasScrapedToday = true;
     let meetupWasScrapedToday = true;
