@@ -7,6 +7,7 @@ module.exports = {
         const normalDate = sugar.Date.create(date);
         if (normalDate == "Invalid Date") {
             date = date.replace("Monday,", "").replace("Tuesday,", "").replace("Wednesday,", "").replace("Thursday,", "").replace("Friday,", "").replace("Saturday,", "").replace("Sunday,", "").trim();
+            date = null;
 
             return date;
 

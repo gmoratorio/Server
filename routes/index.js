@@ -17,6 +17,19 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/myInfo', (req, res, next) => {
+    const user = req.user;
+    res.json(user);
+
+});
+
+router.get('/logout', (req, res, next) => {
+    res.clearCookie('user');
+    req.session = null;
+    res.redirect(process.env.LANDING_PAGE_REDIRECT);
+
+});
+
 
 router.get('/auth/google', auth.passport.authenticate('google', {
     scope: [
@@ -33,24 +46,24 @@ router.get('/auth/google/callback',
     })
 );
 //auth.ensureAuthenticated
-router.get('/redirectToClient',  (req, res, next) => {
-  console.log("Session is: ", req.session);
-  console.log("redirecting...");
+router.get('/redirectToClient', (req, res, next) => {
+    // console.log("Session is: ", req.session);
+    // console.log("redirecting...");
     OAuth.getUserByGoogleProfileId(req.user.google_id)
-    .then((userdata)=>{
-      //need to send this to the front end
-      // req.session.user_id = userdata.id;
-      const jsonUser = JSON.stringify(userdata);
-      console.log(jsonUser);
-      res.cookie("user", jsonUser, {
-        signed: true,
-        httpOnly: true,
-        secure: process.env.NODE_ENV == "production"
-      });
-      console.log("User ID: " + req.user.id);
-      res.redirect(`${process.env.GUEST_REDIRECT}?id=${req.user.id}`);
-      // res.json({user: userdata})
-    })
+        .then((userdata) => {
+            //need to send this to the front end
+            // req.session.user_id = userdata.id;
+            const jsonUser = JSON.stringify(userdata);
+            // console.log(jsonUser);
+            res.cookie("user", jsonUser, {
+                signed: true,
+                httpOnly: true,
+                secure: process.env.NODE_ENV == "production"
+            });
+            // console.log("User ID: " + req.user.id);
+            res.redirect(`${process.env.MEMBER_REDIRECT}?id=${req.user.id}`);
+            // res.json({user: userdata})
+        })
 })
 
 module.exports = router;

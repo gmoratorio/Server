@@ -62,10 +62,9 @@ module.exports = {
                 const eventCategoryInserts = inserts.map((id, index) => {
                     const thisEvent = eventArray[index];
                     const categories = thisEvent.categories;
-                    if (thisEvent.sourceName === "Meetup") {
-                        const keys = Object.keys(thisEvent);
-
-                    }
+                    // if (thisEvent.sourceName === "Meetup") {
+                    //     const keys = Object.keys(thisEvent);
+                    // }
                     const eventID = id[0];
                     let cleanCategoryIDArray = [];
                     categories.forEach((category) => {

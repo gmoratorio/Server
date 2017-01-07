@@ -2,7 +2,58 @@ module.exports = {
     translate: function translate(category) {
         let id = null;
         switch (category) {
+            case "Club Events":
+            case "Barhopping":
+            case "Adult":
+            case "Clubs (Community)":
+            case "Celebrity Appearences":
+            case "Cheap Thrills":
+            case "Civic Events":
+            case "Competitions":
+            case "Contests":
+            case "Day Tripper":
+            case "Dia de los Muertos":
+            case "Drink Specials":
+            case "Festivals":
+            case "Forums":
+            case "Fourth of July":
+            case "Green Events":
+            case "Groups - Social":
+            case "Halloween":
+            case "Happy Hours":
+            case "Holiday - Parties":
+            case "Labor Day":
+            case "LGBT Events":
+            case "Libations":
+            case "Luncheons":
+            case "Mardi Gras":
+            case "Meet and Greets":
+            case "New Year's Eve":
+            case "Nightlife":
+            case "Parties and Receptions":
+            case "Poker Nights":
+            case "Politics":
+            case "Public Interest":
+            case "Public Service":
+            case "See and Be Seen":
+            case "Sex and Fetish Events":
+            case "Singles Events":
+            case "St. Patrick's Day":
+            case "Support Groups and Hotlines":
+            case "Theme Nights":
+            case "Tours":
+            case "Valentine's Day":
+            case "Wineries":
+            case "Women's Events":
+            case "Activism":
+            case "Community Events":
+            case "Farmers' Markets":
+            case "Groups - Social":
+            case "Lectures":
+            case "Marijuana Events":
+            case "social":
 
+                //Category - Social
             case "New In Town":
             case "Social Networking":
             case "Fun Times":
@@ -30,7 +81,6 @@ module.exports = {
             case "20's & 30's Social":
             case "English Language":
             case "Language Exchange":
-            case "Pubs and Bars":
             case "Personal Development":
             case "English as a Second Language":
             case "Expat":
@@ -44,7 +94,6 @@ module.exports = {
             case "Singles 30's-50's":
             case "International and Exchange Students":
             case "Social Dancing":
-            case "Beer":
             case "Drinking":
             case "Volunteering":
             case "Coffee":
@@ -84,7 +133,6 @@ module.exports = {
             case "Critical Thinking":
             case "Chinese language":
             case "Collaboration between Creative Minds":
-
             case "Gay and Lesbian Friends":
             case "Gay":
             case "Wine Lovers":
@@ -125,11 +173,9 @@ module.exports = {
             case "Expat French":
             case "Latino Culture":
             case "Christian Social":
-            case "Craft Beer":
             case "Dinner":
             case "Social Anxiety":
             case "Active Dogs":
-            case "Beer Lovers":
             case "Bilingual Spanish/English":
             case "Cooking Classes":
             case "Activities":
@@ -143,7 +189,32 @@ module.exports = {
             case "Make New Friends":
             case "20's and 30's":
 
+                id = 1;
+                break;
 
+            case "Auto":
+            case "Basketball":
+            case "Baseball":
+            case "Cycling":
+            case "Football":
+            case "Golf Courses":
+            case "Hockey":
+            case "Long Runs":
+            case "Motorcycles":
+            case "Skate Parks":
+            case "Soccer":
+            case "Sports - Participatory":
+            case "Sports - Spectator":
+            case "Nature":
+            case "Float Trips":
+            case "Parks and Preserves":
+            case "Recreation":
+            case "Summer Camps":
+            case "High Country":
+            case "Hiking":
+            case "Ice Skating Rinks":
+            case "Nature":
+            case "Outdoors":
 
                 //Category - Sports
             case "Recreational Sports":
@@ -169,127 +240,176 @@ module.exports = {
             case "Sports and Recreation":
             case "Yoga":
             case "Badminton":
+                id = 2;
+                break;
 
-
-
-                //Category - Family
-            case "Family":
-            case "Moms":
-            case "Single Parents":
-            case "Parents":
-            case "Stay-at-Home Moms":
-            case "Playdates":
-            case "Kids":
-            case "Babies":
-            case "Toddlers":
-            case "New Moms":
-
-
-
-                //Category - Gaming
-            case "Board Games":
-            case "Games":
-            case "Card Games":
-            case "Gaming":
-            case "Strategy Games":
-            case "Video Games":
-            case "Tabletop Role Playing and Board Games":
-            case "Roleplaying Games (RPGs)":
+            case "A Capella":
+            case "Acousitc":
+            case "African":
+            case "Afropop":
+            case "All-Ages":
+            case "Alt-country":
+            case "Alternative":
+            case "Ambient":
+            case "Americana":
+            case "Art Rock":
+            case "Avant-Gard":
+            case "Battle of the Bands":
+            case "Big Band":
+            case "Bluegrass":
+            case "Blues":
+            case "Bossa Nova":
+            case "Brass Band":
+            case "Bachata":
+            case "Cajun":
+            case "Casino Lounges":
+            case "Celtic":
+            case "Chamber Music":
+            case "Children":
+            case "Choral":
+            case "Cinco de Mayo":
+            case "Classic Rock":
+            case "Classical":
+            case "Country":
+            case "Covers":
+            case "Cumbia":
+            case "Dancehall":
+            case "Death Metal":
+            case "Disco":
+            case "DJ":
+            case "Drag":
+            case "Drum 'n' Bass":
+            case "Dub":
+            case "Dubstep":
+            case "Easy Listening":
+            case "Eclectic":
+            case "EDM":
+            case "Electro":
+            case "Electronica":
+            case "Experimental":
+            case "Festival":
+            case "Folk":
+            case "Free":
+            case "Funk":
+            case "Fusion":
+            case "Garage":
+            case "Gospel":
+            case "Gothic":
+            case "Grunge":
+            case "Gypsy":
+            case "Hardcore":
+            case "Hard Rock":
+            case "Hawaiian":
+            case "Hip-hop":
+            case "Holiday":
+            case "Hotel-Lounges":
+            case "House":
+            case "Improvisational":
+            case "Indie Pop":
+            case "Indie Rock":
+            case "Industrial":
+            case "Instrumental":
+            case "International":
+            case "Jam Sessions":
+            case "Jazz":
+            case "Juke Joints":
+            case "Karaoke":
+            case "Kiddie Pop":
+            case "Klezmer":
+            case "Latin":
+            case "Latin Pop":
+            case "LGBT":
+            case "Lounge":
+            case "Merengue":
+            case "Metal":
+            case "Metalcore":
+            case "Native American":
+            case "Nerdcore":
+            case "New Age":
+            case "New Wave":
+            case "Noise":
+            case "Norento":
+            case "Oldies":
+            case "Open Mic":
+            case "Photography":
+            case "Piano":
+            case "Poetry":
+            case "Polka":
+            case "Pop":
+            case "Pop Punk":
+            case "Post-Hadcore":
+            case "Post-Punk":
+            case "Power Pop":
+            case "Prog":
+            case "Psychedelic":
+            case "Punk":
+            case "R&B":
+            case "Rap":
+            case "Raves":
+            case "Reggae":
+            case "Reggaeton":
+            case "Religious":
+            case "Rock":
+            case "Rockabilly":
+            case "Roots":
+            case "Salsa":
+            case "Service Industry":
+            case "Shoegaze":
+            case "Showtunes":
+            case "Singer-Songwriter":
+            case "Ska":
+            case "Soft Rock":
+            case "Soul":
+            case "Southern Rock":
+            case "Spoken Word":
+            case "Spoken Word and Poetry":
+            case "Sports Bar":
+            case "Spring Arts Guide":
+            case "Strip Clubs":
+            case "Surf":
+            case "Swing":
+            case "Tango":
+            case "Techno":
+            case "Tejano":
+            case "Top 40":
+            case "Trance":
+            case "Tribute":
+            case "Tropical":
+            case "Variety":
+            case "Visual Art":
+            case "Vocal":
+            case "Winter Arts Guide":
+            case "World":
+            case "Zydeco":
+            case "Burlesque":
+            case "Auditions":
+            case "Comedy":
+            case "Craft Fairs":
+            case "Literary Events":
+            case "Music":
+            case "Pop Culture":
 
                 //Category - Music/Arts
             case "Live Music":
-            case "Artists":
             case "Music":
-            case "Art":
-            case "Performing Arts":
-            case "Watching Movies":
-            case "Theater":
             case "Musicians":
-            case "Film":
-            case "Digital Photography":
-            case "Photography Classes":
-            case "Dance Lessons":
             case "Salsa":
             case "Singing":
             case "Concerts":
-            case "Painting":
-            case "Portrait Photography":
-            case "Crafts":
-            case "Arts & Entertainment":
-            case "Fine Arts":
-            case "Art Galleries":
-            case "Film Industry":
-            case "Studio Photography":
-            case "Drawing":
-            case "Screenwriting":
-            case "Independent Filmmaking":
             case "Latin Dance":
-            case "Indie Films":
-            case "Acting":
-            case "Museum":
-            case "Literature":
             case "Latin Music":
-            case "Ballroom Dancing":
-            case "Travel Photography":
-            case "Model Photography":
-            case "Fashion Photography":
-            case "Film and Video Production":
             case "Salsa Dance Lessons":
-            case "Fashion and Style":
-            case "Sci-Fi/Fantasy":
-            case "Fiction":
-            case "Poetry":
             case "Songwriting":
-            case "Movies in Movie Theaters":
-            case "Dance and Movement":
-            case "Bachata":
-            case "Art Museums":
-            case "Sketching":
-            case "Writing Workshops":
-            case "Modeling":
-            case "Swing Dancing":
-            case "Handmade Crafts":
-            case "Figure Drawing":
-            case "Novel Writing":
-            case "Improv":
-            case "Life Drawing":
-            case "Street Photography":
-            case "Photography":
-            case "Writing":
-            case "Creative Writing":
-            case "Documentary Films":
+                id = 3;
+                break;
 
-
-                //Category - Outdoors
-            case "Outdoors":
-            case "Adventure":
-            case "Hiking":
-            case "Walking":
-            case "Outdoor  Fitness":
-            case "Outdoor Adventures":
-            case "Camping":
-            case "Backpacking":
-            case "Kayaking":
-            case "Mountain Biking":
-            case "Nature Photography":
-            case "Rock Climbing":
-            case "Adventure Travel":
-            case "WILDERNESS HIKING":
-            case "Nature Walks":
-            case "Landscape Photography":
-            case "Road Cycling":
-            case "Nature":
-            case "Paddling":
-            case "Snowshoeing":
-            case "Snowboarding":
-            case "Canoeing":
-            case "Mountaineering":
-            case "Trail Running":
-            case "Beginner's Running":
-            case "Outdoor Soccer":
-            case "Trekking":
-            case "Marathon":
-            case "Bouldering":
+            case "Conferences":
+            case "Conventions":
+            case "Groups - Professional":
+            case "Networking":
+            case "Technology Events":
+            case "Environmental":
+            case "Expos":
 
                 //Mark - Biz & Tech should probably be separated
                 //Mark - We should consider adding a category for Education
@@ -448,365 +568,23 @@ module.exports = {
             case "Landlords":
             case "Young Entrepreneur":
             case "Game Development":
-
-
-                //Mark - There are a lot of language and culture categories
-                //Category - Misc.
-
-
-            case "Weekend Adventures":
-            case "Alternative Medicine":
-            case "Transformation":
-            case "Stress Relief":
-            case "Creativity":
-            case "Innovation":
-            case "Nutrition":
-            case "Metaphysics":
-            case "Weight Loss":
-            case "Law of Attraction":
-            case "Culture":
-            case "Hadoop":
-            case "Weekend Getaways":
-            case "LGBT":
-            case "Community Service":
-            case "Environment":
-            case "Philosophy":
-            case "Reiki":
-            case "Sustainability":
-            case "Guided Meditation":
-            case "Vacations":
-            case "Makerspaces":
-            case "Science":
-            case "Product Design":
             case "Electronics":
-            case "London":
-            case "Investing for Retirement":
-            case "Charity Events":
-            case "Cruises":
-            case "Day Trips":
-            case "Whole Food Nutrition":
-            case "Raw Food":
-            case "Usability":
-            case "Positive Thinking":
-            case "Education":
-            case "German Language":
-            case "Confidence and Self-Esteem":
-            case "Organic Foods":
-            case "Gay Men":
-            case "Healthy Eating":
-            case "Walking for Fitness":
-            case "Solo Travelers":
-            case "Brunch":
-            case "Presentations":
-            case "Atheist":
-            case "Outdoor Yoga":
-            case "Readers":
-            case "Español":
-            case "New York City":
-            case "Psychology":
-            case "Exploring":
-            case "Spiritualism":
-            case "Buddhist":
-            case "Happiness":
-            case "Knowledge Sharing":
-            case "Support":
             case "IT Professionals":
-            case "Courses and Workshops":
-            case "Dog Playgroups":
             case "Financial Education":
-            case "Buddhist Meditation":
-            case "Hatha Yoga":
-            case "Activism":
-            case "Stress Management":
-            case "Intimacy":
-            case "Wine Education":
-            case "Community Organizations":
-            case "Walking Tours":
-            case "Docker":
-            case "Healing":
-            case "Shyness":
-            case "Animal Rights":
-            case "NLP (Neuro-Linguistic Programming)":
 
-
-                //*Meetup Categories End
-
-
-            case "Club Events":
-            case "Barhopping":
-            case "Adult":
-            case "Clubs (Community)":
-            case "Celebrity Appearences":
-            case "Cheap Thrills":
-            case "Civic Events":
-            case "Competitions":
-            case "Contests":
-            case "Day Tripper":
-            case "Dia de los Muertos":
-            case "Drink Specials":
-            case "Festivals":
-            case "Forums":
-            case "Fourth of July":
-            case "Green Events":
-            case "Groups - Social":
-            case "Halloween":
-            case "Happy Hours":
-            case "Holiday - Parties":
-            case "Labor Day":
-            case "LGBT Events":
-            case "Libations":
-            case "Luncheons":
-            case "Mardi Gras":
-            case "Meet and Greets":
-            case "New Year's Eve":
-            case "Nightlife":
-            case "Parties and Receptions":
-            case "Poker Nights":
-            case "Politics":
-            case "Public Interest":
-            case "Public Service":
-            case "See and Be Seen":
-            case "Sex and Fetish Events":
-            case "Singles Events":
-            case "St. Patrick's Day":
-            case "Support Groups and Hotlines":
-            case "Theme Nights":
-            case "Tours":
-            case "Valentine's Day":
-            case "Wineries":
-            case "Women's Events":
-            case "Activism":
-            case "Breweries":
-            case "Community Events":
-            case "Farmers' Markets":
-            case "Groups - Social":
-            case "Lectures":
-            case "Marijuana Events":
-            case "social":
-                id = 1;
-                break;
-
-            case "Auto":
-            case "Basketball":
-            case "Baseball":
-            case "Cycling":
-            case "Float Trips":
-            case "Football":
-            case "Golf Courses":
-            case "Hockey":
-            case "Long Runs":
-            case "Motorcycles":
-            case "Nature":
-            case "Parks and Preserves":
-            case "Recreation":
-            case "Skate Parks":
-            case "Soccer":
-            case "Sports - Participatory":
-            case "Sports - Spectator":
-            case "Summer Camps":
-            case "High Country":
-            case "Hiking":
-            case "Ice Skating Rinks":
-            case "Nature":
-            case "Outdoors":
-                id = 2;
-                break;
-
-            case "A Capella":
-            case "Acousitc":
-            case "African":
-            case "Afropop":
-            case "All-Ages":
-            case "Alt-country":
-            case "Alternative":
-            case "Ambient":
-            case "Americana":
-            case "Art Rock":
-            case "Avant-Gard":
-            case "Battle of the Bands":
-            case "Big Band":
-            case "Bluegrass":
-            case "Blues":
-            case "Bossa Nova":
-            case "Brass Band":
-            case "Bachata":
-            case "Broadway":
-            case "Broadway: Now Playing":
-            case "Broadway: Openings":
-            case "Cabaret":
-            case "Cajun":
-            case "Casino Lounges":
-            case "Celtic":
-            case "Chamber Music":
-            case "Children":
-            case "Choral":
-            case "Cinco de Mayo":
-            case "Classic Rock":
-            case "Classical":
-            case "Country":
-            case "Covers":
-            case "Cumbia":
-            case "Dancehall":
-            case "Death Metal":
-            case "Disco":
-            case "DJ":
-            case "Drag":
-            case "Drum 'n' Bass":
-            case "Dub":
-            case "Dubstep":
-            case "Easy Listening":
-            case "Eclectic":
-            case "EDM":
-            case "Electro":
-            case "Electronica":
-            case "Experimental":
-            case "Festival":
-            case "Film & Audio Visual":
-            case "Film - Art House":
-            case "Film - IMAX":
-            case "Film - Festivals":
-            case "Film - Picks":
-            case "Film - Repertory and Special Screenings":
-            case "Folk":
-            case "Free":
-            case "Funk":
-            case "Fusion":
-            case "Garage":
-            case "Gospel":
-            case "Gothic":
-            case "Grunge":
-            case "Gypsy":
-            case "Happy Hour":
-            case "Hardcore":
-            case "Hard Rock":
-            case "Hawaiian":
-            case "Hip-hop":
-            case "Holiday":
-            case "Hotel-Lounges":
-            case "House":
-            case "Improvisational":
-            case "Indie Pop":
-            case "Indie Rock":
-            case "Industrial":
-            case "Instrumental":
-            case "International":
-            case "Jam Sessions":
-            case "Jazz":
-            case "Juke Joints":
-            case "Karaoke":
-            case "Kiddie Pop":
-            case "Klezmer":
-            case "Latin":
-            case "Latin Pop":
-            case "LGBT":
-            case "Lounge":
-            case "Merengue":
-            case "Metal":
-            case "Metalcore":
-            case "Multimedia":
-            case "Museum Exhibits and Events":
-            case "Native American":
-            case "Nerdcore":
-            case "New Age":
-            case "New Wave":
-            case "Noise":
-            case "Norento":
-            case "Off-Broadway: Now Playing":
-            case "Off-Broadway: Opening":
-            case "Off-Off-Broadway: Now Playing":
-            case "Off-Off-Broadway: Opening":
-            case "Oldies":
-            case "Open Mic":
-            case "Opera":
-            case "Other":
-            case "Performance Art":
-            case "Performing Arts":
-            case "Photography":
-            case "Piano":
-            case "Poetry":
-            case "Polka":
-            case "Pop":
-            case "Pop Punk":
-            case "Post-Hadcore":
-            case "Post-Punk":
-            case "Power Pop":
-            case "Prog":
-            case "Psychedelic":
-            case "Punk":
-            case "R&B":
-            case "Rap":
-            case "Raves":
-            case "Reggae":
-            case "Reggaeton":
-            case "Religious":
-            case "Rock":
-            case "Rockabilly":
-            case "Roots":
-            case "Salsa":
-            case "Service Industry":
-            case "Shoegaze":
-            case "Showtunes":
-            case "Singer-Songwriter":
-            case "Ska":
-            case "Soft Rock":
-            case "Soul":
-            case "Southern Rock":
-            case "Spoken Word":
-            case "Spoken Word and Poetry":
-            case "Sports Bar":
-            case "Spring Arts Guide":
-            case "Strip Clubs":
-            case "Surf":
-            case "Swing":
-            case "Tango":
-            case "Techno":
-            case "Tejano":
-            case "Theater":
-            case "Theater - Dinner":
-            case "Theater - Large":
-            case "Theater - Openings":
-            case "Theater - Ongoing":
-            case "Theater - Small":
-            case "Top 40":
-            case "Trance":
-            case "Tribute":
-            case "Tropical":
-            case "Variety":
-            case "Visual Art":
-            case "Vocal":
-            case "Winter Arts Guide":
-            case "World":
-            case "Zydeco":
-            case "Burlesque":
-            case "Art":
-            case "Art - Announcements":
-            case "Art - Galleries":
-            case "Art - Ongoing":
-            case "Art - Openings and Events":
-            case "Arts":
-            case "Auditions":
-            case "Comedy":
-            case "Craft Fairs":
-            case "Dance":
-            case "Fall Arts Guide":
-            case "Literary Events":
-            case "Museum Exhibits and Events":
-            case "Music":
-            case "Pop Culture":
-                id = 3;
-                break;
-
-            case "Conferences":
-            case "Conventions":
-            case "Groups - Professional":
-            case "Networking":
-            case "Technology Events":
-            case "Environmental":
-            case "Expos":
                 id = 4;
                 break;
 
             case "Games":
+                //Category - Gaming
+            case "Board Games":
+            case "Games":
+            case "Card Games":
+            case "Gaming":
+            case "Strategy Games":
+            case "Video Games":
+            case "Tabletop Role Playing and Board Games":
+            case "Roleplaying Games (RPGs)":
                 id = 5;
                 break;
 
@@ -828,6 +606,22 @@ module.exports = {
             case "Children's Theater":
             case "Christmas":
             case "Family Events":
+
+                //Category - Family
+            case "Family":
+            case "Moms":
+            case "Single Parents":
+            case "Parents":
+            case "Stay-at-Home Moms":
+            case "Playdates":
+            case "Kids":
+            case "Babies":
+            case "Toddlers":
+            case "New Moms":
+            case "Museum Exhibits and Events":
+            case "Museum":
+
+
                 id = 6;
                 break;
 
@@ -871,6 +665,78 @@ module.exports = {
             case "Landmarks":
             case "Martin Luther King, Jr. Day":
             case "Mind and Body":
+
+                //Category - Misc.
+            case "Weekend Adventures":
+            case "Alternative Medicine":
+            case "Transformation":
+            case "Stress Relief":
+            case "Creativity":
+            case "Innovation":
+            case "Nutrition":
+            case "Metaphysics":
+            case "Weight Loss":
+            case "Law of Attraction":
+            case "Culture":
+            case "Hadoop":
+            case "Weekend Getaways":
+            case "LGBT":
+            case "Community Service":
+            case "Environment":
+            case "Philosophy":
+            case "Reiki":
+            case "Sustainability":
+            case "Guided Meditation":
+            case "Vacations":
+            case "Makerspaces":
+            case "Science":
+            case "Product Design":
+            case "London":
+            case "Investing for Retirement":
+            case "Charity Events":
+            case "Cruises":
+            case "Day Trips":
+            case "Whole Food Nutrition":
+            case "Raw Food":
+            case "Usability":
+            case "Positive Thinking":
+            case "Education":
+            case "German Language":
+            case "Confidence and Self-Esteem":
+            case "Organic Foods":
+            case "Gay Men":
+            case "Healthy Eating":
+            case "Walking for Fitness":
+            case "Solo Travelers":
+            case "Brunch":
+            case "Presentations":
+            case "Atheist":
+            case "Readers":
+            case "Español":
+            case "New York City":
+            case "Psychology":
+            case "Exploring":
+            case "Spiritualism":
+            case "Buddhist":
+            case "Happiness":
+            case "Knowledge Sharing":
+            case "Support":
+            case "Courses and Workshops":
+            case "Dog Playgroups":
+            case "Buddhist Meditation":
+            case "Hatha Yoga":
+            case "Activism":
+            case "Stress Management":
+            case "Intimacy":
+            case "Wine Education":
+            case "Community Organizations":
+            case "Walking Tours":
+            case "Docker":
+            case "Healing":
+            case "Shyness":
+            case "Animal Rights":
+            case "NLP (Neuro-Linguistic Programming)":
+            case "Other":
                 id = 7;
                 break;
 
@@ -886,12 +752,160 @@ module.exports = {
                 id = 10;
                 break;
 
+                //Category - Outdoors
+            case "Outdoors":
+            case "Adventure":
+            case "Hiking":
+            case "Walking":
+            case "Outdoor  Fitness":
+            case "Outdoor Adventures":
+            case "Camping":
+            case "Backpacking":
+            case "Kayaking":
+            case "Mountain Biking":
+            case "Nature Photography":
+            case "Rock Climbing":
+            case "Adventure Travel":
+            case "WILDERNESS HIKING":
+            case "Nature Walks":
+            case "Landscape Photography":
+            case "Road Cycling":
+            case "Nature":
+            case "Paddling":
+            case "Snowshoeing":
+            case "Snowboarding":
+            case "Canoeing":
+            case "Mountaineering":
+            case "Trail Running":
+            case "Beginner's Running":
+            case "Outdoor Soccer":
+            case "Trekking":
+            case "Marathon":
+            case "Bouldering":
+            case "Nature":
+            case "Float Trips":
+            case "Parks and Preserves":
+            case "Recreation":
+            case "Summer Camps":
+            case "High Country":
+            case "Hiking":
+            case "Nature":
+            case "Outdoors":
+            case "Outdoor Yoga":
+
+
+                id = 11;
+                break;
+
+                //Art
+            case "Opera":
+            case "Multimedia":
+            case "Broadway":
+            case "Broadway: Now Playing":
+            case "Broadway: Openings":
+            case "Cabaret":
+            case "Film & Audio Visual":
+            case "Film - Art House":
+            case "Film - IMAX":
+            case "Film - Festivals":
+            case "Film - Picks":
+            case "Film - Repertory and Special Screenings":
+            case "Museum Exhibits and Events":
+            case "Off-Broadway: Now Playing":
+            case "Off-Broadway: Opening":
+            case "Off-Off-Broadway: Now Playing":
+            case "Off-Off-Broadway: Opening":
+            case "Performance Art":
+            case "Performing Arts":
+            case "Theater":
+            case "Theater - Dinner":
+            case "Theater - Large":
+            case "Theater - Openings":
+            case "Theater - Ongoing":
+            case "Theater - Small":
+            case "Art":
+            case "Art - Announcements":
+            case "Art - Galleries":
+            case "Art - Ongoing":
+            case "Art - Openings and Events":
+            case "Arts":
+            case "Dance":
+            case "Fall Arts Guide":
+            case "Dance and Movement":
+            case "Bachata":
+            case "Fashion and Style":
+            case "Sci-Fi/Fantasy":
+            case "Indie Films":
+            case "Painting":
+            case "Performing Arts":
+            case "Theater":
+            case "Film":
+            case "Digital Photography":
+            case "Photography Classes":
+            case "Portrait Photography":
+            case "Crafts":
+            case "Arts & Entertainment":
+            case "Fine Arts":
+            case "Art Galleries":
+            case "Film Industry":
+            case "Studio Photography":
+            case "Drawing":
+            case "Screenwriting":
+            case "Independent Filmmaking":
+            case "Acting":
+            case "Literature":
+            case "Ballroom Dancing":
+            case "Travel Photography":
+            case "Model Photography":
+            case "Fashion Photography":
+            case "Film and Video Production":
+            case "Fiction":
+            case "Poetry":
+            case "Art Museums":
+            case "Sketching":
+            case "Writing Workshops":
+            case "Modeling":
+            case "Swing Dancing":
+            case "Handmade Crafts":
+            case "Figure Drawing":
+            case "Novel Writing":
+            case "Improv":
+            case "Life Drawing":
+            case "Street Photography":
+            case "Photography":
+            case "Writing":
+            case "Creative Writing":
+            case "Documentary Films":
+            case "Artists":
+            case "Art":
+            case "Watching Movies":
+            case "Dance Lessons":
+            case "Movies in Movie Theaters":
+
+
+
+
+                id = 12;
+                break;
+
+                //Craft Beer
+            case "Breweries":
+            case "Pubs and Bars":
+            case "Beer":
+            case "Craft Beer":
+            case "Beer Lovers":
+
+
+
+
+                id = 13;
+                break;
+
             default:
                 id = 7;
 
         }
-        // console.log(id);
+
         return id;
     }
-
 }
