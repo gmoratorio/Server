@@ -20,7 +20,7 @@ var newMember = require('./routes/new_member');
 var view = require('./routes/view');
 var viewEvent = require('./routes/view_event');
 var categoriesEvents = require('./routes/view_categoriesEvents');
-// const myInfo = require('./routes/myInfo');
+const userDashboard = require('./routes/user_dashboard');
 const scrape = require('./routes/scrape');
 const rss = require('./routes/rss');
 const posting = require("./functions/posting");
@@ -78,9 +78,11 @@ app.use((req, res, next) => {
 
 function ensureLoggedIn(req, res, next) {
     if (!req.user) {
+        console.log("User was not logged in");
         res.status = 401;
         res.redirect(process.env.GUEST_REDIRECT);
     } else {
+        console.log("User is logged in!");
         next();
     }
 }
@@ -88,7 +90,7 @@ function ensureLoggedIn(req, res, next) {
 app.use('/', index);
 // app.use('/users', users);
 app.use('/events', events);
-// app.use('/myLandingPage', ensureLoggedIn, myLandingPage)
+// app.use('/userDashboard', ensureLoggedIn, userDashboard);
 app.use('/category', categories);
 app.use('/new_member', newMember);
 app.use('/view', view);

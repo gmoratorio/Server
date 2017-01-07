@@ -5,7 +5,7 @@ const knex = require('./db/connection');
 const dotenv = require('dotenv').config();
 
 passport.serializeUser((userObject, done) => {
-    console.log("serializing user");
+    // console.log("serializing user");
     // const obj = {
     //     token: userObject.token,
     //     id: userObject.google_id
@@ -14,7 +14,7 @@ passport.serializeUser((userObject, done) => {
 });
 
 passport.deserializeUser((obj, done) => {
-    console.log("DEserializing user");
+    // console.log("DEserializing user");
     // OAuth.getUserByGoogleProfileId(obj.id)
     //     .then((user => {
     //         done(null, obj);
