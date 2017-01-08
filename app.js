@@ -55,11 +55,7 @@ app.use(cors({
     credentials: true
 }));
 
-// app.use(session({
-//     secret: "keyboardcat",
-//     saveUninitialized: true,
-//     resave: false
-// }));
+
 
 app.use(cookieSession({
     secret: process.env.SESSION_SECRET
@@ -93,7 +89,7 @@ function ensureLoggedIn(req, res, next) {
 app.use('/', index);
 // app.use('/users', users);
 app.use('/events', events);
-// app.use('/userDashboard', ensureLoggedIn, userDashboard);
+app.use('/userDashboard', ensureLoggedIn, userDashboard);
 app.use('/category', categories);
 app.use('/new_member', newMember);
 app.use('/view', view);
