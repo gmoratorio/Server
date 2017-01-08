@@ -169,19 +169,22 @@ module.exports = {
         const fullURL = `${baseURL}/find/events?zip=11211&radius=1&category=25&order=members&key=${APIKey}`;
         let globalCleanedEventArray = [];
 
-
+        console.log("Getting Meetup API");
         return Scrape.getRequest(fullURL)
             .then((meetupRawEventArray) => {
+                console.log("Filtering only public events");
                 const onlyPublicEventsArray = meetupRawEventArray.filter((event) => {
                     return (event.visibility === "public");
                 })
                 return Promise.all(onlyPublicEventsArray);
             })
             .then((onlyPublicEventsArray) => {
+              console.log("Getting existing events from DB");
                 globalCleanedEventArray = onlyPublicEventsArray;
                 return accessDB.getDBMeetupEvents()
             })
             .then((dbMeetupEventsArray) => {
+              console.log("Filtering out duplicates");
                 const cleanedEventArray = globalCleanedEventArray.filter((event, index) => {
                     const thisScrapeID = event.id;
 
@@ -195,6 +198,7 @@ module.exports = {
                 return Promise.all(cleanedEventArray);
             })
             .then((cleanedEventArray) => {
+              console.log("Getting event links");
                 globalCleanedEventArray = cleanedEventArray;
                 const eventLinkArray = cleanedEventArray.map((event) => {
                     return event.link;
@@ -202,18 +206,21 @@ module.exports = {
                 return Promise.all(eventLinkArray);
             })
             .then((eventLinkArray) => {
+              console.log("Scraping individual events");
                 const htmlArray = eventLinkArray.map((link) => {
                     return Scrape.getHTML(link);
                 })
                 return Promise.all(htmlArray);
             })
             .then((htmlArray) => {
+              console.log("Getting additional event detail data");
                 const dateTimeArray = htmlArray.map((html) => {
                     return Scrape.getMeetupDateTimeImageCategory(html);
                 })
                 return Promise.all(dateTimeArray);
             })
             .then((dateTimeArray) => {
+              console.log("Creating final array");
                 const finalEventArray = globalCleanedEventArray.map((event, index) => {
                     const cleanReturnEvent = {};
                     cleanReturnEvent.eventName = event.name;
@@ -239,6 +246,7 @@ module.exports = {
                 return Promise.all(finalEventArray);
             })
             .then((finalEventArray) => {
+              console.log("Packaging final array into an Object");
                 let returnArrayObject = {};
                 if (finalEventArray.length === 0) {
                     finalEventArray = null;

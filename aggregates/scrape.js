@@ -14,7 +14,13 @@ module.exports = {
                 if (!error && response.statusCode === 200) {
                     resolve(body);
                 } else {
-                    reject(error);
+                    if(response.statusCode){
+                      console.log(response.statusCode);
+                    }
+                    else{
+                      console.log(response);
+                    }
+                    console.log("There was an error getting the initial HTML");
                 }
             });
         });
@@ -36,7 +42,7 @@ module.exports = {
                 }
                 resolve(postsJSON);
             } else {
-                reject();
+                console.log("There was an error getting Dear Denver post numbers");
             }
         });
     },
@@ -47,7 +53,7 @@ module.exports = {
             if (postLink) {
                 resolve(postLink);
             } else {
-                reject();
+                console.log("There was an error getting Dear Denver post links");
             }
 
         });
@@ -221,7 +227,7 @@ module.exports = {
             if (timeRaw) {
                 resolve(timeRaw);
             } else {
-                reject();
+                console.log("There was an error getting date-time info from Dear Denver");
             }
 
         });
@@ -282,7 +288,7 @@ module.exports = {
             if (initialEventArray) {
                 resolve(initialEventArray);
             } else {
-                reject();
+                console.log("There was an error getting initial event info from WestWord");
             }
 
         });
@@ -295,7 +301,7 @@ module.exports = {
             if (description) {
                 resolve(description);
             } else {
-                reject();
+                console.log("There was an error getting the WestWord inner description");
             }
 
         });
@@ -336,11 +342,10 @@ module.exports = {
             dateTimeImageCategoryObject.imageLink = imageLink;
             dateTimeImageCategoryObject.categories = categoryArray;
             dateTimeImageCategoryObject.categories.push("Meetup");
-            // console.log(dateTimeImageCategoryObject.categories);
             if (dateTimeImageCategoryObject) {
                 resolve(dateTimeImageCategoryObject);
             } else {
-                reject();
+              console.log("There was a problem getting the Meetup date-time-info");
             }
 
         });
