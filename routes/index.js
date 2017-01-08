@@ -26,7 +26,7 @@ router.get('/myInfo', (req, res, next) => {
 router.get('/logout', (req, res, next) => {
     res.clearCookie('user');
     req.session = null;
-    // res.redirect(process.env.LANDING_PAGE_REDIRECT);
+    res.redirect(process.env.LANDING_PAGE_REDIRECT);
 
 });
 
