@@ -58,6 +58,7 @@ module.exports = {
                             const concatArray = acc.concat(innerArray);
                             return concatArray;
                         }, []);
+                        console.log("Final Array Length: " + finalArray.length);
                         returnObject.eventArray = finalArray;
                         return (returnObject);
                     })
@@ -115,6 +116,7 @@ module.exports = {
                         const dateDifference = dates.getDifference(queryEndDate, maxFutureDate, "days");
                         if (dateDifference > -1) {
                             returnObject.eventArray = eventArray;
+                            console.log("Final Array Length: " + eventArray.length);
                         } else {
                             returnObject.eventArray = null;
                         }
@@ -252,6 +254,7 @@ module.exports = {
                     finalEventArray = null;
                 }
                 returnArrayObject.eventArray = finalEventArray;
+                console.log("Final Array Length: " + finalEventArray.length);
                 return returnArrayObject;
             })
 
