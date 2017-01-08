@@ -194,7 +194,7 @@ switch (category) {
     case "Make New Friends":
     case "20's and 30's":
 
-        id = 11;
+        id = 1;
         break;
 
     case "Auto":
@@ -245,7 +245,7 @@ switch (category) {
     case "Sports and Recreation":
     case "Yoga":
     case "Badminton":
-        id = 12;
+        id = 2;
         break;
 
     case "A Capella":
@@ -493,7 +493,7 @@ switch (category) {
     case "Creative Writing":
     case "Documentary Films":
 
-        id = 9;
+        id = 3;
         break;
 
     case "Conferences":
@@ -661,7 +661,7 @@ switch (category) {
     case "Landlords":
     case "Young Entrepreneur":
     case "Game Development":
-        id = 2;
+        id = 4;
         break;
 
     case "Games":
@@ -674,7 +674,7 @@ switch (category) {
     case "Video Games":
     case "Tabletop Role Playing and Board Games":
     case "Roleplaying Games (RPGs)":
-        id = 6;
+        id = 5;
         break;
 
     case "Children's Events":
@@ -707,7 +707,7 @@ switch (category) {
     case "Babies":
     case "Toddlers":
     case "New Moms":
-        id = 5;
+        id = 6;
         break;
 
     case "Announcements":
@@ -825,19 +825,19 @@ switch (category) {
     case "Shyness":
     case "Animal Rights":
     case "NLP (Neuro-Linguistic Programming)":
-        id = 8;
+        id = 7;
         break;
 
     case "Dear Denver":
-        id = 4;
+        id = 8;
         break;
 
     case "WestWord":
-        id = 13;
+        id = 9;
         break;
 
     case "Meetup":
-        id = 7;
+        id = 10;
         break;
 
         //Category - Outdoors
@@ -870,18 +870,19 @@ switch (category) {
     case "Trekking":
     case "Marathon":
     case "Bouldering":
-        id = 10;
+        id = 11;
         break;
 
         //Art
-        id = 1;
+        id = 12;
         break;
 
         //Craft Beer
-        id = 3;
+        id = 13;
         break;
 
     default:
+<<<<<<< HEAD
 
         category.id = 7;
 
@@ -1058,6 +1059,9 @@ switch(category) {
         id = 7;
 
         id = 8;
+
+        id = 7;
+
 
 
 }
