@@ -836,6 +836,7 @@ switch (category) {
         id = 9;
         break;
 
+<<<<<<< HEAD
     case "Meetup":
         id = 10;
         break;
@@ -1055,13 +1056,25 @@ switch(category) {
             default:
                 category.id = null;
         }
+=======
+<<<<<<< HEAD
+    case "Meetup":
+        id = 10;
+        break;
+>>>>>>> 9d9e1ed66e21eb3b3868ae2d0ae5d457d1328084
 
         id = 7;
 
         id = 8;
 
+<<<<<<< HEAD
         id = 7;
 
 
 
 }
+=======
+    default:
+            id = 8;
+]
+>>>>>>> 9d9e1ed66e21eb3b3868ae2d0ae5d457d1328084
