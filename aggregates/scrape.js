@@ -4,19 +4,15 @@ const dates = require('../functions/dates');
 
 //fixed strict
 module.exports = {
-
     getHTML: function getHTML(requestURL) {
         return new Promise((resolve, reject) => {
             return request(requestURL, (error, response, body) => {
+                console.log("Getting HTML for " + requestURL);
                 if (!error && response.statusCode === 200) {
+                    console.log("Got HTML for " + requestURL);
                     resolve(body);
                 } else {
-                    if (response.statusCode) {
-                        console.log(response.statusCode);
-                    } else {
-                        console.log(response);
-                    }
-                    console.log("There was an error getting the initial HTML");
+                    console.log("Error getting HTML for " + requestURL);
                 }
             });
         });
