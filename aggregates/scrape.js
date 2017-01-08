@@ -1,6 +1,3 @@
-
-
-
 const cheerio = require('cheerio');
 const request = require('request');
 const dates = require('../functions/dates');
@@ -14,11 +11,10 @@ module.exports = {
                 if (!error && response.statusCode === 200) {
                     resolve(body);
                 } else {
-                    if(response.statusCode){
-                      console.log(response.statusCode);
-                    }
-                    else{
-                      console.log(response);
+                    if (response.statusCode) {
+                        console.log(response.statusCode);
+                    } else {
+                        console.log(response);
                     }
                     console.log("There was an error getting the initial HTML");
                 }
@@ -345,7 +341,7 @@ module.exports = {
             if (dateTimeImageCategoryObject) {
                 resolve(dateTimeImageCategoryObject);
             } else {
-              console.log("There was a problem getting the Meetup date-time-info");
+                console.log("There was a problem getting the Meetup date-time-info");
             }
 
         });
