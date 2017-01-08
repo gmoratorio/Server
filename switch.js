@@ -836,6 +836,7 @@ switch (category) {
         id = 9;
         break;
 
+<<<<<<< HEAD
     case "Meetup":
         id = 10;
         break;
@@ -882,6 +883,5 @@ switch (category) {
         break;
 
     default:
-        id = 7;
-
-}
+            id = 8;
+]
