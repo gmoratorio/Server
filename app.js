@@ -70,7 +70,6 @@ app.use((req, res, next) => {
         req.user = req.session.passport.user;
     } else if (req.signedCookies.user) {
         req.user = JSON.parse(req.signedCookies.user);
-        // console.log(req.user);
     }
 
     next();
@@ -84,8 +83,6 @@ function ensureLoggedIn(req, res, next) {
                 checkedAuthorization: true,
                 authorized: false
             });
-            // res.redirect(process.env.GUEST_REDIRECT);
-            // res.header("Access-Control-Allow-Origin", "http://localhost:8080/guestDashboard.html");
 
     } else {
         console.log("User is logged in!");

@@ -29,7 +29,6 @@ router.get('/logout', (req, res, next) => {
     res.json({
         loggedIn: false
     });
-    // res.redirect(process.env.LANDING_PAGE_REDIRECT);
 
 });
 
