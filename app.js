@@ -1,6 +1,3 @@
-
-
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -55,7 +52,11 @@ app.use(cors({
     credentials: true
 }));
 
-
+// app.use((req, res, next)=> {
+//     res.header("Access-Control-Allow-Origin", "http://localhost:8080/guestDashboard.html");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
 app.use(cookieSession({
     secret: process.env.SESSION_SECRET
@@ -69,7 +70,6 @@ app.use((req, res, next) => {
         req.user = req.session.passport.user;
     } else if (req.signedCookies.user) {
         req.user = JSON.parse(req.signedCookies.user);
-        // console.log(req.user);
     }
 
     next();
@@ -79,7 +79,11 @@ function ensureLoggedIn(req, res, next) {
     if (!req.user) {
         console.log("User was not logged in");
         res.status = 401;
-        res.redirect(process.env.GUEST_REDIRECT);
+        res.json({
+                checkedAuthorization: true,
+                authorized: false
+            });
+
     } else {
         console.log("User is logged in!");
         next();
