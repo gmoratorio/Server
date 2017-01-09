@@ -78,7 +78,7 @@ app.use((req, res, next) => {
 function ensureLoggedIn(req, res, next) {
     if (!req.user) {
         console.log("User was not logged in");
-        res.status = 401;
+        // res.status = 401;
         res.json({
                 checkedAuthorization: true,
                 authorized: false
