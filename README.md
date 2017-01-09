@@ -15,14 +15,13 @@ The application utilizes request and cheerio.js to scrape data from several even
 NOTE: You will need to clone both this server repo and the client repo at (https://github.com/stackOfAllTrades/Client)
 
 * Fork and clone this repo
-* `cd` into the folder and `$ npm install`
+* `$ cd` into the folder and `$ npm install`
 * Create a PSQL database named `denver-events`
 * Run `$ knex migrate:latest` and `$ knex seed:run`
 * See the `example.env` file for needed Environment variables
+  * Don't forget to create your own `.env` file with your project's specific Environment variables
 * Create a Google OAuth account for authorization
-* Launch nodemon on the server with `$ nodemon`
-* Run `nodemon ./bin/www` to see the views
-* When you're done, you should have a site that looks [like this](http://galvanize-brews.herokuapp.com/)
-* Push your site and your database to a public URL
-* Edit this `README.md` to include the link to your public URL [here](https://enigmatic-ocean-47947.herokuapp.com/)
-* Issue a PR to this repo!
+* Launch nodemon on the server with `$ nodemon` from the root of the sever repo
+* Launch an http-server with `$ http-server` from the root of the client repo
+* When this is all ready, visit http://localhost:8080 from your browser to launch the landing page
+
