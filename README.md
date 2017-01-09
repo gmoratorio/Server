@@ -1,5 +1,5 @@
 # Server
-# Galvanize Brews
+### Denver To Remember 
 
 This is a project on [knex.js](http://knexjs.org/).
 
