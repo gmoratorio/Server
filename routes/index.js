@@ -63,7 +63,7 @@ router.get('/redirectToClient', (req, res, next) => {
                 secure: process.env.NODE_ENV == "production"
             });
             // console.log("User ID: " + req.user.id);
-            res.redirect(`${process.env.MEMBER_REDIRECT}?id=${req.user.id}`);
+            res.redirect(`${process.env.MEMBER_REDIRECT}`);
             // res.json({user: userdata})
         })
 })
