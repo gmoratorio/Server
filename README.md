@@ -3,8 +3,6 @@
 
 This is a project on (https://www.denvertoremember.com).
 
-You will be implementing the following ERD with knex, and creating knex queries to interact with the data in the database.
-
 A Denver to Remember is an app targeted at tourists, the curious and the bored. It allows one to quickly find events happening around the Denver area, their location, description, time and price. We have two avenues within the app with which this could be done. As a guest, one could find and filter events based on type.
 
 As a member, the experience becomes more personalized. Not only can one filter events by type, but also view event summaries inside the app without having to redirect to the host website. The in-app event summaries include full descriptions, address, time, and price information, and the source event link.
