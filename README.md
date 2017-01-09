@@ -1,7 +1,7 @@
 # Server
 ## Denver To Remember 
 
-This is a project on (https://www.denvertoremember.com).
+This project is live at (https://www.denvertoremember.com).
 
 A Denver to Remember is an app targeted at tourists, the curious and the bored. It allows one to quickly find events happening around the Denver area, their location, description, time and price. We have two avenues within the app with which this could be done. As a guest, one could find and filter events based on type.
 
