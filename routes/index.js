@@ -10,11 +10,9 @@ const dotenv = require('dotenv').config();
 
 
 router.get('/', (req, res) => {
-    // return knex('user')
-    //     .select()
-    //     .then(data => {
-    //         res.json(data);
-    //     });
+    res.json({
+      pleaseVisitOurSite: "https://www.denvertoremember.com"
+    })
 });
 
 router.get('/myInfo', (req, res, next) => {
