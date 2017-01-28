@@ -9,10 +9,10 @@ module.exports = {
             return request(requestURL, (error, response, body) => {
                 // console.log("Getting HTML for " + requestURL);
                 if (!error && response.statusCode === 200) {
-                    // console.log("Got HTML for " + requestURL);
+                    console.log("Got HTML for " + requestURL);
                     resolve(body);
                 } else {
-                    // console.log("Error getting HTML for " + requestURL);
+                    console.log("Error getting HTML for " + requestURL);
                 }
             });
         });
@@ -34,7 +34,7 @@ module.exports = {
                 }
                 resolve(postsJSON);
             } else {
-                // console.log("There was an error getting Dear Denver post numbers");
+                console.log("There was an error getting Dear Denver post numbers");
             }
         });
     },
@@ -45,7 +45,7 @@ module.exports = {
             if (postLink) {
                 resolve(postLink);
             } else {
-                // console.log("There was an error getting Dear Denver post links");
+                console.log("There was an error getting Dear Denver post links");
             }
 
         });
@@ -219,7 +219,7 @@ module.exports = {
             if (timeRaw) {
                 resolve(timeRaw);
             } else {
-                // console.log("There was an error getting date-time info from Dear Denver");
+                console.log("There was an error getting date-time info from Dear Denver");
             }
 
         });
@@ -280,7 +280,7 @@ module.exports = {
             if (initialEventArray) {
                 resolve(initialEventArray);
             } else {
-                // console.log("There was an error getting initial event info from WestWord");
+                console.log("There was an error getting initial event info from WestWord");
             }
 
         });
@@ -293,6 +293,7 @@ module.exports = {
             if (description) {
                 resolve(description);
             } else {
+              resolve("No description available.")
                 // console.log("There was an error getting the WestWord inner description");
             }
 
@@ -337,7 +338,7 @@ module.exports = {
             if (dateTimeImageCategoryObject) {
                 resolve(dateTimeImageCategoryObject);
             } else {
-                // console.log("There was a problem getting the Meetup date-time-info");
+                console.log("There was a problem getting the Meetup date-time-info");
             }
 
         });
