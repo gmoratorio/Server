@@ -9,7 +9,7 @@ module.exports = {
             return request(requestURL, (error, response, body) => {
                 // console.log("Getting HTML for " + requestURL);
                 if (!error && response.statusCode === 200) {
-                    console.log("Got HTML for " + requestURL);
+                    // console.log("Got HTML for " + requestURL);
                     resolve(body);
                 } else {
                     console.log("Error getting HTML for " + requestURL);
@@ -286,15 +286,15 @@ module.exports = {
         });
 
     },
-    getWWInnerDescription: function getWWInnerDescription(html) {
+    getWWInnerDescription: function getWWInnerDescription(html, index) {
         $ = cheerio.load(html);
         return new Promise((resolve, reject) => {
             const description = $("div.description").text();
             if (description) {
                 resolve(description);
             } else {
+              console.log("There was an error getting the WestWord inner description");
               resolve("No description available.")
-                // console.log("There was an error getting the WestWord inner description");
             }
 
         });

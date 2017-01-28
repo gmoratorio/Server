@@ -99,8 +99,8 @@ module.exports = {
                         return Promise.all(innerEventHTMLArray);
                     })
                     .then((htmlArray) => {
-                        const descriptionArray = htmlArray.map((innerHTML) => {
-                            return Scrape.getWWInnerDescription(innerHTML);
+                        const descriptionArray = htmlArray.map((innerHTML, index) => {
+                            return Scrape.getWWInnerDescription(innerHTML, index);
                         })
                         return Promise.all(descriptionArray);
                     })

@@ -172,6 +172,7 @@ module.exports = {
                 return finalReturnObject;
             })
             .catch(function(err) {
+              console.log(err);
                 next(err);
             });
     }
